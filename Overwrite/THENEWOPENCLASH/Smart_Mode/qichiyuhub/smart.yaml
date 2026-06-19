@@ -1,5 +1,5 @@
 # OpenClash 覆写模块 - smart.yaml
-# 生成日期：2026-04-09
+# 生成日期：2026-06-19
 # 源文件：https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/main/THEYAMLS/Smart_Mode/qichiyuhub/smart.yaml
 # 格式：新版 OpenClash [YAML] 块覆写
 #
@@ -526,7 +526,7 @@
 #     format: text
 #     interval: 86400
 #     type: http
-#     url: https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/main/proxy.list
+#     url: https://raw.githubusercontent.com/qichiyuhub/rule/refs/heads/main/rules/proxy.list
 #   speedtest_domain:
 #     behavior: domain
 #     format: mrs

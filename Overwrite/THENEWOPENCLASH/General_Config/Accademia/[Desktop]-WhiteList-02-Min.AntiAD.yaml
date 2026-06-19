@@ -1,0 +1,4918 @@
+# OpenClash 覆写模块 - [Desktop]-WhiteList-02-Min.AntiAD.yaml
+# 生成日期：2026-06-19
+# 源文件：https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/main/THEYAMLS/General_Config/Accademia/%5BDesktop%5D-WhiteList-02-Min.AntiAD.yaml
+# 格式：新版 OpenClash [YAML] 块覆写
+#
+# 本文件仅包含 [YAML] 块覆写内容，不含任何 [General] 插件设置。
+# 所有内容默认注释，不影响现有配置；取消注释对应段落即可启用该覆写。
+# ==========================================================
+# [YAML] 是新版 OpenClash 覆写模块的识别标记
+# 此行本身不可注释，内容写在此标记之后
+# 注释状态不生效；取消注释后重载覆写模块即可生效
+# ==========================================================
+[YAML]
+
+# ==========================================================
+# 操作符速查
+# ----------------------------------------------------------
+#  key       默认合并：Hash 递归合并，其他类型直接覆盖原值
+#  key!      强制覆盖：整个值全部替换，不做任何合并
+#  key+      数组后置追加：在数组末尾加入新元素
+#  +key      数组前置插入：在数组开头插入（规则越靠前越优先匹配）
+#  key-      数组差集删除：从数组移除指定元素；非数组则删除该键
+#  key*      批量条件更新：配合 where/set，按条件匹配后批量修改
+# ==========================================================
+
+# ==========================================================
+# 示例：追加自定义 rule-provider 并在规则末尾加入对应规则
+# 取消注释后，Steam 流量将走 Proxy 策略组
+# ----------------------------------------------------------
+# +rule-providers:
+#   Steam:
+#     type: http
+#     behavior: domain
+#     format: mrs
+#     url: "https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/steam.mrs"
+#     interval: 86400
+# +rules:
+#   - RULE-SET,Steam,Proxy
+# ==========================================================
+
+# ==========================================================
+# 示例：在规则列表最前面插入高优先级规则（最先匹配）
+# ----------------------------------------------------------
+# +rules:
+#   - DOMAIN-SUFFIX,example.com,DIRECT
+#   - IP-CIDR,192.168.0.0/16,DIRECT,no-resolve
+# ==========================================================
+
+# ==========================================================
+# 示例：强制替换整个 rules 数组（原有规则全部丢弃）
+# ----------------------------------------------------------
+# rules!:
+#   - DOMAIN-SUFFIX,example.com,DIRECT
+#   - MATCH,PROXY
+# ==========================================================
+
+# ==========================================================
+# 示例：修改 dns 配置中的部分字段，其余字段保持不变
+# ----------------------------------------------------------
+# dns:
+#   enable: true
+#   cache-algorithm: lru
+# ==========================================================
+
+# ==========================================================
+# 示例：给所有 url-test 类型的策略组在 proxies 末尾追加节点
+# ----------------------------------------------------------
+# proxy-groups*:
+#   where:
+#     type: url-test
+#   set:
+#     proxies+:
+#       - '节点名称'
+# ==========================================================
+
+# ==========================================================
+# proxy-providers（从源文件直接提取）
+# ----------------------------------------------------------
+# 以下内容原样复制自源 YAML 的 proxy-providers 块。
+# 使用方法：
+#   1. 将需要替换的 provider 的 url: 改为你自己的订阅链接
+#   2. 删除这整块前面的 # 号，保存后重载覆写模块即可
+# ==========================================================
+#
+# proxy-providers:
+#   SUB-Provider-01:
+#     interval: 43200
+#     path: ./proxy-providers/SUB-Provider-01.yaml
+#     type: http
+#     url: https://example.com/replace/your/subscription/url
+
+# ==========================================================
+# proxy-groups（从源文件直接提取）
+# ----------------------------------------------------------
+# 原始策略组配置，默认注释不启用。
+# 如需覆写策略组，可取消注释后修改，或参考上方示例使用 proxy-groups* 条件更新。
+# 直接取消注释将强制替换整个 proxy-groups（等同于 proxy-groups! 操作）。
+# ==========================================================
+#
+# proxy-groups:
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Available.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🌐.Line-[Global.VPS]
+#   proxies:
+#   - 🇺🇸🔰.VPS-[US.HomeIP]-(美国住宅节点)
+#   - 🇺🇸🔰.VPS-[US.Relay]-(美国中转节点)
+#   - 🇯🇵🔰.VPS-[JP.Relay]-(日本中转节点)
+#   - 🇬🇧🔰.VPS-[UK.Relay]-(英国中转节点)
+#   - 🇦🇺🔰.VPS-[AU.Relay]-(澳洲中转节点)
+#   - 🇺🇸🔰.VPS-[US.ShowIP]-(归属地落地节点)
+#   timeout: 5000
+#   tolerance: 50
+#   type: url-test
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Available.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🌐.Line-[Global]
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰🇺🇸.Line-[Relay.VPS]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸📍.Line-[US.ShowIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   - 🇯🇵.Line-[JP]
+#   - 🇦🇺.Line-[AU]
+#   timeout: 5000
+#   tolerance: 50
+#   type: url-test
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Available.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🌐.Line-[ProxyChain]
+#   proxies:
+#   - 🇺🇸🍟.Multi.PrxChain-[US.HomeIP]
+#   - 🇺🇸📍.Multi.PrxChain-[US.ShowIP]
+#   - 🇺🇸.Multi.PrxChain-[US]
+#   - 🇯🇵.Multi.PrxChain-[JP]
+#   - 🇬🇧.Multi.PrxChain-[UK]
+#   - 🇦🇺.Multi.PrxChain-[AU]
+#   timeout: 5000
+#   tolerance: 50
+#   type: url-test
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Speedtest.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🎚.<Speedtest>
+#   proxies:
+#   - DIRECT
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰🇺🇸.Line-[Relay.VPS]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸📍.Line-[US.ShowIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   - 🇯🇵.Line-[JP]
+#   - 🇦🇺.Line-[AU]
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - name: __________________________________________________________________
+#   proxies:
+#   - DIRECT
+#   type: select
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Star.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 📡.<DNS>--GlobalDNS
+#   proxies:
+#   - 🔰🇺🇸.Line-[Relay.VPS]-US.First
+#   - 🔰🇯🇵.Line-[Relay.VPS]-JP.First
+#   - 🔰🇬🇧.Line-[Relay.VPS]-UK.First
+#   - 🔰🇦🇺.Line-[Relay.VPS]-AU.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Star.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 📡.<DNS>--ChinaDNS
+#   proxies:
+#   - DIRECT
+#   - REJECT-DROP
+#   - REJECT
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Star.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 📡.<NTP>--GlobalNTP
+#   proxies:
+#   - DIRECT
+#   - 🔰🇺🇸.Line-[Relay.VPS]-US.First
+#   - 🔰🇯🇵.Line-[Relay.VPS]-JP.First
+#   - 🔰🇬🇧.Line-[Relay.VPS]-UK.First
+#   - 🔰🇦🇺.Line-[Relay.VPS]-AU.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Star.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 📡.<NTP>--ChinaNTP
+#   proxies:
+#   - DIRECT
+#   - REJECT-DROP
+#   - REJECT
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Reject.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 📡.<Protection>--HttpDNS
+#   proxies:
+#   - REJECT-DROP
+#   - REJECT
+#   - DIRECT
+#   - 🇺🇸📍.Line-[US.ShowIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Reject.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: ⛔️.<Protection>--Hijacking
+#   proxies:
+#   - REJECT-DROP
+#   - REJECT
+#   - DIRECT
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Reject.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: ⛔️.<Protection>--ADblock
+#   proxies:
+#   - REJECT-DROP
+#   - REJECT
+#   - DIRECT
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - name: _________________________________________________________________
+#   proxies:
+#   - DIRECT
+#   type: select
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 💻.<Lan>
+#   proxies:
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 💻.<NAS>--Synology
+#   proxies:
+#   - DIRECT
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🔌.<Home>--AqaraGlobal
+#   proxies:
+#   - DIRECT
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 📂.<Drive>--OneDrive
+#   proxies:
+#   - DIRECT
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 📂.<Drive>--Dropbox
+#   proxies:
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 📂.<Drive>--GoogleDrive
+#   proxies:
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 📂.<Drive>--MEGA
+#   proxies:
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 📂.<Drive>--Imgur
+#   proxies:
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 📂.<Drive>--InternetArchive
+#   proxies:
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: ⬇️.<P2P>--PT-Server
+#   proxies:
+#   - DIRECT
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇦🇺.Line-[AU]
+#   - 🇬🇧.Line-[UK]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: ⬇️.<P2P>--eMule-Server
+#   proxies:
+#   - DIRECT
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇦🇺.Line-[AU]
+#   - 🇬🇧.Line-[UK]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: ⬇️.<Download>--MacAppUpgrade
+#   proxies:
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 💰.<Finance>--Paypal
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 💰.<Finance>--Wise
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: ₿.<Crypto>--Binance
+#   proxies:
+#   - 🇯🇵.Line-[JP]
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸🔰.VPS-[US.HomeIP]-(美国住宅节点)
+#   - 🔰🇺🇸.Line-[Relay.VPS]-US.First
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: ₿.<Crypto>--OKX
+#   proxies:
+#   - 🇯🇵.Line-[JP]
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸🔰.VPS-[US.HomeIP]-(美国住宅节点)
+#   - 🔰🇺🇸.Line-[Relay.VPS]-US.First
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 💳.<Virtual>--Monzo
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 💳.<Virtual>--Revolut
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇺🇸.<Bank>--US
+#   proxies:
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇺🇸🔰.VPS-[US.HomeIP]-(美国住宅节点)
+#   - 🔰🇺🇸.Line-[Relay.VPS]-US.First
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇨🇦.<Bank>--CA
+#   proxies:
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇺🇸🔰.VPS-[US.HomeIP]-(美国住宅节点)
+#   - 🔰🇺🇸.Line-[Relay.VPS]-US.First
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇬🇧.<Bank>--UK
+#   proxies:
+#   - 🇬🇧.Line-[UK]
+#   - 🔰🇬🇧.Line-[Relay.VPS]-UK.First
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇦🇺.<Bank>--AU
+#   proxies:
+#   - 🇦🇺.Line-[AU]
+#   - 🔰🇦🇺.Line-[Relay.VPS]-AU.First
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇯🇵.<Bank>--JP
+#   proxies:
+#   - 🇯🇵.Line-[JP]
+#   - 🔰🇯🇵.Line-[Relay.VPS]-JP.First
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇭🇰.<Bank>--HK
+#   proxies:
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇸🇬.<Bank>--SG
+#   proxies:
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇺🇸.<HomeIP>--US
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇺🇸🔰.VPS-[US.HomeIP]-(美国住宅节点)
+#   - 🔰🇺🇸.Line-[Relay.VPS]-US.First
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇯🇵.<HomeIP>--JP
+#   proxies:
+#   - 🇯🇵.Line-[JP]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: ❌.<UnsupportVPN>
+#   proxies:
+#   - DIRECT
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🛒.<Shopping>--eBay
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🛒.<Shopping>--Patreon
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🕹️.<Game>--Xbox
+#   proxies:
+#   - DIRECT
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🕹️.<Game>--PlayStation
+#   proxies:
+#   - DIRECT
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🕹️.<Game>--Nintendo
+#   proxies:
+#   - DIRECT
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🕹️.<Game>--Steam
+#   proxies:
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - DIRECT
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🕹️.<Game>--EPIC
+#   proxies:
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - DIRECT
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🕹️.<Game>--GOG
+#   proxies:
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - DIRECT
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🕹️.<Game>--RockStar
+#   proxies:
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - DIRECT
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🕹️.<Game>--EA.Origin
+#   proxies:
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - DIRECT
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🕹️.<Game>--UbiSoft
+#   proxies:
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - DIRECT
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 📺.<Video>--YouTube
+#   proxies:
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 📺.<Video>--Netflix
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 📺.<Video>--PrimeVideo
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 📺.<Video>--Disney
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 📺.<Video>--HBO
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 📺.<Video>--FOX
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 📺.<Video>--AppleTV
+#   proxies:
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 📺.<Video>--Porn
+#   proxies:
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🎬.<Short>--TikTok
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🎬.<Short>--Kwai
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🎬.<Short>--Instagram
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🎞️.<Live>--Twitch
+#   proxies:
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🎧.<Audio>--Spotify
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🎧.<Audio>--YouTubeMusic
+#   proxies:
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 💛.<Social>--Facebook
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 💛.<Social>--Twitter
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 💛.<Social>--Reddit
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 💛.<Social>--Telegram
+#   proxies:
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 💛.<Social>--Whatsapp
+#   proxies:
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 💛.<Social>--Line
+#   proxies:
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 💛.<Social>--Discord
+#   proxies:
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 💛.<Social>--LinkedIn
+#   proxies:
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 💛.<Social>--Clubhouse
+#   proxies:
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 💛.<Social>--Signal
+#   proxies:
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 📰.<News>--Wikipedia
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 💡.<AI>--AppleAI
+#   proxies:
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   - 🇯🇵.Line-[JP]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 💡.<AI>--OpenAI
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   - 🇯🇵.Line-[JP]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 💡.<AI>--Grok
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   - 🇯🇵.Line-[JP]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 💡.<AI>--Claude
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   - 🇯🇵.Line-[JP]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 💡.<AI>--Gemini
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   - 🇯🇵.Line-[JP]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 💡.<AI>--Copilot
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   - 🇯🇵.Line-[JP]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 💡.<AI>--GlobalAI
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   - 🇯🇵.Line-[JP]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🔧.<Tools>--Adobe
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   - 🇯🇵.Line-[JP]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🔧.<Tools>--GitHub
+#   proxies:
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   - 🇯🇵.Line-[JP]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🔧.<Tools>--Notion
+#   proxies:
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   - 🇯🇵.Line-[JP]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🔧.<Tools>--Pinterest
+#   proxies:
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   - 🇯🇵.Line-[JP]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🔧.<Tools>--Bing/Edge
+#   proxies:
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   - 🇯🇵.Line-[JP]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🖥️.<Remote>--RustDesk
+#   proxies:
+#   - DIRECT
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   - 🇯🇵.Line-[JP]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: ''
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🖥️.<Remote>--Parsec
+#   proxies:
+#   - DIRECT
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   - 🇯🇵.Line-[JP]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - name: ___________________________________________________________________
+#   proxies:
+#   - DIRECT
+#   type: select
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Google_Search.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: ☁️.<Apps>--Google
+#   proxies:
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   - 🇯🇵.Line-[JP]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Microsoft.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: ☁️.<Apps>--Microsoft
+#   proxies:
+#   - DIRECT
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   - 🇯🇵.Line-[JP]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Apple.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: ☁️.<Apps>--Apple
+#   proxies:
+#   - DIRECT
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   - 🇯🇵.Line-[JP]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Amazon.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: ☁️.<Apps>--Amazon
+#   proxies:
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - name: ________________________________________________________________
+#   proxies:
+#   - DIRECT
+#   type: select
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Area.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇨🇳.<ShowIP>--BiliBili
+#   proxies:
+#   - 🇺🇸📍.Line-[US.ShowIP]
+#   - 🇨🇳.Line-[CN]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Area.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇨🇳.<ShowIP>--抖音
+#   proxies:
+#   - 🇺🇸📍.Line-[US.ShowIP]
+#   - 🇨🇳.Line-[CN]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Area.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇨🇳.<ShowIP>--快手
+#   proxies:
+#   - 🇺🇸📍.Line-[US.ShowIP]
+#   - 🇨🇳.Line-[CN]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Area.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇨🇳.<ShowIP>--小红书
+#   proxies:
+#   - 🇺🇸📍.Line-[US.ShowIP]
+#   - 🇨🇳.Line-[CN]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Area.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇨🇳.<ShowIP>--西瓜
+#   proxies:
+#   - 🇺🇸📍.Line-[US.ShowIP]
+#   - 🇨🇳.Line-[CN]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Area.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇨🇳.<ShowIP>--微博
+#   proxies:
+#   - 🇺🇸📍.Line-[US.ShowIP]
+#   - 🇨🇳.Line-[CN]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Area.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇨🇳.<ShowIP>--知乎
+#   proxies:
+#   - 🇺🇸📍.Line-[US.ShowIP]
+#   - 🇨🇳.Line-[CN]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Area.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇨🇳.<ShowIP>--贴吧
+#   proxies:
+#   - 🇺🇸📍.Line-[US.ShowIP]
+#   - 🇨🇳.Line-[CN]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Area.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇨🇳.<ShowIP>--豆瓣
+#   proxies:
+#   - 🇺🇸📍.Line-[US.ShowIP]
+#   - 🇨🇳.Line-[CN]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Area.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇨🇳.<ShowIP>--闲鱼
+#   proxies:
+#   - 🇺🇸📍.Line-[US.ShowIP]
+#   - 🇨🇳.Line-[CN]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - name: ______________________________________________________________
+#   proxies:
+#   - DIRECT
+#   type: select
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/China.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇨🇳.<Country>--CN
+#   proxies:
+#   - 🇨🇳.Line-[CN]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/United_States.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇺🇸.<Country>--US
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇺🇸🔰.VPS-[US.HomeIP]-(美国住宅节点)
+#   - 🔰🇺🇸.Line-[Relay.VPS]-US.First
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - name: ____________________________________________________________________
+#   proxies:
+#   - DIRECT
+#   type: select
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Global.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🌎.<Region>--North.America
+#   proxies:
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🇺🇸🔰.VPS-[US.HomeIP]-(美国住宅节点)
+#   - 🔰🇺🇸.Line-[Relay.VPS]-US.First
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Global.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🌎.<Region>--South.America
+#   proxies:
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Global.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🌍.<Region>--Europe
+#   proxies:
+#   - 🌐🇬🇧.Line-[Global]-UK.First
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Global.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🌏.<Region>--Oceania
+#   proxies:
+#   - 🌐🇦🇺.Line-[Global]-AU.First
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Global.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🌏.<Region>--East.Asia
+#   proxies:
+#   - 🌐🇯🇵.Line-[Global]-JP.First
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Global.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🌏.<Region>--West.Asia
+#   proxies:
+#   - 🌐🇬🇧.Line-[Global]-UK.First
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Global.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🌍.<Region>--Africa
+#   proxies:
+#   - 🌐🇬🇧.Line-[Global]-UK.First
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Cloudflare.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: ☁️.<Global>--CDN
+#   proxies:
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   - 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - name: ___________________________________________________________
+#   proxies:
+#   - DIRECT
+#   type: select
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Accademia/Additional_Icon_For_Clash@latest/Categ/GFW.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🚧.<GFWList>
+#   proxies:
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Final.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: ♾️.<Final>
+#   proxies:
+#   - 🌐🇺🇸.Line-[Global]-US.First
+#   - 🌐🍟.Line-[Global]-US.HomeIP.First
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   - DIRECT
+#   - REJECT
+#   - REJECT-DROP
+#   - PASS
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - name: _______________________________________________________________
+#   proxies:
+#   - DIRECT
+#   type: select
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Available_1.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🌐🍟.Line-[Global]-US.HomeIP.First
+#   proxies:
+#   - 🇺🇸🍟.Line-[US.HomeIP]
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇬🇧.Line-[UK]
+#   - 🇦🇺.Line-[AU]
+#   timeout: 5000
+#   type: fallback
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Available_1.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🌐🇺🇸.Line-[Global]-US.First
+#   proxies:
+#   - 🇺🇸.Line-[US]
+#   - 🇯🇵.Line-[JP]
+#   - 🇦🇺.Line-[AU]
+#   - 🇬🇧.Line-[UK]
+#   timeout: 5000
+#   type: fallback
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Available_1.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🌐🇯🇵.Line-[Global]-JP.First
+#   proxies:
+#   - 🇯🇵.Line-[JP]
+#   - 🇦🇺.Line-[AU]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   timeout: 5000
+#   type: fallback
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Available_1.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🌐🇬🇧.Line-[Global]-UK.First
+#   proxies:
+#   - 🇬🇧.Line-[UK]
+#   - 🇺🇸.Line-[US]
+#   - 🇦🇺.Line-[AU]
+#   - 🇯🇵.Line-[JP]
+#   timeout: 5000
+#   type: fallback
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Available_1.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🌐🇦🇺.Line-[Global]-AU.First
+#   proxies:
+#   - 🇦🇺.Line-[AU]
+#   - 🇯🇵.Line-[JP]
+#   - 🇺🇸.Line-[US]
+#   - 🇬🇧.Line-[UK]
+#   timeout: 5000
+#   type: fallback
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Fries.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇺🇸🍟.Line-[US.HomeIP]
+#   proxies:
+#   - 🇺🇸🍟.Multi.PrxChain-[US.HomeIP]
+#   - 🇺🇸🔰.VPS-[US.HomeIP]-(美国住宅节点)
+#   timeout: 5000
+#   type: select
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Area.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇺🇸📍.Line-[US.ShowIP]
+#   proxies:
+#   - 🇺🇸🔰.VPS-[US.ShowIP]-(归属地落地节点)
+#   - 🇺🇸📍.Multi.PrxChain-[US.ShowIP]
+#   - 🇨🇳.Line-[CN]
+#   - DIRECT
+#   timeout: 5000
+#   type: fallback
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/United_States.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇺🇸.Line-[US]
+#   proxies:
+#   - 🇺🇸🔰.VPS-[US.Relay]-(美国中转节点)
+#   - 🇺🇸.Multi.PrxChain-[US]
+#   timeout: 5000
+#   type: fallback
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Japan.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇯🇵.Line-[JP]
+#   proxies:
+#   - 🇯🇵🔰.VPS-[JP.Relay]-(日本中转节点)
+#   - 🇯🇵.Multi.PrxChain-[JP]
+#   timeout: 5000
+#   type: fallback
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/United_Kingdom.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇬🇧.Line-[UK]
+#   proxies:
+#   - 🇬🇧🔰.VPS-[UK.Relay]-(英国中转节点)
+#   - 🇬🇧.Multi.PrxChain-[UK]
+#   timeout: 5000
+#   type: fallback
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Australia.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇦🇺.Line-[AU]
+#   proxies:
+#   - 🇦🇺🔰.VPS-[AU.Relay]-(澳洲中转节点)
+#   - 🇦🇺.Multi.PrxChain-[AU]
+#   timeout: 5000
+#   type: fallback
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/China.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇨🇳.Line-[CN]
+#   proxies:
+#   - 🇨🇳🔰.VPS-[CN.Relay]-(直连)
+#   timeout: 5000
+#   type: fallback
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Auto.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🔰🇺🇸.Line-[Relay.VPS]-US.First
+#   proxies:
+#   - 🇺🇸🔰.VPS-[US.Relay]-(美国中转节点)
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   timeout: 5000
+#   type: fallback
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Auto.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🔰🇯🇵.Line-[Relay.VPS]-JP.First
+#   proxies:
+#   - 🇯🇵🔰.VPS-[JP.Relay]-(日本中转节点)
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   timeout: 5000
+#   type: fallback
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Auto.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🔰🇬🇧.Line-[Relay.VPS]-UK.First
+#   proxies:
+#   - 🇬🇧🔰.VPS-[UK.Relay]-(英国中转节点)
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   timeout: 5000
+#   type: fallback
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Auto.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🔰🇦🇺.Line-[Relay.VPS]-AU.First
+#   proxies:
+#   - 🇦🇺🔰.VPS-[AU.Relay]-(澳洲中转节点)
+#   - 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   timeout: 5000
+#   type: fallback
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Auto.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#   proxies:
+#   - 🇯🇵🔰.VPS-[JP.Relay]-(日本中转节点)
+#   - 🇺🇸🔰.VPS-[US.Relay]-(美国中转节点)
+#   - 🇬🇧🔰.VPS-[UK.Relay]-(英国中转节点)
+#   - 🇦🇺🔰.VPS-[AU.Relay]-(澳洲中转节点)
+#   timeout: 5000
+#   tolerance: 20
+#   type: url-test
+#   url: https://www.apple.com/library/test/success.html
+# - expected-status: 200
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Download.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🔰⬇️.Line-[Relay.VPS]-Max.Traffic
+#   proxies:
+#   - 🇦🇺🔰.VPS-[AU.Relay]-(澳洲中转节点)
+#   - 🇬🇧🔰.VPS-[UK.Relay]-(英国中转节点)
+#   timeout: 5000
+#   type: fallback
+#   url: https://www.apple.com/library/test/success.html
+# - hidden: false
+#   name: _________________________________________________________
+#   proxies:
+#   - DIRECT
+#   type: select
+# - benchmark-timeout: 5
+#   benchmark-url: https://www.apple.com/library/test/success.html
+#   expected-status: 200
+#   filter: (?i)(?:(?:PrxChain|ProxyChain|Proxy\s*Chain|代理链|代理鏈).*(?i)(?:🇺🇸|\[US\.HomeIP\]|\[美国\]))
+#   hidden: false
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Fries.png
+#   include-all: true
+#   interval: 900
+#   lazy: false
+#   max-failed-times: 5
+#   name: 🇺🇸🍟.Multi.PrxChain-[US.HomeIP]
+#   timeout: 5000
+#   tolerance: 20
+#   type: url-test
+#   url: https://www.apple.com/library/test/success.html
+# - benchmark-timeout: 5
+#   benchmark-url: https://www.apple.com/library/test/success.html
+#   expected-status: 200
+#   filter: (?i)(?:(?:PrxChain|ProxyChain|Proxy\s*Chain|代理链|代理鏈).*(?i)(?:🇺🇸|\[US\.ShowIP\]|\[美国\]))
+#   hidden: false
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Area.png
+#   include-all: true
+#   interval: 900
+#   lazy: false
+#   max-failed-times: 5
+#   name: 🇺🇸📍.Multi.PrxChain-[US.ShowIP]
+#   timeout: 5000
+#   tolerance: 20
+#   type: url-test
+#   url: https://www.apple.com/library/test/success.html
+# - benchmark-timeout: 5
+#   benchmark-url: https://www.apple.com/library/test/success.html
+#   expected-status: 200
+#   filter: (?i)(?:(?:PrxChain|ProxyChain|Proxy\s*Chain|代理链|代理鏈).*(?i)(?:🇺🇸|\[US\]|\[美国\]))
+#   hidden: false
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/United_States.png
+#   include-all: true
+#   interval: 900
+#   lazy: false
+#   max-failed-times: 5
+#   name: 🇺🇸.Multi.PrxChain-[US]
+#   timeout: 5000
+#   tolerance: 20
+#   type: url-test
+#   url: https://www.apple.com/library/test/success.html
+# - benchmark-timeout: 5
+#   benchmark-url: https://www.apple.com/library/test/success.html
+#   expected-status: 200
+#   filter: (?i)(?:(?:PrxChain|ProxyChain|Proxy\s*Chain|代理链|代理鏈).*(?i)(?:🇯🇵|\[JP\]|\[日本\]))
+#   hidden: false
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Japan.png
+#   include-all: true
+#   interval: 900
+#   lazy: false
+#   max-failed-times: 5
+#   name: 🇯🇵.Multi.PrxChain-[JP]
+#   timeout: 5000
+#   tolerance: 20
+#   type: url-test
+#   url: https://www.apple.com/library/test/success.html
+# - benchmark-timeout: 5
+#   benchmark-url: https://www.apple.com/library/test/success.html
+#   expected-status: 200
+#   filter: (?i)(?:(?:PrxChain|ProxyChain|Proxy\s*Chain|代理链|代理鏈).*(?i)(?:🇬🇧|\[UK\]|\[英国\]))
+#   hidden: false
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/United_Kingdom.png
+#   include-all: true
+#   interval: 900
+#   lazy: false
+#   max-failed-times: 5
+#   name: 🇬🇧.Multi.PrxChain-[UK]
+#   timeout: 5000
+#   tolerance: 20
+#   type: url-test
+#   url: https://www.apple.com/library/test/success.html
+# - benchmark-timeout: 5
+#   benchmark-url: https://www.apple.com/library/test/success.html
+#   expected-status: 200
+#   filter: (?i)(?:(?:PrxChain|ProxyChain|Proxy\s*Chain|代理链|代理鏈).*(?i)(?:🇦🇺|\[AU\]|\[澳洲\]))
+#   hidden: false
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Australia.png
+#   include-all: true
+#   interval: 900
+#   lazy: false
+#   max-failed-times: 5
+#   name: 🇦🇺.Multi.PrxChain-[AU]
+#   timeout: 5000
+#   tolerance: 20
+#   type: url-test
+#   url: https://www.apple.com/library/test/success.html
+# - benchmark-timeout: 5
+#   benchmark-url: https://www.apple.com/library/test/success.html
+#   exclude-filter: (?i)(?:PrxChain|ProxyChain|Proxy\s*Chain|代理链|代理鏈)
+#   expected-status: 200
+#   filter: (?i)(?:(?:VPS|Node|节点).*(?:🇺🇸|US|USA|United\s*States|美国|美國).*(?:HomeIP|Home\s*IP|住宅|家宽|家寬|Residential).*(?:VPS|Node|节点))
+#   hidden: false
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Fries.png
+#   include-all: true
+#   interval: 900
+#   lazy: false
+#   max-failed-times: 5
+#   name: 🇺🇸🔰.VPS-[US.HomeIP]-(美国住宅节点)
+#   timeout: 5000
+#   tolerance: 20
+#   type: url-test
+#   url: https://www.apple.com/library/test/success.html
+# - benchmark-timeout: 5
+#   benchmark-url: https://www.apple.com/library/test/success.html
+#   exclude-filter: (?i)(?:PrxChain|ProxyChain|Proxy\s*Chain|代理链|代理鏈)
+#   expected-status: 200
+#   filter: (?i)(?:(?:VPS|Node|节点).*(?:🇺🇸|US|USA|United\s*States|美国|美國).*(?:ShowIP|Show\s*IP|归属地|落地|Show\s*Geo).*(?:VPS|Node|节点))
+#   hidden: false
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Area.png
+#   include-all: true
+#   interval: 900
+#   lazy: false
+#   max-failed-times: 5
+#   name: 🇺🇸🔰.VPS-[US.ShowIP]-(归属地落地节点)
+#   timeout: 5000
+#   tolerance: 20
+#   type: url-test
+#   url: https://www.apple.com/library/test/success.html
+# - benchmark-timeout: 5
+#   benchmark-url: https://www.apple.com/library/test/success.html
+#   exclude-filter: (?i)(?:PrxChain|ProxyChain|Proxy\s*Chain|代理链|代理鏈)
+#   expected-status: 200
+#   filter: (?i)(?:(?:VPS|Node|节点).*(?:🇺🇸|US|USA|United\s*States|美国|美國).*(?:Relay|Realy|中转|中繼|中继|轉發|转发|Transit).*(?:VPS|Node|节点))
+#   hidden: false
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/United_States.png
+#   include-all: true
+#   interval: 900
+#   lazy: false
+#   max-failed-times: 5
+#   name: 🇺🇸🔰.VPS-[US.Relay]-(美国中转节点)
+#   timeout: 5000
+#   tolerance: 20
+#   type: url-test
+#   url: https://www.apple.com/library/test/success.html
+# - benchmark-timeout: 5
+#   benchmark-url: https://www.apple.com/library/test/success.html
+#   exclude-filter: (?i)(?:PrxChain|ProxyChain|Proxy\s*Chain|代理链|代理鏈)
+#   expected-status: 200
+#   filter: (?i)(?:(?:VPS|Node|节点).*(?:🇯🇵|JP|Japan|日本).*(?:Relay|Realy|中转|中繼|中继|轉發|转发|Transit).*(?:VPS|Node|节点))
+#   hidden: false
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Japan.png
+#   include-all: true
+#   interval: 900
+#   lazy: false
+#   max-failed-times: 5
+#   name: 🇯🇵🔰.VPS-[JP.Relay]-(日本中转节点)
+#   timeout: 5000
+#   tolerance: 20
+#   type: url-test
+#   url: https://www.apple.com/library/test/success.html
+# - benchmark-timeout: 5
+#   benchmark-url: https://www.apple.com/library/test/success.html
+#   exclude-filter: (?i)(?:PrxChain|ProxyChain|Proxy\s*Chain|代理链|代理鏈)
+#   expected-status: 200
+#   filter: (?i)(?:(?:VPS|Node|节点).*(?:🇬🇧|UK|GB|United\s*Kingdom|英国|英國).*(?:Relay|Realy|中转|中繼|中继|轉發|转发|Transit).*(?:VPS|Node|节点))
+#   hidden: false
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/United_Kingdom.png
+#   include-all: true
+#   interval: 900
+#   lazy: false
+#   max-failed-times: 5
+#   name: 🇬🇧🔰.VPS-[UK.Relay]-(英国中转节点)
+#   timeout: 5000
+#   tolerance: 20
+#   type: url-test
+#   url: https://www.apple.com/library/test/success.html
+# - benchmark-timeout: 5
+#   benchmark-url: https://www.apple.com/library/test/success.html
+#   exclude-filter: (?i)(?:PrxChain|ProxyChain|Proxy\s*Chain|代理链|代理鏈)
+#   expected-status: 200
+#   filter: (?i)(?:(?:VPS|Node|节点).*(?:🇦🇺|AU|Australia|澳洲|澳大利亚|澳大利亞).*(?:Relay|Realy|中转|中繼|中继|轉發|转发|Transit).*(?:VPS|Node|节点))
+#   hidden: false
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/Australia.png
+#   include-all: true
+#   interval: 900
+#   lazy: false
+#   max-failed-times: 5
+#   name: 🇦🇺🔰.VPS-[AU.Relay]-(澳洲中转节点)
+#   timeout: 5000
+#   tolerance: 20
+#   type: url-test
+#   url: https://www.apple.com/library/test/success.html
+# - benchmark-timeout: 5
+#   benchmark-url: https://www.apple.com/library/test/success.html
+#   expected-status: 200
+#   hidden: false
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@latest/IconSet/Color/China.png
+#   interval: 900
+#   lazy: true
+#   max-failed-times: 5
+#   name: 🇨🇳🔰.VPS-[CN.Relay]-(直连)
+#   proxies:
+#   - DIRECT
+#   timeout: 5000
+#   tolerance: 20
+#   type: url-test
+#   url: https://www.apple.com/library/test/success.html
+
+# ==========================================================
+# rule-providers（从源文件直接提取）
+# ----------------------------------------------------------
+# 原始规则集配置，默认注释不启用。
+# 如需追加新的 rule-provider，参考上方示例一使用 +rule-providers: 操作符。
+# ==========================================================
+#
+# rule-providers:
+#   Adobe_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Adobe.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Adobe/Adobe.yaml
+#   AkamaiCloud_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/AkamaiCloud.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/refs/heads/master/rule/Clash/Cloud/AkamaiCloud/AkamaiCloud.yaml
+#   AmazonCN_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/AmazonCN.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/AmazonCN/AmazonCN.yaml
+#   Amazon_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Amazon.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Amazon/Amazon.yaml
+#   AppleAI_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/AppleAI_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/AppleAI/AppleAI_Domain.yaml
+#   AppleTV_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/AppleTV.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/AppleTV/AppleTV.yaml
+#   Apple_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Apple_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/Apple/Apple_Domain.yaml
+#   Apple_IP:
+#     behavior: ipcidr
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Apple_IP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/Apple/Apple_IP.yaml
+#   AqaraGlobal_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/AqaraGlobal.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/Aqara/AqaraGlobal.yaml
+#   BankAU_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/BankAU_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/Bank/BankAU_Domain.yaml
+#   BankCA_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/BankCA_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/Bank/BankCA_Domain.yaml
+#   BankHK_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/BankHK_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/Bank/BankHK_Domain.yaml
+#   BankJP_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/BankJP_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/Bank/BankJP_Domain.yaml
+#   BankSG_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/BankSG_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/Bank/BankSG_Domain.yaml
+#   BankUK_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/BankUK_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/Bank/BankUK_Domain.yaml
+#   BankUS_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/BankUS_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/Bank/BankUS_Domain.yaml
+#   Binance_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Binance.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Binance/Binance.yaml
+#   Bing_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Bing.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Bing/Bing.yaml
+#   BlockHttpDNS_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/BlockHttpDNS.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/BlockHttpDNS/BlockHttpDNS.yaml
+#   ChinaDNS_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/ChinaDNS_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/ChinaDNS/ChinaDNS_Domain.yaml
+#   ChinaDNS_IP:
+#     behavior: ipcidr
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/ChinaDNS_IP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/ChinaDNS/ChinaDNS_IP.yaml
+#   ChinaMax_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/ChinaMax_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/ChinaMax/ChinaMax_Domain.yaml
+#   Claude_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Claude.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Claude/Claude.yaml
+#   CloudflareCN_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/CloudflareCN.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Cloudflarecn/Cloudflarecn.yaml
+#   Cloudflare_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Cloudflare.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Cloudflare/Cloudflare.yaml
+#   Cloudflare_IPv4_Do_Resolve:
+#     behavior: ipcidr
+#     format: text
+#     interval: 86400
+#     path: ./ruleset/Cloudflare-IPv4.list
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://www.cloudflare.com/ips-v4
+#   Cloudflare_IPv6_Do_Resolve:
+#     behavior: ipcidr
+#     format: text
+#     interval: 86400
+#     path: ./ruleset/Cloudflare-IPv6.list
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://www.cloudflare.com/ips-v6
+#   ClubhouseIP_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/ClubhouseIP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/ClubhouseIP/ClubhouseIP.yaml
+#   Clubhouse_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Clubhouse.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Clubhouse/Clubhouse.yaml
+#   Copilot_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Copilot_Domian.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/Copilot/Copilot_Domain.yaml
+#   Discord_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Discord.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Discord/Discord.yaml
+#   Disney_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Disney.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Disney/Disney.yaml
+#   Dropbox_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Dropbox.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Dropbox/Dropbox.yaml
+#   EA_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/EA.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/EA/EA.yaml
+#   EPIC_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/EPIC.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Epic/Epic.yaml
+#   FOXNOW_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/FOXNOW.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/FOXNOW/FOXNOW.yaml
+#   FOXPlus_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/FOXPlus.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/FOXPlus/FOXPlus.yaml
+#   Facebook_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Facebook.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Facebook/Facebook.yaml
+#   FakeLocationBiliBili_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/FakeLocationBiliBili.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/FakeLocation/FakeLocationBiliBili.yaml
+#   FakeLocationDouBan_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/FakeLocationDouBan.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/FakeLocation/FakeLocationDouBan.yaml
+#   FakeLocationDouYin_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/FakeLocationDouYin.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/FakeLocation/FakeLocationDouYin.yaml
+#   FakeLocationKuaiShou_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/FakeLocationKuaiShou.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/FakeLocation/FakeLocationKuaiShou.yaml
+#   FakeLocationTieBa_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/FakeLocationTieBa.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/FakeLocation/FakeLocationTieBa.yaml
+#   FakeLocationWeiBo_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/FakeLocationWeiBo.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/FakeLocation/FakeLocationWeiBo.yaml
+#   FakeLocationXiGua_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/FakeLocationXiGua.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/FakeLocation/FakeLocationXiGua.yaml
+#   FakeLocationXianYu_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/FakeLocationXianYu.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/FakeLocation/FakeLocationXianYu.yaml
+#   FakeLocationXiaoHongShu_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/FakeLocationXiaoHongShu.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/FakeLocation/FakeLocationXiaoHongShu.yaml
+#   FakeLocationZhiHu_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/FakeLocationZhiHu.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/FakeLocation/FakeLocationZhiHu.yaml
+#   Fastly_IP_Do_Resolve:
+#     behavior: ipcidr
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Fastly_IP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/Fastly/Fastly_IP.yaml
+#   GFWList_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GFWList_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Proxy/Proxy_Domain.yaml
+#   GOG_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GOG.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Gog/Gog.yaml
+#   Gemini_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Gemini_Domian.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/Gemini/Gemini_Domain.yaml
+#   GeoRouting_Africa_Central_GeoIP:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Africa_Central_GeoIP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_IP/GeoRouting_Africa_Central_GeoIP.yaml
+#   GeoRouting_Africa_Central_ccTLD_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Africa_Central_ccTLD_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_Domain/GeoRouting_Africa_Central_ccTLD_Domain.yaml
+#   GeoRouting_Africa_East_GeoIP:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Africa_East_GeoIP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_IP/GeoRouting_Africa_East_GeoIP.yaml
+#   GeoRouting_Africa_East_ccTLD_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Africa_East_ccTLD_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_Domain/GeoRouting_Africa_East_ccTLD_Domain.yaml
+#   GeoRouting_Africa_North_GeoIP:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Africa_North_GeoIP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_IP/GeoRouting_Africa_North_GeoIP.yaml
+#   GeoRouting_Africa_North_ccTLD_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Africa_North_ccTLD_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_Domain/GeoRouting_Africa_North_ccTLD_Domain.yaml
+#   GeoRouting_Africa_South_GeoIP:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Africa_South_GeoIP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_IP/GeoRouting_Africa_South_GeoIP.yaml
+#   GeoRouting_Africa_South_ccTLD_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Africa_South_ccTLD_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_Domain/GeoRouting_Africa_South_ccTLD_Domain.yaml
+#   GeoRouting_Africa_West_GeoIP:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Africa_West_GeoIP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_IP/GeoRouting_Africa_West_GeoIP.yaml
+#   GeoRouting_Africa_West_ccTLD_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Africa_West_ccTLD_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_Domain/GeoRouting_Africa_West_ccTLD_Domain.yaml
+#   GeoRouting_America_North_GeoIP:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_America_North_GeoIP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_IP/GeoRouting_America_North_GeoIP.yaml
+#   GeoRouting_America_North_ccTLD_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_America_North_ccTLD_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_Domain/GeoRouting_America_North_ccTLD_Domain.yaml
+#   GeoRouting_America_South_GeoIP:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_America_South_GeoIP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_IP/GeoRouting_America_South_GeoIP.yaml
+#   GeoRouting_America_South_ccTLD_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_America_South_ccTLD_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_Domain/GeoRouting_America_South_ccTLD_Domain.yaml
+#   GeoRouting_Antarctic_GeoIP:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Antarctica_GeoIP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_IP/GeoRouting_Antarctica_GeoIP.yaml
+#   GeoRouting_Antarctica_ccTLD_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Antarctica_ccTLD_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_Domain/GeoRouting_Antarctica_ccTLD_Domain.yaml
+#   GeoRouting_Asia_Central_GeoIP:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Asia_Central_GeoIP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_IP/GeoRouting_Asia_Central_GeoIP.yaml
+#   GeoRouting_Asia_Central_ccTLD_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Asia_Central_ccTLD_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_Domain/GeoRouting_Asia_Central_ccTLD_Domain.yaml
+#   GeoRouting_Asia_EastSouth_GeoIP:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Asia_EastSouth_GeoIP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_IP/GeoRouting_Asia_EastSouth_GeoIP.yaml
+#   GeoRouting_Asia_EastSouth_ccTLD_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Asia_EastSouth_ccTLD_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_Domain/GeoRouting_Asia_EastSouth_ccTLD_Domain.yaml
+#   GeoRouting_Asia_East_GeoIP:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Asia_East_GeoIP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_IP/GeoRouting_Asia_East_GeoIP.yaml
+#   GeoRouting_Asia_East_ccTLD_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Asia_East_ccTLD_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_Domain/GeoRouting_Asia_East_ccTLD_Domain.yaml
+#   GeoRouting_Asia_South_GeoIP:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Asia_South_GeoIP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_IP/GeoRouting_Asia_South_GeoIP.yaml
+#   GeoRouting_Asia_South_ccTLD_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Asia_South_ccTLD_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_Domain/GeoRouting_Asia_South_ccTLD_Domain.yaml
+#   GeoRouting_Asia_West_GeoIP:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Asia_West_GeoIP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_IP/GeoRouting_Asia_West_GeoIP.yaml
+#   GeoRouting_Asia_West_ccTLD_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Asia_West_ccTLD_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_Domain/GeoRouting_Asia_West_ccTLD_Domain.yaml
+#   GeoRouting_Europe_East_GeoIP:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Europe_East_GeoIP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_IP/GeoRouting_Europe_East_GeoIP.yaml
+#   GeoRouting_Europe_East_ccTLD_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Europe_East_ccTLD_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_Domain/GeoRouting_Europe_East_ccTLD_Domain.yaml
+#   GeoRouting_Europe_West_GeoIP:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Europe_West_GeoIP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_IP/GeoRouting_Europe_West_GeoIP.yaml
+#   GeoRouting_Europe_West_ccTLD_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Europe_West_ccTLD_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_Domain/GeoRouting_Europe_West_ccTLD_Domain.yaml
+#   GeoRouting_Oceania_GeoIP:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Oceania_GeoIP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_IP/GeoRouting_Oceania_GeoIP.yaml
+#   GeoRouting_Oceania_ccTLD_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeoRouting_Oceania_ccTLD_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeoRouting_For_Domain/GeoRouting_Oceania_ccTLD_Domain.yaml
+#   GeositeCN_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GeositeCN_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GeositeCN/GeositeCN_Domain.yaml
+#   GitHub_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GitHub.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/GitHub/GitHub.yaml
+#   GlobalDNS_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GlobalDNS_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GlobalDNS/GlobalDNS_Domain.yaml
+#   GlobalDNS_IP:
+#     behavior: ipcidr
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GlobalDNS_IP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/GlobalDNS/GlobalDNS_IP.yaml
+#   GoogleDrive_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/GoogleDrive.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/GoogleDrive/GoogleDrive.yaml
+#   Google_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Google.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Google/Google.yaml
+#   Grok_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Grok_Domian.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/Grok/Grok_Domain.yaml
+#   HBO_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/HBO.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/HBO/HBO.yaml
+#   HijackingPlus_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/HijackingPlus.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/HijackingPlus/HijackingPlus.yaml
+#   Hijacking_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Hijacking.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Hijacking/Hijacking.yaml
+#   HomeIPJP_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/HomeIPJP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/HomeIP/HomeIPJP.yaml
+#   HomeIPUS_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/HomeIPUS.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/HomeIP/HomeIPUS.yaml
+#   Imgur_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Imgur.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Imgur/Imgur.yaml
+#   Instagram_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Instagram.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Instagram/Instagram.yaml
+#   Kwai_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Kwai_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/Kwai/Kwai_Domain.yaml
+#   Lan_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Lan.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Lan/Lan.yaml
+#   Line_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Line.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Line/Line.yaml
+#   LinkedIn_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/LinkedIn.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/LinkedIn/LinkedIn.yaml
+#   MEGA_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/MEGA.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/MEGA/MEGA.yaml
+#   MacAppUpgrade_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/MacAppUpgrade_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/MacAppUpgrade/MacAppUpgrade_Domain.yaml
+#   MicrosoftAPPs_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/MicrosoftAPPs.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/MicrosoftAPPs/MicrosoftAPPs_Domain.yaml
+#   MicrosoftEdge_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/MicrosoftEdge.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/MicrosoftEdge/MicrosoftEdge.yaml
+#   Monzo_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Monzo.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/VirtualFinance/Monzo.yaml
+#   Netflix_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Netflix.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Netflix/Netflix.yaml
+#   Nintendo_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Nintendo.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Nintendo/Nintendo.yaml
+#   Notion_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Notion.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Notion/Notion.yaml
+#   OKX_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/OKX.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/OKX/OKX.yaml
+#   OneDrive_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/OneDrive.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/OneDrive/OneDrive.yaml
+#   OpenAI_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/OpenAI.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/OpenAI/OpenAI.yaml
+#   Origin_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Origin.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Origin/Origin.yaml
+#   Parsec_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Parsec_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/Parsec/Parsec_Domain.yaml
+#   Patreon_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Patreon.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Patreon/Patreon.yaml
+#   Paypal_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Paypal.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/VirtualFinance/Paypal.yaml
+#   Pinterest_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Pinterest.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Pinterest/Pinterest.yaml
+#   PlayStation_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/PlayStation.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/PlayStation/PlayStation.yaml
+#   Pornhub_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Pornhub_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/Pornhub/Pornhub_Domain.yaml
+#   PreRepairEasyPrivacy_REJECT_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/PreRepairEasyPrivacy_REJECT.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/PreRepairEasyPrivacy/PreRepairEasyPrivacy_REJECT.yaml
+#   PrimeVideo_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/PrimeVideo.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/PrimeVideo/PrimeVideo.yaml
+#   PrivateTracker_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/PrivateTracker.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/PrivateTracker/PrivateTracker.yaml
+#   Reddit_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Reddit.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Reddit/Reddit.yaml
+#   Revolut_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Revolut.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/VirtualFinance/Revolut.yaml
+#   RockStar_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/RockStar.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Rockstar/Rockstar.yaml
+#   RustDesk_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/RustDesk_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/RustDesk/RustDesk_Domain.yaml
+#   Signal_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Signal_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/Signal/Signal_Domain.yaml
+#   Speedtest_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Speedtest.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Speedtest/Speedtest.yaml
+#   Spotify_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Spotify.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Spotify/Spotify.yaml
+#   Steam_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Steam.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Steam/Steam.yaml
+#   Synology_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Synology.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Synology/Synology.yaml
+#   Telegram_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Telegram.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Telegram/Telegram.yaml
+#   TikTok_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/TikTok.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/TikTok/TikTok.yaml
+#   Twitch_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Twitch.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Twitch/Twitch.yaml
+#   Twitter_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Twitter.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Twitter/Twitter.yaml
+#   UBI_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/UBI.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/UBI/UBI.yaml
+#   Ubisoft_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Ubisoft.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Ubisoft/Ubisoft.yaml
+#   UnsupportVPN_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/UnsupportVPN.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/UnsupportVPN/UnsupportVPN.yaml
+#   WaybackMachine_Domain:
+#     behavior: domain
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/WaybackMachine_Domain.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/WaybackMachine/WaybackMachine_Domain.yaml
+#   WaybackMachine_IP:
+#     behavior: ipcidr
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/WaybackMachine_IP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/WaybackMachine/WaybackMachine_IP.yaml
+#   Whatsapp_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Whatsapp.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Whatsapp/Whatsapp.yaml
+#   Wikipedia_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Wikipedia.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Wikipedia/Wikipedia.yaml
+#   Wise_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Wise.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/VirtualFinance/Wise.yaml
+#   Xbox_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/Xbox.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/Xbox/Xbox.yaml
+#   YouTubeMusic_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/YouTubeMusic.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/YouTubeMusic/YouTubeMusic.yaml
+#   YouTube_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/YouTube.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/YouTube/YouTube.yaml
+#   eBay_Do_Resolve:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/eBay.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@latest/rule/Clash/eBay/eBay.yaml
+#   eMuleServer_IP:
+#     behavior: ipcidr
+#     format: yaml
+#     interval: 86400
+#     path: ./ruleset/eMuleServer_IP.yaml
+#     proxy: 🔰⚡.Line-[Relay.VPS]-Low.Latency
+#     type: http
+#     url: https://cdn.jsdelivr.net/gh/Accademia/Additional_Rule_For_Clash@latest/eMuleServer/eMuleServer_IP.yaml
+
+# ==========================================================
+# rules（从源文件直接提取）
+# ----------------------------------------------------------
+# 原始规则列表，默认注释不启用。
+# 常用操作：
+#   +rules: [...]   在规则列表开头插入（优先匹配）
+#   rules+: [...]   在规则列表末尾追加
+#   rules!: [...]   强制替换整个规则列表（丢弃原有规则）
+# 参考上方示例，通常不需要取消注释整个 rules，而是用 +rules/rules+ 追加即可。
+# ==========================================================
+#
+# rules:
+# - AND,((OR,((DST-PORT,53),(DST-PORT,853))),(NOT,((GEOIP,CN)))) , 📡.<DNS>--GlobalDNS
+# - rule-set        , GlobalDNS_Domain                           , 📡.<DNS>--GlobalDNS
+# - rule-set        , GlobalDNS_IP                               , 📡.<DNS>--GlobalDNS
+# - AND,((OR,((DST-PORT,53),(DST-PORT,853))),(GEOIP,CN))         , 📡.<DNS>--ChinaDNS
+# - rule-set        , ChinaDNS_Domain                            , 📡.<DNS>--ChinaDNS
+# - rule-set        , ChinaDNS_IP                                , 📡.<DNS>--ChinaDNS
+# - AND,((NETWORK,udp),(DST-PORT,123),(NOT,((GEOIP,CN))))        , 📡.<NTP>--GlobalNTP
+# - AND,((NETWORK,udp),(DST-PORT,123),(GEOIP,CN))                , 📡.<NTP>--ChinaNTP
+# - geosite         , private                                    , 💻.<Lan>
+# - rule-set        , Lan_Do_Resolve                             , 💻.<Lan>
+# - geosite         , category-httpdns-cn                        , 📡.<Protection>--HttpDNS
+# - rule-set        , BlockHttpDNS_Do_Resolve                    , 📡.<Protection>--HttpDNS
+# - rule-set        , Hijacking_Do_Resolve                       , ⛔️.<Protection>--Hijacking
+# - rule-set        , HijackingPlus_Do_Resolve                   , ⛔️.<Protection>--Hijacking
+# - rule-set        , PreRepairEasyPrivacy_REJECT_Do_Resolve     , REJECT-DROP
+# - geosite         , category-ads                               , ⛔️.<Protection>--ADblock
+# - rule-set        , Kwai_Domain                                , 🎬.<Short>--Kwai
+# - rule-set        , FakeLocationBiliBili_Do_Resolve            , 🇨🇳.<ShowIP>--BiliBili
+# - rule-set        , FakeLocationDouYin_Do_Resolve              , 🇨🇳.<ShowIP>--抖音
+# - rule-set        , FakeLocationKuaiShou_Do_Resolve            , 🇨🇳.<ShowIP>--快手
+# - rule-set        , FakeLocationXiaoHongShu_Do_Resolve         , 🇨🇳.<ShowIP>--小红书
+# - rule-set        , FakeLocationXiGua_Do_Resolve               , 🇨🇳.<ShowIP>--西瓜
+# - rule-set        , FakeLocationWeiBo_Do_Resolve               , 🇨🇳.<ShowIP>--微博
+# - rule-set        , FakeLocationZhiHu_Do_Resolve               , 🇨🇳.<ShowIP>--知乎
+# - rule-set        , FakeLocationTieBa_Do_Resolve               , 🇨🇳.<ShowIP>--贴吧
+# - rule-set        , FakeLocationDouBan_Do_Resolve              , 🇨🇳.<ShowIP>--豆瓣
+# - rule-set        , FakeLocationXianYu_Do_Resolve              , 🇨🇳.<ShowIP>--闲鱼
+# - rule-set        , GeositeCN_Domain                           , 🇨🇳.<Country>--CN
+# - geoip           , cn                                         , 🇨🇳.<Country>--CN
+# - geosite         , cloudflare-cn                              , 🇨🇳.<Country>--CN
+# - rule-set        , CloudflareCN_Do_Resolve                    , 🇨🇳.<Country>--CN
+# - geosite         , amazon@cn                                  , 🇨🇳.<Country>--CN
+# - rule-set        , AmazonCN_Do_Resolve                        , 🇨🇳.<Country>--CN
+# - geosite         , ookla-speedtest                            , 🎚.<Speedtest>
+# - rule-set        , Speedtest_Do_Resolve                       , 🎚.<Speedtest>
+# - domain-suffix   , oca.nflxvideo.net                          , 🎚.<Speedtest>
+# - geosite         , synology                                   , 💻.<NAS>--Synology
+# - rule-set        , Synology_Do_Resolve                        , 💻.<NAS>--Synology
+# - rule-set        , AqaraGlobal_Do_Resolve                     , 🔌.<Home>--AqaraGlobal
+# - geosite         , onedrive                                   , 📂.<Drive>--OneDrive
+# - rule-set        , OneDrive_Do_Resolve                        , 📂.<Drive>--OneDrive
+# - domain-suffix   , onedrive.live.com                          , 📂.<Drive>--OneDrive
+# - geosite         , dropbox                                    , 📂.<Drive>--Dropbox
+# - rule-set        , Dropbox_Do_Resolve                         , 📂.<Drive>--Dropbox
+# - geosite         , mega                                       , 📂.<Drive>--MEGA
+# - rule-set        , MEGA_Do_Resolve                            , 📂.<Drive>--MEGA
+# - geosite         , imgur                                      , 📂.<Drive>--Imgur
+# - rule-set        , Imgur_Do_Resolve                           , 📂.<Drive>--Imgur
+# - rule-set        , WaybackMachine_Domain                      , 📂.<Drive>--InternetArchive
+# - rule-set        , WaybackMachine_IP                          , 📂.<Drive>--InternetArchive
+# - geosite         , category-pt                                , ⬇️.<P2P>--PT-Server
+# - rule-set        , PrivateTracker_Do_Resolve                  , ⬇️.<P2P>--PT-Server
+# - rule-set        , eMuleServer_IP                             , ⬇️.<P2P>--eMule-Server
+# - geosite         , paypal                                     , 💰.<Finance>--Paypal
+# - rule-set        , Paypal_Do_Resolve                          , 💰.<Finance>--Paypal
+# - geosite         , wise                                       , 💰.<Finance>--Wise
+# - rule-set        , Wise_Do_Resolve                            , 💰.<Finance>--Wise
+# - geosite         , binance                                    , ₿.<Crypto>--Binance
+# - rule-set        , Binance_Do_Resolve                         , ₿.<Crypto>--Binance
+# - geosite         , okx                                        , ₿.<Crypto>--OKX
+# - rule-set        , OKX_Do_Resolve                             , ₿.<Crypto>--OKX
+# - rule-set        , Monzo_Do_Resolve                           , 💳.<Virtual>--Monzo
+# - rule-set        , Revolut_Do_Resolve                         , 💳.<Virtual>--Revolut
+# - rule-set        , BankUS_Domain                              , 🇺🇸.<Bank>--US
+# - rule-set        , BankCA_Domain                              , 🇨🇦.<Bank>--CA
+# - rule-set        , BankUK_Domain                              , 🇬🇧.<Bank>--UK
+# - rule-set        , BankAU_Domain                              , 🇦🇺.<Bank>--AU
+# - rule-set        , BankJP_Domain                              , 🇯🇵.<Bank>--JP
+# - rule-set        , BankHK_Domain                              , 🇭🇰.<Bank>--HK
+# - rule-set        , BankSG_Domain                              , 🇸🇬.<Bank>--SG
+# - rule-set        , HomeIPUS_Do_Resolve                        , 🇺🇸.<HomeIP>--US
+# - rule-set        , HomeIPJP_Do_Resolve                        , 🇯🇵.<HomeIP>--JP
+# - rule-set        , UnsupportVPN_Do_Resolve                    , ❌.<UnsupportVPN>
+# - geosite         , ebay                                       , 🛒.<Shopping>--eBay
+# - rule-set        , eBay_Do_Resolve                            , 🛒.<Shopping>--eBay
+# - geosite         , patreon                                    , 🛒.<Shopping>--Patreon
+# - rule-set        , Patreon_Do_Resolve                         , 🛒.<Shopping>--Patreon
+# - geosite         , xbox                                       , 🕹️.<Game>--Xbox
+# - rule-set        , Xbox_Do_Resolve                            , 🕹️.<Game>--Xbox
+# - geosite         , playstation                                , 🕹️.<Game>--PlayStation
+# - rule-set        , PlayStation_Do_Resolve                     , 🕹️.<Game>--PlayStation
+# - geosite         , nintendo                                   , 🕹️.<Game>--Nintendo
+# - rule-set        , Nintendo_Do_Resolve                        , 🕹️.<Game>--Nintendo
+# - geosite         , steam                                      , 🕹️.<Game>--Steam
+# - rule-set        , Steam_Do_Resolve                           , 🕹️.<Game>--Steam
+# - domain-suffix   , steamserver.net                            , 🕹️.<Game>--Steam
+# - geosite         , epicgames                                  , 🕹️.<Game>--EPIC
+# - rule-set        , EPIC_Do_Resolve                            , 🕹️.<Game>--EPIC
+# - geosite         , gog                                        , 🕹️.<Game>--GOG
+# - rule-set        , GOG_Do_Resolve                             , 🕹️.<Game>--GOG
+# - geosite         , rockstar                                   , 🕹️.<Game>--RockStar
+# - rule-set        , RockStar_Do_Resolve                        , 🕹️.<Game>--RockStar
+# - geosite         , ea                                         , 🕹️.<Game>--EA.Origin
+# - rule-set        , EA_Do_Resolve                              , 🕹️.<Game>--EA.Origin
+# - geosite         , origin                                     , 🕹️.<Game>--EA.Origin
+# - rule-set        , Origin_Do_Resolve                          , 🕹️.<Game>--EA.Origin
+# - geosite         , ubisoft                                    , 🕹️.<Game>--UbiSoft
+# - rule-set        , UBI_Do_Resolve                             , 🕹️.<Game>--UbiSoft
+# - rule-set        , Ubisoft_Do_Resolve                         , 🕹️.<Game>--UbiSoft
+# - geosite         , netflix                                    , 📺.<Video>--Netflix
+# - rule-set        , Netflix_Do_Resolve                         , 📺.<Video>--Netflix
+# - geosite         , disney                                     , 📺.<Video>--Disney
+# - rule-set        , Disney_Do_Resolve                          , 📺.<Video>--Disney
+# - geosite         , primevideo                                 , 📺.<Video>--PrimeVideo
+# - rule-set        , PrimeVideo_Do_Resolve                      , 📺.<Video>--PrimeVideo
+# - geosite         , hbo                                        , 📺.<Video>--HBO
+# - rule-set        , HBO_Do_Resolve                             , 📺.<Video>--HBO
+# - geosite         , fox                                        , 📺.<Video>--FOX
+# - rule-set        , FOXPlus_Do_Resolve                         , 📺.<Video>--FOX
+# - rule-set        , FOXNOW_Do_Resolve                          , 📺.<Video>--FOX
+# - geosite         , apple-tvplus                               , 📺.<Video>--AppleTV
+# - rule-set        , AppleTV_Do_Resolve                         , 📺.<Video>--AppleTV
+# - geosite         , pornhub                                    , 📺.<Video>--Porn
+# - rule-set        , Pornhub_Domain                             , 📺.<Video>--Porn
+# - geosite         , tiktok                                     , 🎬.<Short>--TikTok
+# - rule-set        , TikTok_Do_Resolve                          , 🎬.<Short>--TikTok
+# - geosite         , instagram                                  , 🎬.<Short>--Instagram
+# - rule-set        , Instagram_Do_Resolve                       , 🎬.<Short>--Instagram
+# - geosite         , twitch                                     , 🎞️.<Live>--Twitch
+# - rule-set        , Twitch_Do_Resolve                          , 🎞️.<Live>--Twitch
+# - geosite         , spotify                                    , 🎧.<Audio>--Spotify
+# - rule-set        , Spotify_Do_Resolve                         , 🎧.<Audio>--Spotify
+# - geosite         , whatsapp                                   , 💛.<Social>--Whatsapp
+# - rule-set        , Whatsapp_Do_Resolve                        , 💛.<Social>--Whatsapp
+# - geosite         , facebook                                   , 💛.<Social>--Facebook
+# - rule-set        , Facebook_Do_Resolve                        , 💛.<Social>--Facebook
+# - geosite         , reddit                                     , 💛.<Social>--Reddit
+# - rule-set        , Reddit_Do_Resolve                          , 💛.<Social>--Reddit
+# - geosite         , telegram                                   , 💛.<Social>--Telegram
+# - rule-set        , Telegram_Do_Resolve                        , 💛.<Social>--Telegram
+# - geosite         , line                                       , 💛.<Social>--Line
+# - rule-set        , Line_Do_Resolve                            , 💛.<Social>--Line
+# - geosite         , discord                                    , 💛.<Social>--Discord
+# - rule-set        , Discord_Do_Resolve                         , 💛.<Social>--Discord
+# - geosite         , linkedin                                   , 💛.<Social>--LinkedIn
+# - rule-set        , LinkedIn_Do_Resolve                        , 💛.<Social>--LinkedIn
+# - geosite         , clubhouse                                  , 💛.<Social>--Clubhouse
+# - rule-set        , Clubhouse_Do_Resolve                       , 💛.<Social>--Clubhouse
+# - rule-set        , ClubhouseIP_Do_Resolve                     , 💛.<Social>--Clubhouse
+# - geosite         , signal                                     , 💛.<Social>--Signal
+# - rule-set        , Signal_Domain                              , 💛.<Social>--Signal
+# - rule-set        , Wikipedia_Do_Resolve                       , 📰.<News>--Wikipedia
+# - geosite         , apple-intelligence                         , 💡.<AI>--AppleAI
+# - rule-set        , AppleAI_Domain                             , 💡.<AI>--AppleAI
+# - geosite         , openai                                     , 💡.<AI>--OpenAI
+# - rule-set        , OpenAI_Do_Resolve                          , 💡.<AI>--OpenAI
+# - geosite         , xai                                        , 💡.<AI>--Grok
+# - rule-set        , Grok_Domain                                , 💡.<AI>--Grok
+# - geosite         , twitter                                    , 💛.<Social>--Twitter
+# - rule-set        , Twitter_Do_Resolve                         , 💛.<Social>--Twitter
+# - geosite         , anthropic                                  , 💡.<AI>--Claude
+# - rule-set        , Claude_Do_Resolve                          , 💡.<AI>--Claude
+# - geosite         , google-gemini                              , 💡.<AI>--Gemini
+# - rule-set        , Gemini_Domain                              , 💡.<AI>--Gemini
+# - rule-set        , Copilot_Domain                             , 💡.<AI>--Copilot
+# - geosite         , category-ai-!cn                            , 💡.<AI>--GlobalAI
+# - geosite         , adobe                                      , 🔧.<Tools>--Adobe
+# - rule-set        , Adobe_Do_Resolve                           , 🔧.<Tools>--Adobe
+# - geosite         , github                                     , 🔧.<Tools>--GitHub
+# - rule-set        , GitHub_Do_Resolve                          , 🔧.<Tools>--GitHub
+# - geosite         , bing                                       , 🔧.<Tools>--Bing/Edge
+# - rule-set        , Bing_Do_Resolve                            , 🔧.<Tools>--Bing/Edge
+# - rule-set        , MicrosoftEdge_Do_Resolve                   , 🔧.<Tools>--Bing/Edge
+# - geosite         , notion                                     , 🔧.<Tools>--Notion
+# - rule-set        , Notion_Do_Resolve                          , 🔧.<Tools>--Notion
+# - geosite         , pinterest                                  , 🔧.<Tools>--Pinterest
+# - rule-set        , Pinterest_Do_Resolve                       , 🔧.<Tools>--Pinterest
+# - rule-set        , RustDesk_Domain                            , 🖥️.<Remote>--RustDesk
+# - rule-set        , Parsec_Domain                              , 🖥️.<Remote>--Parsec
+# - rule-set        , MacAppUpgrade_Domain                       , ⬇️.<Download>--MacAppUpgrade
+# - rule-set        , GoogleDrive_Do_Resolve                     , 📂.<Drive>--GoogleDrive
+# - geosite         , youtube                                    , 📺.<Video>--YouTube
+# - rule-set        , YouTube_Do_Resolve                         , 📺.<Video>--YouTube
+# - rule-set        , YouTubeMusic_Do_Resolve                    , 🎧.<Audio>--YouTubeMusic
+# - geosite         , google                                     , ☁️.<Apps>--Google
+# - rule-set        , Google_Do_Resolve                          , ☁️.<Apps>--Google
+# - geosite         , amazon                                     , ☁️.<Apps>--Amazon
+# - rule-set        , Amazon_Do_Resolve                          , ☁️.<Apps>--Amazon
+# - rule-set        , Apple_Domain                               , ☁️.<Apps>--Apple
+# - rule-set        , Apple_IP                                   , ☁️.<Apps>--Apple
+# - rule-set        , MicrosoftAPPs_Domain                       , ☁️.<Apps>--Microsoft
+# - domain-suffix   , us                                         , 🇺🇸.<Country>--US
+# - domain-suffix   , mil                                        , 🇺🇸.<Country>--US
+# - domain-suffix   , gov                                        , 🇺🇸.<Country>--US
+# - domain-suffix   , edu                                        , 🇺🇸.<Country>--US
+# - rule-set        , GeoRouting_America_North_ccTLD_Domain      , 🌎.<Region>--North.America
+# - rule-set        , GeoRouting_America_South_ccTLD_Domain      , 🌎.<Region>--South.America
+# - rule-set        , GeoRouting_Europe_West_ccTLD_Domain        , 🌍.<Region>--Europe
+# - rule-set        , GeoRouting_Europe_East_ccTLD_Domain        , 🌍.<Region>--Europe
+# - rule-set        , GeoRouting_Oceania_ccTLD_Domain            , 🌏.<Region>--Oceania
+# - rule-set        , GeoRouting_Antarctica_ccTLD_Domain         , 🌏.<Region>--Oceania
+# - rule-set        , GeoRouting_Asia_East_ccTLD_Domain          , 🌏.<Region>--East.Asia
+# - rule-set        , GeoRouting_Asia_EastSouth_ccTLD_Domain     , 🌏.<Region>--East.Asia
+# - rule-set        , GeoRouting_Asia_South_ccTLD_Domain         , 🌏.<Region>--East.Asia
+# - rule-set        , GeoRouting_Asia_Central_ccTLD_Domain       , 🌏.<Region>--East.Asia
+# - rule-set        , GeoRouting_Asia_West_ccTLD_Domain          , 🌏.<Region>--West.Asia
+# - rule-set        , GeoRouting_Africa_North_ccTLD_Domain       , 🌍.<Region>--Africa
+# - rule-set        , GeoRouting_Africa_South_ccTLD_Domain       , 🌍.<Region>--Africa
+# - rule-set        , GeoRouting_Africa_West_ccTLD_Domain        , 🌍.<Region>--Africa
+# - rule-set        , GeoRouting_Africa_East_ccTLD_Domain        , 🌍.<Region>--Africa
+# - rule-set        , GeoRouting_Africa_Central_ccTLD_Domain     , 🌍.<Region>--Africa
+# - geoip           , us                                         , 🇺🇸.<Country>--US
+# - rule-set        , GeoRouting_America_North_GeoIP             , 🌎.<Region>--North.America
+# - rule-set        , GeoRouting_America_South_GeoIP             , 🌎.<Region>--South.America
+# - rule-set        , GeoRouting_Europe_West_GeoIP               , 🌍.<Region>--Europe
+# - rule-set        , GeoRouting_Europe_East_GeoIP               , 🌍.<Region>--Europe
+# - rule-set        , GeoRouting_Oceania_GeoIP                   , 🌏.<Region>--Oceania
+# - rule-set        , GeoRouting_Antarctic_GeoIP                 , 🌏.<Region>--Oceania
+# - rule-set        , GeoRouting_Asia_East_GeoIP                 , 🌏.<Region>--East.Asia
+# - rule-set        , GeoRouting_Asia_EastSouth_GeoIP            , 🌏.<Region>--East.Asia
+# - rule-set        , GeoRouting_Asia_South_GeoIP                , 🌏.<Region>--East.Asia
+# - rule-set        , GeoRouting_Asia_Central_GeoIP              , 🌏.<Region>--East.Asia
+# - rule-set        , GeoRouting_Asia_West_GeoIP                 , 🌏.<Region>--West.Asia
+# - rule-set        , GeoRouting_Africa_North_GeoIP              , 🌍.<Region>--Africa
+# - rule-set        , GeoRouting_Africa_South_GeoIP              , 🌍.<Region>--Africa
+# - rule-set        , GeoRouting_Africa_West_GeoIP               , 🌍.<Region>--Africa
+# - rule-set        , GeoRouting_Africa_East_GeoIP               , 🌍.<Region>--Africa
+# - rule-set        , GeoRouting_Africa_Central_GeoIP            , 🌍.<Region>--Africa
+# - geosite         , cloudflare                                 , ☁️.<Global>--CDN
+# - rule-set        , Cloudflare_Do_Resolve                      , ☁️.<Global>--CDN
+# - rule-set        , Cloudflare_IPv4_Do_Resolve                 , ☁️.<Global>--CDN
+# - rule-set        , Cloudflare_IPv6_Do_Resolve                 , ☁️.<Global>--CDN
+# - geosite         , akamai                                     , ☁️.<Global>--CDN
+# - rule-set        , AkamaiCloud_Do_Resolve                     , ☁️.<Global>--CDN
+# - geosite         , fastly                                     , ☁️.<Global>--CDN
+# - rule-set        , Fastly_IP_Do_Resolve                       , ☁️.<Global>--CDN
+# - rule-set        , GFWList_Domain                             , 🚧.<GFWList>
+# - rule-set        , ChinaMax_Domain                            , 🇨🇳.<Country>--CN
+# - MATCH                                                        , ♾️.<Final>
+
+# ==========================================================
+# dns（从源文件直接提取）
+# ----------------------------------------------------------
+# 原始 DNS 配置，默认注释不启用。
+# 如只需修改部分字段，直接写需要修改的键值即可（默认合并，不影响其他字段）。
+# 如需完整替换 DNS 配置，使用 dns!: 操作符。
+# ==========================================================
+#
+# dns:
+#   default-nameserver:
+#   - system
+#   direct-nameserver:
+#   - https://dns.alidns.com/dns-query
+#   - https://dns.google/dns-query
+#   enable: true
+#   enhanced-mode: redir-host
+#   fake-ip-filter:
+#   - +.*
+#   fake-ip-filter-mode: blacklist
+#   fake-ip-range: 198.18.0.1/16
+#   follow-rule: true
+#   ipv6: false
+#   listen: 0.0.0.0:1053
+#   nameserver:
+#   - https://cloudflare-dns.com/dns-query
+#   - https://dns.google/dns-query
+#   nameserver-policy:
+#     +.*:
+#     - https://cloudflare-dns.com/dns-query#♾️.<Final>
+#     - https://dns.google/dns-query#♾️.<Final>
+#     +.oca.nflxvideo.net:
+#     - https://dns.alidns.com/dns-query#🎚.<Speedtest>
+#     - https://dns.google/dns-query#🎚.<Speedtest>
+#     geosite:adobe:
+#     - https://cloudflare-dns.com/dns-query#🔧.<Tools>--Adobe
+#     - https://dns.google/dns-query#🔧.<Tools>--Adobe
+#     geosite:akamai:
+#     - https://cloudflare-dns.com/dns-query#☁️.<Global>--CDN
+#     - https://dns.google/dns-query#☁️.<Global>--CDN
+#     geosite:amazon:
+#     - https://cloudflare-dns.com/dns-query#☁️.<Apps>--Amazon
+#     - https://dns.google/dns-query#☁️.<Apps>--Amazon
+#     geosite:amazon@cn:
+#     - https://dns.alidns.com/dns-query#🇨🇳.<Country>--CN
+#     - https://doh.pub/dns-query#🇨🇳.<Country>--CN
+#     geosite:anthropic:
+#     - https://cloudflare-dns.com/dns-query#💡.<AI>--Claude
+#     - https://dns.google/dns-query#💡.<AI>--Claude
+#     geosite:apple-intelligence:
+#     - https://cloudflare-dns.com/dns-query#💡.<AI>--AppleAI
+#     - https://dns.google/dns-query#💡.<AI>--AppleAI
+#     geosite:apple-tvplus:
+#     - https://cloudflare-dns.com/dns-query#📺.<Video>--AppleTV
+#     - https://dns.google/dns-query#📺.<Video>--AppleTV
+#     geosite:binance:
+#     - https://cloudflare-dns.com/dns-query#₿.<Crypto>--Binance
+#     - https://dns.google/dns-query#₿.<Crypto>--Binance
+#     geosite:bing:
+#     - https://cloudflare-dns.com/dns-query#🔧.<Tools>--Bing/Edge
+#     - https://dns.google/dns-query#🔧.<Tools>--Bing/Edge
+#     geosite:category-ai-!cn:
+#     - https://cloudflare-dns.com/dns-query#💡.<AI>--GlobalAI
+#     - https://dns.google/dns-query#💡.<AI>--GlobalAI
+#     geosite:category-pt:
+#     - https://cloudflare-dns.com/dns-query#⬇️.<P2P>--PT-Server
+#     - https://dns.google/dns-query#⬇️.<P2P>--PT-Server
+#     geosite:cloudflare:
+#     - https://cloudflare-dns.com/dns-query#☁️.<Global>--CDN
+#     - https://dns.google/dns-query#☁️.<Global>--CDN
+#     geosite:cloudflare-cn:
+#     - https://dns.alidns.com/dns-query#🇨🇳.<Country>--CN
+#     - https://doh.pub/dns-query#🇨🇳.<Country>--CN
+#     geosite:clubhouse:
+#     - https://cloudflare-dns.com/dns-query#💛.<Social>--Clubhouse
+#     - https://dns.google/dns-query#💛.<Social>--Clubhouse
+#     geosite:discord:
+#     - https://cloudflare-dns.com/dns-query#💛.<Social>--Discord
+#     - https://dns.google/dns-query#💛.<Social>--Discord
+#     geosite:disney:
+#     - https://cloudflare-dns.com/dns-query#📺.<Video>--Disney
+#     - https://dns.google/dns-query#📺.<Video>--Disney
+#     geosite:dropbox:
+#     - https://cloudflare-dns.com/dns-query#📂.<Drive>--Dropbox
+#     - https://dns.google/dns-query#📂.<Drive>--Dropbox
+#     geosite:ea:
+#     - https://dns.alidns.com/dns-query#🕹️.<Game>--EA.Origin
+#     - https://dns.google/dns-query#🕹️.<Game>--EA.Origin
+#     geosite:ebay:
+#     - https://cloudflare-dns.com/dns-query#🛒.<Shopping>--eBay
+#     - https://dns.google/dns-query#🛒.<Shopping>--eBay
+#     geosite:epicgames:
+#     - https://dns.alidns.com/dns-query#🕹️.<Game>--EPIC
+#     - https://dns.google/dns-query#🕹️.<Game>--EPIC
+#     geosite:facebook:
+#     - https://cloudflare-dns.com/dns-query#💛.<Social>--Facebook
+#     - https://dns.google/dns-query#💛.<Social>--Facebook
+#     geosite:fastly:
+#     - https://cloudflare-dns.com/dns-query#☁️.<Global>--CDN
+#     - https://dns.google/dns-query#☁️.<Global>--CDN
+#     geosite:fox:
+#     - https://cloudflare-dns.com/dns-query#📺.<Video>--FOX
+#     - https://dns.google/dns-query#📺.<Video>--FOX
+#     geosite:github:
+#     - https://cloudflare-dns.com/dns-query#🔧.<Tools>--GitHub
+#     - https://dns.google/dns-query#🔧.<Tools>--GitHub
+#     geosite:gog:
+#     - https://dns.alidns.com/dns-query#🕹️.<Game>--GOG
+#     - https://dns.google/dns-query#🕹️.<Game>--GOG
+#     geosite:google:
+#     - https://cloudflare-dns.com/dns-query#☁️.<Apps>--Google
+#     - https://dns.google/dns-query#☁️.<Apps>--Google
+#     geosite:google-gemini:
+#     - https://cloudflare-dns.com/dns-query#💡.<AI>--Gemini
+#     - https://dns.google/dns-query#💡.<AI>--Gemini
+#     geosite:hbo:
+#     - https://cloudflare-dns.com/dns-query#📺.<Video>--HBO
+#     - https://dns.google/dns-query#📺.<Video>--HBO
+#     geosite:imgur:
+#     - https://cloudflare-dns.com/dns-query#📂.<Drive>--Imgur
+#     - https://dns.google/dns-query#📂.<Drive>--Imgur
+#     geosite:instagram:
+#     - https://cloudflare-dns.com/dns-query#🎬.<Short>--Instagram
+#     - https://dns.google/dns-query#🎬.<Short>--Instagram
+#     geosite:line:
+#     - https://cloudflare-dns.com/dns-query#💛.<Social>--Line
+#     - https://dns.google/dns-query#💛.<Social>--Line
+#     geosite:linkedin:
+#     - https://cloudflare-dns.com/dns-query#💛.<Social>--LinkedIn
+#     - https://dns.google/dns-query#💛.<Social>--LinkedIn
+#     geosite:mega:
+#     - https://cloudflare-dns.com/dns-query#📂.<Drive>--MEGA
+#     - https://dns.google/dns-query#📂.<Drive>--MEGA
+#     geosite:netflix:
+#     - https://cloudflare-dns.com/dns-query#📺.<Video>--Netflix
+#     - https://dns.google/dns-query#📺.<Video>--Netflix
+#     geosite:nintendo:
+#     - https://dns.alidns.com/dns-query#🕹️.<Game>--Nintendo
+#     - https://dns.google/dns-query#🕹️.<Game>--Nintendo
+#     geosite:notion:
+#     - https://cloudflare-dns.com/dns-query#🔧.<Tools>--Notion
+#     - https://dns.google/dns-query#🔧.<Tools>--Notion
+#     geosite:okx:
+#     - https://cloudflare-dns.com/dns-query#₿.<Crypto>--OKX
+#     - https://dns.google/dns-query#₿.<Crypto>--OKX
+#     geosite:onedrive:
+#     - https://dns.alidns.com/dns-query#📂.<Drive>--OneDrive
+#     - https://dns.google/dns-query#📂.<Drive>--OneDrive
+#     geosite:ookla-speedtest:
+#     - https://dns.alidns.com/dns-query#🎚.<Speedtest>
+#     - https://dns.google/dns-query#🎚.<Speedtest>
+#     geosite:openai:
+#     - https://cloudflare-dns.com/dns-query#💡.<AI>--OpenAI
+#     - https://dns.google/dns-query#💡.<AI>--OpenAI
+#     geosite:origin:
+#     - https://dns.alidns.com/dns-query#🕹️.<Game>--EA.Origin
+#     - https://dns.google/dns-query#🕹️.<Game>--EA.Origin
+#     geosite:patreon:
+#     - https://cloudflare-dns.com/dns-query#🛒.<Shopping>--Patreon
+#     - https://dns.google/dns-query#🛒.<Shopping>--Patreon
+#     geosite:paypal:
+#     - https://cloudflare-dns.com/dns-query#💰.<Finance>--Paypal
+#     - https://dns.google/dns-query#💰.<Finance>--Paypal
+#     geosite:pinterest:
+#     - https://cloudflare-dns.com/dns-query#🔧.<Tools>--Pinterest
+#     - https://dns.google/dns-query#🔧.<Tools>--Pinterest
+#     geosite:playstation:
+#     - https://dns.alidns.com/dns-query#🕹️.<Game>--PlayStation
+#     - https://dns.google/dns-query#🕹️.<Game>--PlayStation
+#     geosite:pornhub:
+#     - https://cloudflare-dns.com/dns-query#📺.<Video>--Porn
+#     - https://dns.google/dns-query#📺.<Video>--Porn
+#     geosite:primevideo:
+#     - https://cloudflare-dns.com/dns-query#📺.<Video>--PrimeVideo
+#     - https://dns.google/dns-query#📺.<Video>--PrimeVideo
+#     geosite:private:
+#     - system
+#     geosite:reddit:
+#     - https://cloudflare-dns.com/dns-query#💛.<Social>--Reddit
+#     - https://dns.google/dns-query#💛.<Social>--Reddit
+#     geosite:rockstar:
+#     - https://dns.alidns.com/dns-query#🕹️.<Game>--RockStar
+#     - https://dns.google/dns-query#🕹️.<Game>--RockStar
+#     geosite:signal:
+#     - https://cloudflare-dns.com/dns-query#💛.<Social>--Signal
+#     - https://dns.google/dns-query#💛.<Social>--Signal
+#     geosite:spotify:
+#     - https://cloudflare-dns.com/dns-query#🎧.<Audio>--Spotify
+#     - https://dns.google/dns-query#🎧.<Audio>--Spotify
+#     geosite:steam:
+#     - https://dns.alidns.com/dns-query#🕹️.<Game>--Steam
+#     - https://dns.google/dns-query#🕹️.<Game>--Steam
+#     geosite:synology:
+#     - https://dns.alidns.com/dns-query#💻.<NAS>--Synology
+#     - https://dns.google/dns-query#💻.<NAS>--Synology
+#     geosite:telegram:
+#     - https://cloudflare-dns.com/dns-query#💛.<Social>--Telegram
+#     - https://dns.google/dns-query#💛.<Social>--Telegram
+#     geosite:tiktok:
+#     - https://cloudflare-dns.com/dns-query#🎬.<Short>--TikTok
+#     - https://dns.google/dns-query#🎬.<Short>--TikTok
+#     geosite:twitch:
+#     - https://cloudflare-dns.com/dns-query#🎞️.<Live>--Twitch
+#     - https://dns.google/dns-query#🎞️.<Live>--Twitch
+#     geosite:twitter:
+#     - https://cloudflare-dns.com/dns-query#💛.<Social>--Twitter
+#     - https://dns.google/dns-query#💛.<Social>--Twitter
+#     geosite:ubisoft:
+#     - https://dns.alidns.com/dns-query#🕹️.<Game>--UbiSoft
+#     - https://dns.google/dns-query#🕹️.<Game>--UbiSoft
+#     geosite:whatsapp:
+#     - https://cloudflare-dns.com/dns-query#💛.<Social>--Whatsapp
+#     - https://dns.google/dns-query#💛.<Social>--Whatsapp
+#     geosite:wise:
+#     - https://cloudflare-dns.com/dns-query#💰.<Finance>--Wise
+#     - https://dns.google/dns-query#💰.<Finance>--Wise
+#     geosite:xai:
+#     - https://cloudflare-dns.com/dns-query#💡.<AI>--Grok
+#     - https://dns.google/dns-query#💡.<AI>--Grok
+#     geosite:xbox:
+#     - https://dns.alidns.com/dns-query#🕹️.<Game>--Xbox
+#     - https://dns.google/dns-query#🕹️.<Game>--Xbox
+#     geosite:youtube:
+#     - https://cloudflare-dns.com/dns-query#📺.<Video>--YouTube
+#     - https://dns.google/dns-query#📺.<Video>--YouTube
+#     rule-set:Adobe_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#🔧.<Tools>--Adobe
+#     - https://dns.google/dns-query#🔧.<Tools>--Adobe
+#     rule-set:AkamaiCloud_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#☁️.<Global>--CDN
+#     - https://dns.google/dns-query#☁️.<Global>--CDN
+#     rule-set:AmazonCN_Do_Resolve:
+#     - https://dns.alidns.com/dns-query#🇨🇳.<Country>--CN
+#     - https://doh.pub/dns-query#🇨🇳.<Country>--CN
+#     rule-set:Amazon_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#☁️.<Apps>--Amazon
+#     - https://dns.google/dns-query#☁️.<Apps>--Amazon
+#     rule-set:AppleAI_Domain:
+#     - https://cloudflare-dns.com/dns-query#💡.<AI>--AppleAI
+#     - https://dns.google/dns-query#💡.<AI>--AppleAI
+#     rule-set:AppleTV_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#📺.<Video>--AppleTV
+#     - https://dns.google/dns-query#📺.<Video>--AppleTV
+#     rule-set:Apple_Domain:
+#     - https://dns.alidns.com/dns-query#☁️.<Apps>--Apple
+#     - https://dns.google/dns-query#☁️.<Apps>--Apple
+#     rule-set:AqaraGlobal_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#🔌.<Home>--AqaraGlobal
+#     - https://dns.google/dns-query#🔌.<Home>--AqaraGlobal
+#     rule-set:BankAU_Domain:
+#     - https://cloudflare-dns.com/dns-query#🇦🇺.<Bank>--AU
+#     - https://dns.google/dns-query#🇦🇺.<Bank>--AU
+#     rule-set:BankCA_Domain:
+#     - https://cloudflare-dns.com/dns-query#🇨🇦.<Bank>--CA
+#     - https://dns.google/dns-query#🇨🇦.<Bank>--CA
+#     rule-set:BankHK_Domain:
+#     - https://cloudflare-dns.com/dns-query#🇭🇰.<Bank>--HK
+#     - https://dns.google/dns-query#🇭🇰.<Bank>--HK
+#     rule-set:BankJP_Domain:
+#     - https://cloudflare-dns.com/dns-query#🇯🇵.<Bank>--JP
+#     - https://dns.google/dns-query#🇯🇵.<Bank>--JP
+#     rule-set:BankSG_Domain:
+#     - https://cloudflare-dns.com/dns-query#🇸🇬.<Bank>--SG
+#     - https://dns.google/dns-query#🇸🇬.<Bank>--SG
+#     rule-set:BankUK_Domain:
+#     - https://cloudflare-dns.com/dns-query#🇬🇧.<Bank>--UK
+#     - https://dns.google/dns-query#🇬🇧.<Bank>--UK
+#     rule-set:BankUS_Domain:
+#     - https://cloudflare-dns.com/dns-query#🇺🇸.<Bank>--US
+#     - https://dns.google/dns-query#🇺🇸.<Bank>--US
+#     rule-set:Binance_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#₿.<Crypto>--Binance
+#     - https://dns.google/dns-query#₿.<Crypto>--Binance
+#     rule-set:Bing_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#🔧.<Tools>--Bing/Edge
+#     - https://dns.google/dns-query#🔧.<Tools>--Bing/Edge
+#     rule-set:ChinaDNS_Domain:
+#     - system
+#     rule-set:ChinaMax_Domain:
+#     - https://dns.alidns.com/dns-query#🇨🇳.<Country>--CN
+#     - https://doh.pub/dns-query#🇨🇳.<Country>--CN
+#     rule-set:Claude_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#💡.<AI>--Claude
+#     - https://dns.google/dns-query#💡.<AI>--Claude
+#     rule-set:CloudflareCN_Do_Resolve:
+#     - https://dns.alidns.com/dns-query#🇨🇳.<Country>--CN
+#     - https://doh.pub/dns-query#🇨🇳.<Country>--CN
+#     rule-set:Cloudflare_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#☁️.<Global>--CDN
+#     - https://dns.google/dns-query#☁️.<Global>--CDN
+#     rule-set:ClubhouseIP_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#💛.<Social>--Clubhouse
+#     - https://dns.google/dns-query#💛.<Social>--Clubhouse
+#     rule-set:Clubhouse_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#💛.<Social>--Clubhouse
+#     - https://dns.google/dns-query#💛.<Social>--Clubhouse
+#     rule-set:Copilot_Domain:
+#     - https://cloudflare-dns.com/dns-query#💡.<AI>--Copilot
+#     - https://dns.google/dns-query#💡.<AI>--Copilot
+#     rule-set:Discord_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#💛.<Social>--Discord
+#     - https://dns.google/dns-query#💛.<Social>--Discord
+#     rule-set:Disney_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#📺.<Video>--Disney
+#     - https://dns.google/dns-query#📺.<Video>--Disney
+#     rule-set:Dropbox_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#📂.<Drive>--Dropbox
+#     - https://dns.google/dns-query#📂.<Drive>--Dropbox
+#     rule-set:EA_Do_Resolve:
+#     - https://dns.alidns.com/dns-query#🕹️.<Game>--EA.Origin
+#     - https://dns.google/dns-query#🕹️.<Game>--EA.Origin
+#     rule-set:EPIC_Do_Resolve:
+#     - https://dns.alidns.com/dns-query#🕹️.<Game>--EPIC
+#     - https://dns.google/dns-query#🕹️.<Game>--EPIC
+#     rule-set:FOXNOW_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#📺.<Video>--FOX
+#     - https://dns.google/dns-query#📺.<Video>--FOX
+#     rule-set:FOXPlus_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#📺.<Video>--FOX
+#     - https://dns.google/dns-query#📺.<Video>--FOX
+#     rule-set:Facebook_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#💛.<Social>--Facebook
+#     - https://dns.google/dns-query#💛.<Social>--Facebook
+#     rule-set:GFWList_Domain:
+#     - https://cloudflare-dns.com/dns-query#🚧.<GFWList>
+#     - https://dns.google/dns-query#🚧.<GFWList>
+#     rule-set:GOG_Do_Resolve:
+#     - https://dns.alidns.com/dns-query#🕹️.<Game>--GOG
+#     - https://dns.google/dns-query#🕹️.<Game>--GOG
+#     rule-set:Gemini_Domain:
+#     - https://cloudflare-dns.com/dns-query#💡.<AI>--Gemini
+#     - https://dns.google/dns-query#💡.<AI>--Gemini
+#     rule-set:GeoRouting_Africa_Central_ccTLD_Domain:
+#     - https://cloudflare-dns.com/dns-query#🌍.<Region>--Africa
+#     - https://dns.google/dns-query#🌍.<Region>--Africa
+#     rule-set:GeoRouting_Africa_East_ccTLD_Domain:
+#     - https://cloudflare-dns.com/dns-query#🌍.<Region>--Africa
+#     - https://dns.google/dns-query#🌍.<Region>--Africa
+#     rule-set:GeoRouting_Africa_North_ccTLD_Domain:
+#     - https://cloudflare-dns.com/dns-query#🌍.<Region>--Africa
+#     - https://dns.google/dns-query#🌍.<Region>--Africa
+#     rule-set:GeoRouting_Africa_South_ccTLD_Domain:
+#     - https://cloudflare-dns.com/dns-query#🌍.<Region>--Africa
+#     - https://dns.google/dns-query#🌍.<Region>--Africa
+#     rule-set:GeoRouting_Africa_West_ccTLD_Domain:
+#     - https://cloudflare-dns.com/dns-query#🌍.<Region>--Africa
+#     - https://dns.google/dns-query#🌍.<Region>--Africa
+#     rule-set:GeoRouting_America_North_ccTLD_Domain:
+#     - https://cloudflare-dns.com/dns-query#🌎.<Region>--North.America
+#     - https://dns.google/dns-query#🌎.<Region>--North.America
+#     rule-set:GeoRouting_America_South_ccTLD_Domain:
+#     - https://cloudflare-dns.com/dns-query#🌎.<Region>--South.America
+#     - https://dns.google/dns-query#🌎.<Region>--South.America
+#     rule-set:GeoRouting_Antarctica_ccTLD_Domain:
+#     - https://cloudflare-dns.com/dns-query#🌏.<Region>--Oceania
+#     - https://dns.google/dns-query#🌏.<Region>--Oceania
+#     rule-set:GeoRouting_Asia_Central_ccTLD_Domain:
+#     - https://cloudflare-dns.com/dns-query#🌏.<Region>--East.Asia
+#     - https://dns.google/dns-query#🌏.<Region>--East.Asia
+#     rule-set:GeoRouting_Asia_EastSouth_ccTLD_Domain:
+#     - https://cloudflare-dns.com/dns-query#🌏.<Region>--East.Asia
+#     - https://dns.google/dns-query#🌏.<Region>--East.Asia
+#     rule-set:GeoRouting_Asia_East_ccTLD_Domain:
+#     - https://cloudflare-dns.com/dns-query#🌏.<Region>--East.Asia
+#     - https://dns.google/dns-query#🌏.<Region>--East.Asia
+#     rule-set:GeoRouting_Asia_South_ccTLD_Domain:
+#     - https://cloudflare-dns.com/dns-query#🌏.<Region>--East.Asia
+#     - https://dns.google/dns-query#🌏.<Region>--East.Asia
+#     rule-set:GeoRouting_Asia_West_ccTLD_Domain:
+#     - https://cloudflare-dns.com/dns-query#🌏.<Region>--West.Asia
+#     - https://dns.google/dns-query#🌏.<Region>--West.Asia
+#     rule-set:GeoRouting_Europe_East_ccTLD_Domain:
+#     - https://cloudflare-dns.com/dns-query#🌍.<Region>--Europe
+#     - https://dns.google/dns-query#🌍.<Region>--Europe
+#     rule-set:GeoRouting_Europe_West_ccTLD_Domain:
+#     - https://cloudflare-dns.com/dns-query#🌍.<Region>--Europe
+#     - https://dns.google/dns-query#🌍.<Region>--Europe
+#     rule-set:GeoRouting_Oceania_ccTLD_Domain:
+#     - https://cloudflare-dns.com/dns-query#🌏.<Region>--Oceania
+#     - https://dns.google/dns-query#🌏.<Region>--Oceania
+#     rule-set:GeositeCN_Domain:
+#     - https://dns.alidns.com/dns-query#🇨🇳.<Country>--CN
+#     - https://doh.pub/dns-query#🇨🇳.<Country>--CN
+#     rule-set:GitHub_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#🔧.<Tools>--GitHub
+#     - https://dns.google/dns-query#🔧.<Tools>--GitHub
+#     rule-set:GlobalDNS_Domain:
+#     - system
+#     rule-set:GoogleDrive_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#📂.<Drive>--GoogleDrive
+#     - https://dns.google/dns-query#🎧.<Audio>--YouTubeMusic
+#     rule-set:Google_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#☁️.<Apps>--Google
+#     - https://dns.google/dns-query#☁️.<Apps>--Google
+#     rule-set:Grok_Domain:
+#     - https://cloudflare-dns.com/dns-query#💡.<AI>--Grok
+#     - https://dns.google/dns-query#💡.<AI>--Grok
+#     rule-set:HBO_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#📺.<Video>--HBO
+#     - https://dns.google/dns-query#📺.<Video>--HBO
+#     rule-set:HomeIPJP_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#🇯🇵.<HomeIP>--JP
+#     - https://dns.google/dns-query#🇯🇵.<HomeIP>--JP
+#     rule-set:HomeIPUS_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#🇺🇸.<HomeIP>--US
+#     - https://dns.google/dns-query#🇺🇸.<HomeIP>--US
+#     rule-set:Imgur_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#📂.<Drive>--Imgur
+#     - https://dns.google/dns-query#📂.<Drive>--Imgur
+#     rule-set:Instagram_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#🎬.<Short>--Instagram
+#     - https://dns.google/dns-query#🎬.<Short>--Instagram
+#     rule-set:Kwai_Domain:
+#     - https://cloudflare-dns.com/dns-query#🎬.<Short>--Kwai
+#     - https://dns.google/dns-query#🎬.<Short>--Kwai
+#     rule-set:Lan_Do_Resolve:
+#     - system
+#     rule-set:Line_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#💛.<Social>--Line
+#     - https://dns.google/dns-query#💛.<Social>--Line
+#     rule-set:LinkedIn_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#💛.<Social>--LinkedIn
+#     - https://dns.google/dns-query#💛.<Social>--LinkedIn
+#     rule-set:MEGA_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#📂.<Drive>--MEGA
+#     - https://dns.google/dns-query#📂.<Drive>--MEGA
+#     rule-set:MacAppUpgrade_Domain:
+#     - https://cloudflare-dns.com/dns-query#⬇️.<Download>--MacAppUpgrade
+#     - https://dns.google/dns-query#⬇️.<Download>--MacAppUpgrade
+#     rule-set:MicrosoftAPPs_Domain:
+#     - https://dns.alidns.com/dns-query#☁️.<Apps>--Microsoft
+#     - https://dns.google/dns-query#☁️.<Apps>--Microsoft
+#     rule-set:MicrosoftEdge_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#🔧.<Tools>--Bing/Edge
+#     - https://dns.google/dns-query#🔧.<Tools>--Bing/Edge
+#     rule-set:Monzo_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#💳.<Virtual>--Monzo
+#     - https://dns.google/dns-query#💳.<Virtual>--Monzo
+#     rule-set:Netflix_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#📺.<Video>--Netflix
+#     - https://dns.google/dns-query#📺.<Video>--Netflix
+#     rule-set:Nintendo_Do_Resolve:
+#     - https://dns.alidns.com/dns-query#🕹️.<Game>--Nintendo
+#     - https://dns.google/dns-query#🕹️.<Game>--Nintendo
+#     rule-set:Notion_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#🔧.<Tools>--Notion
+#     - https://dns.google/dns-query#🔧.<Tools>--Notion
+#     rule-set:OKX_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#₿.<Crypto>--OKX
+#     - https://dns.google/dns-query#₿.<Crypto>--OKX
+#     rule-set:OneDrive_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#📂.<Drive>--OneDrive
+#     - https://dns.google/dns-query#📂.<Drive>--OneDrive
+#     rule-set:OpenAI_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#💡.<AI>--OpenAI
+#     - https://dns.google/dns-query#💡.<AI>--OpenAI
+#     rule-set:Origin_Do_Resolve:
+#     - https://dns.alidns.com/dns-query#🕹️.<Game>--EA.Origin
+#     - https://dns.google/dns-query#🕹️.<Game>--EA.Origin
+#     rule-set:Parsec_Domain:
+#     - https://cloudflare-dns.com/dns-query#🖥️.<Remote>--Parsec
+#     - https://dns.google/dns-query#🖥️.<Remote>--Parsec
+#     rule-set:Patreon_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#🛒.<Shopping>--Patreon
+#     - https://dns.google/dns-query#🛒.<Shopping>--Patreon
+#     rule-set:Paypal_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#💰.<Finance>--Paypal
+#     - https://dns.google/dns-query#💰.<Finance>--Paypal
+#     rule-set:Pinterest_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#🔧.<Tools>--Pinterest
+#     - https://dns.google/dns-query#🔧.<Tools>--Pinterest
+#     rule-set:PlayStation_Do_Resolve:
+#     - https://dns.alidns.com/dns-query#🕹️.<Game>--PlayStation
+#     - https://dns.google/dns-query#🕹️.<Game>--PlayStation
+#     rule-set:Pornhub_Domain:
+#     - https://cloudflare-dns.com/dns-query#📺.<Video>--Porn
+#     - https://dns.google/dns-query#📺.<Video>--Porn
+#     rule-set:PrimeVideo_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#📺.<Video>--PrimeVideo
+#     - https://dns.google/dns-query#📺.<Video>--PrimeVideo
+#     rule-set:PrivateTracker_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#⬇️.<P2P>--PT-Server
+#     - https://dns.google/dns-query#⬇️.<P2P>--PT-Server
+#     rule-set:Reddit_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#💛.<Social>--Reddit
+#     - https://dns.google/dns-query#💛.<Social>--Reddit
+#     rule-set:Revolut_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#💳.<Virtual>--Revolut
+#     - https://dns.google/dns-query#💳.<Virtual>--Revolut
+#     rule-set:RockStar_Do_Resolve:
+#     - https://dns.alidns.com/dns-query#🕹️.<Game>--RockStar
+#     - https://dns.google/dns-query#🕹️.<Game>--RockStar
+#     rule-set:RustDesk_Domain:
+#     - https://cloudflare-dns.com/dns-query#🖥️.<Remote>--RustDesk
+#     - https://dns.google/dns-query#🖥️.<Remote>--RustDesk
+#     rule-set:Signal_Domain:
+#     - https://cloudflare-dns.com/dns-query#💛.<Social>--Signal
+#     - https://dns.google/dns-query#💛.<Social>--Signal
+#     rule-set:Speedtest_Do_Resolve:
+#     - https://dns.alidns.com/dns-query#🎚.<Speedtest>
+#     - https://dns.google/dns-query#🎚.<Speedtest>
+#     rule-set:Spotify_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#🎧.<Audio>--Spotify
+#     - https://dns.google/dns-query#🎧.<Audio>--Spotify
+#     rule-set:Steam_Do_Resolve:
+#     - https://dns.alidns.com/dns-query#🕹️.<Game>--Steam
+#     - https://dns.google/dns-query#🕹️.<Game>--Steam
+#     rule-set:Synology_Do_Resolve:
+#     - https://dns.alidns.com/dns-query#💻.<NAS>--Synology
+#     - https://dns.google/dns-query#💻.<NAS>--Synology
+#     rule-set:Telegram_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#💛.<Social>--Telegram
+#     - https://dns.google/dns-query#💛.<Social>--Telegram
+#     rule-set:TikTok_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#🎬.<Short>--TikTok
+#     - https://dns.google/dns-query#🎬.<Short>--TikTok
+#     rule-set:Twitch_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#🎞️.<Live>--Twitch
+#     - https://dns.google/dns-query#🎞️.<Live>--Twitch
+#     rule-set:Twitter_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#💛.<Social>--Twitter
+#     - https://dns.google/dns-query#💛.<Social>--Twitter
+#     rule-set:UBI_Do_Resolve:
+#     - https://dns.alidns.com/dns-query#🕹️.<Game>--UbiSoft
+#     - https://dns.google/dns-query#🕹️.<Game>--UbiSoft
+#     rule-set:Ubisoft_Do_Resolve:
+#     - https://dns.alidns.com/dns-query#🕹️.<Game>--UbiSoft
+#     - https://dns.google/dns-query#🕹️.<Game>--UbiSoft
+#     rule-set:UnsupportVPN_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#❌.<UnsupportVPN>
+#     - https://dns.google/dns-query#❌.<UnsupportVPN>
+#     rule-set:WaybackMachine_Domain:
+#     - https://cloudflare-dns.com/dns-query#📂.<Drive>--InternetArchive
+#     - https://dns.google/dns-query#📂.<Drive>--InternetArchive
+#     rule-set:Whatsapp_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#💛.<Social>--Whatsapp
+#     - https://dns.google/dns-query#💛.<Social>--Whatsapp
+#     rule-set:Wikipedia_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#📰.<News>--Wikipedia
+#     - https://dns.google/dns-query#📰.<News>--Wikipedia
+#     rule-set:Wise_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#💰.<Finance>--Wise
+#     - https://dns.google/dns-query#💰.<Finance>--Wise
+#     rule-set:Xbox_Do_Resolve:
+#     - https://dns.alidns.com/dns-query#🕹️.<Game>--Xbox
+#     - https://dns.google/dns-query#🕹️.<Game>--Xbox
+#     rule-set:YouTubeMusic_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#🎧.<Audio>--YouTubeMusic
+#     - https://dns.google/dns-query#🎧.<Audio>--YouTubeMusic
+#     rule-set:YouTube_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#📺.<Video>--YouTube
+#     - https://dns.google/dns-query#📺.<Video>--YouTube
+#     rule-set:eBay_Do_Resolve:
+#     - https://cloudflare-dns.com/dns-query#🛒.<Shopping>--eBay
+#     - https://dns.google/dns-query#🛒.<Shopping>--eBay
+#     token.safebrowsing.apple:
+#     - https://cloudflare-dns.com/dns-query#💡.<AI>--AppleAI
+#     - https://dns.google/dns-query#💡.<AI>--AppleAI
+#   prefer-h3: false
+#   proxy-server-nameserver:
+#   - system
+#   respect-rules: true
+#   skip-cert-verify: false
+#   use-hosts: true
+#   use-system-hosts: true

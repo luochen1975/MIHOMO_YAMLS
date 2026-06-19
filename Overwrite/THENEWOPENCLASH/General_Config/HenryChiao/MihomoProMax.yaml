@@ -1,5 +1,5 @@
 # OpenClash 覆写模块 - MihomoProMax.yaml
-# 生成日期：2026-04-09
+# 生成日期：2026-06-19
 # 源文件：https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/main/THEYAMLS/General_Config/HenryChiao/MihomoProMax.yaml
 # 格式：新版 OpenClash [YAML] 块覆写
 #
@@ -114,7 +114,7 @@
 # ==========================================================
 #
 # proxy-groups:
-# - icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Static.png
+# - icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Static.png
 #   name: 默认代理
 #   proxies:
 #   - 故障转移
@@ -129,7 +129,7 @@
 #   - 全球手动
 #   - 直接连接
 #   type: select
-# - icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/ULB.png
+# - icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/ULB.png
 #   interval: 200
 #   lazy: true
 #   name: 故障转移
@@ -146,7 +146,7 @@
 #   - 直接连接
 #   type: fallback
 #   url: https://www.google.com/generate_204
-# - icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Global.png
+# - icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Global.png
 #   name: 国外流量
 #   proxies: &id001
 #   - 默认代理
@@ -162,7 +162,7 @@
 #   - 全球手动
 #   - 直接连接
 #   type: select
-# - icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/China.png
+# - icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/China.png
 #   name: 国内流量
 #   proxies:
 #   - 直接连接
@@ -178,18 +178,18 @@
 #   - 冷门自选
 #   - 全球手动
 #   type: select
-# - icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Final.png
+# - icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Final.png
 #   name: 兜底流量
 #   proxies: *id001
 #   type: select
 # - hidden: true
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Direct.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Direct.png
 #   name: 直接连接
 #   proxies:
 #   - DIRECT
 #   type: select
 # - filter: ^(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Speedtest.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Speedtest.png
 #   include-all: true
 #   name: 网络测试
 #   proxies: *id001
@@ -200,7 +200,7 @@
 #   - DIRECT
 #   - 欧盟策略
 #   type: select
-# - icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Null_Nation.png
+# - icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Null_Nation.png
 #   name: 抖快书定位
 #   proxies:
 #   - 直接连接
@@ -212,23 +212,23 @@
 #   - 美国策略
 #   - 欧盟策略
 #   type: select
-# - icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Emby.png
+# - icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Emby.png
 #   name: Emby服
 #   proxies: *id001
 #   type: select
-# - icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/YouTube.png
+# - icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/YouTube.png
 #   name: 油管视频
 #   proxies: *id001
 #   type: select
-# - icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Netflix.png
+# - icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Netflix.png
 #   name: 奈飞视频
 #   proxies: *id001
 #   type: select
-# - icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/DomesticMedia.png
+# - icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/DomesticMedia.png
 #   name: 国际媒体
 #   proxies: *id001
 #   type: select
-# - icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Apple_News.png
+# - icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Apple_News.png
 #   name: 新闻媒体
 #   proxies: &id002
 #   - 美国策略
@@ -244,19 +244,19 @@
 #   - 全球手动
 #   - 直接连接
 #   type: select
-# - icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Telegram_X.png
+# - icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Telegram_X.png
 #   name: 电报消息
 #   proxies: *id001
 #   type: select
-# - icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/X.png
+# - icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/X.png
 #   name: 推特社交
 #   proxies: *id001
 #   type: select
-# - icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/PBS.png
+# - icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/PBS.png
 #   name: 社交平台
 #   proxies: *id001
 #   type: select
-# - icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/AI.png
+# - icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/AI.png
 #   name: 人工智能
 #   proxies: *id002
 #   type: select
@@ -276,7 +276,7 @@
 #   - 全球手动
 #   - 直接连接
 #   type: select
-# - icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Game.png
+# - icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Game.png
 #   name: 游戏平台
 #   proxies: *id001
 #   type: select
@@ -284,20 +284,20 @@
 #   name: Github
 #   proxies: *id001
 #   type: select
-# - icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Microsoft.png
+# - icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Microsoft.png
 #   name: 微软服务
 #   proxies: *id001
 #   type: select
-# - icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Google_Search.png
+# - icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Google_Search.png
 #   name: 谷歌服务
 #   proxies: *id001
 #   type: select
-# - icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Apple.png
+# - icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Apple.png
 #   name: 苹果服务
 #   proxies: *id001
 #   type: select
 # - filter: ^(?=.*(?i)(港|🇭🇰|HK|Hong|HKG))(?!.*(排除1|排除2|5x)).*$
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Hong_Kong.png
 #   include-all: true
 #   name: 香港策略
 #   proxies:
@@ -306,7 +306,7 @@
 #   - 香港均衡-轮询
 #   type: select
 # - filter: ^(?=.*(?i)(台|🇼🇸|🇹🇼|TW|tai|TPE|TSA|KHH))(?!.*(排除1|排除2|5x)).*$
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png
 #   include-all: true
 #   name: 台湾策略
 #   proxies:
@@ -315,7 +315,7 @@
 #   - 台湾均衡-轮询
 #   type: select
 # - filter: ^(?=.*(?i)(坡|🇸🇬|SG|Sing|SIN|XSP))(?!.*(排除1|排除2|5x)).*$
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Singapore.png
 #   include-all: true
 #   name: 狮城策略
 #   proxies:
@@ -324,7 +324,7 @@
 #   - 狮城均衡-轮询
 #   type: select
 # - filter: ^(?=.*(?i)(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK))(?!.*(尼日利亚|排除2|5x)).*$
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Japan.png
 #   include-all: true
 #   name: 日本策略
 #   proxies:
@@ -333,7 +333,7 @@
 #   - 日本均衡-轮询
 #   type: select
 # - filter: ^(?=.*(?i)(韩|🇰🇷|韓|首尔|南朝鲜|KR|KOR|Korea|South))(?!.*(排除1|排除2|5x)).*$
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Korea.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Korea.png
 #   include-all: true
 #   name: 韩国策略
 #   proxies:
@@ -342,7 +342,7 @@
 #   - 韩国均衡-轮询
 #   type: select
 # - filter: ^(?=.*(?i)(美|🇺🇸|US|USA|JFK|SJC|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD))(?!.*(Plus|Australia|5x)).*$
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_States.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/United_States.png
 #   include-all: true
 #   name: 美国策略
 #   proxies:
@@ -351,7 +351,7 @@
 #   - 美国均衡-轮询
 #   type: select
 # - filter: ^(?=.*(?i)(奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU))(?!.*(排除1|排除2|5x)).*$
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/European_Union.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/European_Union.png
 #   include-all: true
 #   name: 欧盟策略
 #   proxies:
@@ -360,18 +360,18 @@
 #   - 欧盟均衡-轮询
 #   type: select
 # - filter: ^(?!.*(DIRECT|直接连接|美|港|坡|台|新|日|韩|奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|🇭🇰|🇼🇸|🇹🇼|🇸🇬|🇯🇵|🇰🇷|🇺🇸|🇬🇧|🇦🇹|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|HK|TW|SG|JP|KR|US|GB|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU|HKG|TPE|TSA|KHH|SIN|XSP|NRT|HND|KIX|CTS|FUK|JFK|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD|LHR|LGW))
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Europe_Map.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Europe_Map.png
 #   include-all: true
 #   name: 冷门自选
 #   type: select
 # - filter: ^(?!.*(DIRECT|直接连接|群|邀请|返利|循环|官网|客服|网站|网址|获取|订阅|流量|到期|机场|下次|版本|官址|备用|过期|已用|联系|邮箱|工单|贩卖|通知|倒卖|防止|国内|地址|频道|无法|说明|使用|提示|特别|访问|支持|教程|关注|更新|作者|加入|USE|USED|TOTAL|EXPIRE|EMAIL|Panel|Channel|Author))
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Clubhouse.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Clubhouse.png
 #   include-all: true
 #   name: 全球手动
 #   type: select
 # - filter: ^(?=.*(?i)(港|🇭🇰|HK|Hong|HKG))(?!.*(排除1|排除2|5x)).*$
 #   hidden: true
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
 #   include-all: true
 #   interval: 200
 #   lazy: true
@@ -380,7 +380,7 @@
 #   url: https://www.google.com/generate_204
 # - filter: ^(?=.*(?i)(台|🇼🇸|🇹🇼|TW|tai|TPE|TSA|KHH))(?!.*(排除1|排除2|5x)).*$
 #   hidden: true
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
 #   include-all: true
 #   interval: 200
 #   lazy: true
@@ -389,7 +389,7 @@
 #   url: https://www.google.com/generate_204
 # - filter: ^(?=.*(?i)(坡|🇸🇬|SG|Sing|SIN|XSP))(?!.*(排除1|排除2|5x)).*$
 #   hidden: true
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
 #   include-all: true
 #   interval: 200
 #   lazy: true
@@ -398,7 +398,7 @@
 #   url: https://www.google.com/generate_204
 # - filter: ^(?=.*(?i)(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK))(?!.*(尼日利亚|排除2|5x)).*$
 #   hidden: true
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
 #   include-all: true
 #   interval: 200
 #   lazy: true
@@ -407,7 +407,7 @@
 #   url: https://www.google.com/generate_204
 # - filter: ^(?=.*(?i)(韩|🇰🇷|韓|首尔|南朝鲜|KR|KOR|Korea|South))(?!.*(排除1|排除2|5x)).*$
 #   hidden: true
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
 #   include-all: true
 #   interval: 200
 #   lazy: true
@@ -416,7 +416,7 @@
 #   url: https://www.google.com/generate_204
 # - filter: ^(?=.*(?i)(美|🇺🇸|US|USA|JFK|SJC|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD))(?!.*(Plus|Australia|5x)).*$
 #   hidden: true
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
 #   include-all: true
 #   interval: 200
 #   lazy: true
@@ -425,7 +425,7 @@
 #   url: https://www.google.com/generate_204
 # - filter: ^(?=.*(?i)(奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU))(?!.*(排除1|排除2|5x)).*$
 #   hidden: true
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Auto.png
 #   include-all: true
 #   interval: 200
 #   lazy: true
@@ -434,7 +434,7 @@
 #   url: https://www.google.com/generate_204
 # - filter: ^(?=.*(?i)(港|🇭🇰|HK|Hong|HKG))(?!.*(排除1|排除2|5x)).*$
 #   hidden: true
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png
 #   include-all: true
 #   interval: 200
 #   lazy: true
@@ -444,7 +444,7 @@
 #   url: https://www.google.com/generate_204
 # - filter: ^(?=.*(?i)(台|🇼🇸|🇹🇼|TW|tai|TPE|TSA|KHH))(?!.*(排除1|排除2|5x)).*$
 #   hidden: true
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png
 #   include-all: true
 #   interval: 200
 #   lazy: true
@@ -454,7 +454,7 @@
 #   url: https://www.google.com/generate_204
 # - filter: ^(?=.*(?i)(坡|🇸🇬|SG|Sing|SIN|XSP))(?!.*(排除1|排除2|5x)).*$
 #   hidden: true
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png
 #   include-all: true
 #   interval: 200
 #   lazy: true
@@ -464,7 +464,7 @@
 #   url: https://www.google.com/generate_204
 # - filter: ^(?=.*(?i)(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK))(?!.*(尼日利亚|排除2|5x)).*$
 #   hidden: true
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png
 #   include-all: true
 #   interval: 200
 #   lazy: true
@@ -474,7 +474,7 @@
 #   url: https://www.google.com/generate_204
 # - filter: ^(?=.*(?i)(韩|🇰🇷|韓|首尔|南朝鲜|KR|KOR|Korea|South))(?!.*(排除1|排除2|5x)).*$
 #   hidden: true
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png
 #   include-all: true
 #   interval: 200
 #   lazy: true
@@ -484,7 +484,7 @@
 #   url: https://www.google.com/generate_204
 # - filter: ^(?=.*(?i)(美|🇺🇸|US|USA|JFK|SJC|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD))(?!.*(Plus|Australia|5x)).*$
 #   hidden: true
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png
 #   include-all: true
 #   interval: 200
 #   lazy: true
@@ -494,7 +494,7 @@
 #   url: https://www.google.com/generate_204
 # - filter: ^(?=.*(?i)(奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU))(?!.*(排除1|排除2|5x)).*$
 #   hidden: true
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png
 #   include-all: true
 #   interval: 200
 #   lazy: true
@@ -504,7 +504,7 @@
 #   url: https://www.google.com/generate_204
 # - filter: ^(?=.*(?i)(港|🇭🇰|HK|Hong|HKG))(?!.*(排除1|排除2|5x)).*$
 #   hidden: true
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png
 #   include-all: true
 #   interval: 200
 #   lazy: true
@@ -514,7 +514,7 @@
 #   url: https://www.google.com/generate_204
 # - filter: ^(?=.*(?i)(台|🇼🇸|🇹🇼|TW|tai|TPE|TSA|KHH))(?!.*(排除1|排除2|5x)).*$
 #   hidden: true
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png
 #   include-all: true
 #   interval: 200
 #   lazy: true
@@ -524,7 +524,7 @@
 #   url: https://www.google.com/generate_204
 # - filter: ^(?=.*(?i)(坡|🇸🇬|SG|Sing|SIN|XSP))(?!.*(排除1|排除2|5x)).*$
 #   hidden: true
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png
 #   include-all: true
 #   interval: 200
 #   lazy: true
@@ -534,7 +534,7 @@
 #   url: https://www.google.com/generate_204
 # - filter: ^(?=.*(?i)(日|🇯🇵|JP|Japan|NRT|HND|KIX|CTS|FUK))(?!.*(尼日利亚|排除2|5x)).*$
 #   hidden: true
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png
 #   include-all: true
 #   interval: 200
 #   lazy: true
@@ -544,7 +544,7 @@
 #   url: https://www.google.com/generate_204
 # - filter: ^(?=.*(?i)(韩|🇰🇷|韓|首尔|南朝鲜|KR|KOR|Korea|South))(?!.*(排除1|排除2|5x)).*$
 #   hidden: true
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png
 #   include-all: true
 #   interval: 200
 #   lazy: true
@@ -554,7 +554,7 @@
 #   url: https://www.google.com/generate_204
 # - filter: ^(?=.*(?i)(美|🇺🇸|US|USA|JFK|SJC|LAX|ORD|ATL|DFW|SFO|MIA|SEA|IAD))(?!.*(Plus|Australia|5x)).*$
 #   hidden: true
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png
 #   include-all: true
 #   interval: 200
 #   lazy: true
@@ -564,7 +564,7 @@
 #   url: https://www.google.com/generate_204
 # - filter: ^(?=.*(?i)(奥|比|保|克罗地亚|塞|捷|丹|爱沙|芬|法|德|希|匈|爱尔|意|拉|立|卢|马其它|荷|波|葡|罗|斯洛伐|斯洛文|西|瑞|英|🇧🇪|🇨🇿|🇩🇰|🇫🇮|🇫🇷|🇩🇪|🇮🇪|🇮🇹|🇱🇹|🇱🇺|🇳🇱|🇵🇱|🇸🇪|🇬🇧|CDG|FRA|AMS|MAD|BCN|FCO|MUC|BRU))(?!.*(排除1|排除2|5x)).*$
 #   hidden: true
-#   icon: https://git.imee.me/https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png
+#   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin.png
 #   include-all: true
 #   interval: 200
 #   lazy: true
@@ -586,13 +586,13 @@
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/AI.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/AI.mrs
 #   AIIP:
 #     behavior: ipcidr
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/AI.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/ip/AI.mrs
 #   AWAvenueAds:
 #     behavior: domain
 #     format: yaml
@@ -604,223 +604,223 @@
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Advertising.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/Advertising.mrs
 #   AdvertisingIP:
 #     behavior: ipcidr
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Advertising.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/ip/Advertising.mrs
 #   Apple:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Apple.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/Apple.mrs
 #   AppleCN:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/AppleCN.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/AppleCN.mrs
 #   China:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/China.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/China.mrs
 #   ChinaIP:
 #     behavior: ipcidr
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/China.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/ip/China.mrs
 #   Crypto:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Crypto.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/Crypto.mrs
 #   Direct:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Direct.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/Direct.mrs
 #   Download:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Download.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/Download.mrs
 #   Emby:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Emby.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/Emby.mrs
 #   EmbyIP:
 #     behavior: ipcidr
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Emby.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/ip/Emby.mrs
 #   Facebook:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Facebook.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/Facebook.mrs
 #   FacebookIP:
 #     behavior: ipcidr
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Facebook.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/ip/Facebook.mrs
 #   Games:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Games.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/Games.mrs
 #   Google:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Google.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/Google.mrs
 #   GoogleIP:
 #     behavior: ipcidr
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Google.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/ip/Google.mrs
 #   LocationDKS:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/LocationDKS.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/LocationDKS.mrs
 #   Microsoft:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Microsoft.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/Microsoft.mrs
 #   Netflix:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Netflix.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/Netflix.mrs
 #   NetflixIP:
 #     behavior: ipcidr
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Netflix.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/ip/Netflix.mrs
 #   NewsMedia:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/NewsMedia.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/NewsMedia.mrs
 #   Private:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Private.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/Private.mrs
 #   PrivateIP:
 #     behavior: ipcidr
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Private.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/ip/Private.mrs
 #   Proxy:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Proxy.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/Proxy.mrs
 #   ProxyIP:
 #     behavior: ipcidr
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Proxy.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/ip/Proxy.mrs
 #   SocialMedia:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/SocialMedia.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/SocialMedia.mrs
 #   SocialMediaIP:
 #     behavior: ipcidr
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/SocialMedia.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/ip/SocialMedia.mrs
 #   Speedtest:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Speedtest.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/Speedtest.mrs
 #   Streaming:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Streaming.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/Streaming.mrs
 #   StreamingIP:
 #     behavior: ipcidr
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Streaming.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/ip/Streaming.mrs
 #   Telegram:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Telegram.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/Telegram.mrs
 #   TelegramIP:
 #     behavior: ipcidr
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/Telegram.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/ip/Telegram.mrs
 #   Tracking:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Tracking.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/Tracking.mrs
 #   Twitter:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/Twitter.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/Twitter.mrs
 #   XPTV:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/XPTV.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/XPTV.mrs
 #   XPTVIP:
 #     behavior: ipcidr
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/ip/XPTV.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/ip/XPTV.mrs
 #   YouTube:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
 #     type: http
-#     url: https://git.imee.me/https://github.com/666OS/rules/raw/release/mihomo/domain/YouTube.mrs
+#     url: https://github.com/666OS/rules/raw/release/mihomo/domain/YouTube.mrs
 #   fakeip-filter:
 #     behavior: domain
 #     format: mrs
