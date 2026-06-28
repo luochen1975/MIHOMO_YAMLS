@@ -1,6 +1,6 @@
 # OpenClash 覆写模块 - mihomo.yaml
 # 生成日期：2026-06-28
-# 源文件：https://raw.githubusercontent.com/luochen1975/MIHOMO_YAMLS/main/THEYAMLS/General_Config/ameyukisora/mihomo.yaml
+# 源文件：https://raw.githubusercontent.com/luochen1975/MIHOMO_YAMLS/main/THEYAMLS/General_Config/YiXuanZX/mihomo.yaml
 # 格式：新版 OpenClash [YAML] 块覆写
 #
 # 本文件仅包含 [YAML] 块覆写内容，不含任何 [General] 插件设置。
@@ -83,17 +83,20 @@
 # ==========================================================
 #
 # proxy-providers:
-#   subscription:
-#     exclude-filter: 官|流量|Traffic|Expire|自动更新订阅|剩余|过期|网址
+#   provider1:
+#     header:
+#       User-Agent:
+#       - clash-verge/v2.5.0
 #     health-check:
 #       enable: true
-#       interval: 900
+#       interval: 300
+#       lazy: false
 #       url: https://www.gstatic.com/generate_204
 #     interval: 86400
-#     path: ./providers/subscription.yaml
+#     path: ./proxy_providers/provider1.yaml
 #     proxy: DIRECT
 #     type: http
-#     url: https://example.com/your-sub-url.yaml
+#     url: 此处填入订阅
 
 # ==========================================================
 # proxy-groups（从源文件直接提取）
@@ -104,61 +107,75 @@
 # ==========================================================
 #
 # proxy-groups:
-# - filter: (港|HK|Hong Kong|日本|JP|Japan|🇭🇰|🇯🇵)
-#   icon: https://raw.githubusercontent.com/amenorira/Clash-Rule/master/icon/start.png
-#   include-all-providers: true
-#   name: 节点选择
-#   proxies:
-#   - 其他节点
+# - filter: (?i)香港|hk
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Hong_Kong.png
+#   include-all: true
+#   interval: 300
+#   lazy: false
+#   name: 香港
 #   type: select
-# - filter: (日本|JP|Japan|🇯🇵)
-#   icon: https://raw.githubusercontent.com/amenorira/Clash-Rule/master/icon/cherry-blossom.png
-#   include-all-providers: true
-#   name: 日区网站
-#   proxies:
-#   - 节点选择
+#   url: https://www.gstatic.com/generate_204
+# - filter: (?i)新加坡|sg
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Singapore.png
+#   include-all: true
+#   interval: 300
+#   lazy: false
+#   name: 新加坡
 #   type: select
-# - exclude-filter: (港|HK|Hong Kong|日本|JP|Japan|🇭🇰|🇯🇵)
-#   icon: https://raw.githubusercontent.com/amenorira/Clash-Rule/master/icon/Global.png
-#   include-all-providers: true
-#   name: 其他节点
-#   proxies:
-#   - DIRECT
+#   url: https://www.gstatic.com/generate_204
+# - filter: (?i)日本|jp
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Japan.png
+#   include-all: true
+#   interval: 300
+#   lazy: false
+#   name: 日本
 #   type: select
-# - icon: https://raw.githubusercontent.com/amenorira/Clash-Rule/master/icon/ehentai.png
-#   include-all-providers: true
-#   name: EH图库
+#   url: https://www.gstatic.com/generate_204
+# - filter: (?i)美国|us
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/United_States.png
+#   include-all: true
+#   interval: 300
+#   lazy: false
+#   name: 美国
 #   type: select
-# - filter: (港|HK|Hong Kong|🇭🇰)
-#   icon: https://raw.githubusercontent.com/amenorira/Clash-Rule/master/icon/steam.png
-#   include-all-providers: true
-#   name: 游戏平台
-#   proxies:
-#   - DIRECT
-#   - 节点选择
+#   url: https://www.gstatic.com/generate_204
+# - exclude-filter: (?i)剩余|到期|香港|hk|新加坡|sg|日本|jp|美国|us
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Server.png
+#   include-all: true
+#   interval: 300
+#   lazy: false
+#   name: 其他
 #   type: select
-# - icon: https://raw.githubusercontent.com/amenorira/Clash-Rule/master/icon/telegram.png
-#   include-all-providers: true
-#   name: 电报消息
+#   url: https://www.gstatic.com/generate_204
+# - default-selected: 香港
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Proxy.png
+#   interval: 300
+#   lazy: false
+#   name: 代理
+#   proxies: &id001
+#   - 香港
+#   - 新加坡
+#   - 日本
+#   - 美国
+#   - 其他
 #   type: select
-# - icon: https://raw.githubusercontent.com/amenorira/Clash-Rule/master/icon/Google.png
-#   include-all-providers: true
-#   name: Google
+#   url: https://www.gstatic.com/generate_204
+# - default-selected: 美国
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/ChatGPT.png
+#   interval: 300
+#   lazy: false
+#   name: AI
+#   proxies: *id001
 #   type: select
-# - icon: https://raw.githubusercontent.com/amenorira/Clash-Rule/master/icon/AWAvenue.png
-#   name: 秋风净化
-#   proxies:
-#   - REJECT
-#   - REJECT-DROP
-#   - PASS
-#   - DIRECT
-#   - 节点选择
+#   url: https://www.gstatic.com/generate_204
+# - default-selected: 香港
+#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Telegram_X.png
+#   interval: 300
+#   lazy: false
+#   name: TG
+#   proxies: *id001
 #   type: select
-# - hidden: true
-#   name: ♾️
-#   proxies:
-#   - 节点选择
-#   type: select
+#   url: https://www.gstatic.com/generate_204
 
 # ==========================================================
 # rule-providers（从源文件直接提取）
@@ -168,82 +185,110 @@
 # ==========================================================
 #
 # rule-providers:
-#   AWAvenue-Ads-Rule:
+#   ai:
+#     behavior: classical
+#     format: yaml
+#     interval: 86400
+#     path: ./rule_providers/ai.yaml
+#     proxy: 代理
+#     type: http
+#     url: https://kelee.one/Tool/Clash/Rule/AI.yaml
+#   china-list:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
-#     path: ./rule_provider/AWAvenue-Ads-Rule-Clash.mrs
+#     path: ./rule_providers/china-list.mrs
+#     proxy: 代理
 #     type: http
-#     url: https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Clash.mrs
-#   ExHentai:
-#     behavior: classical
-#     interval: 86400
-#     path: ./rule_provider/ExHentai.yaml
-#     type: http
-#     url: https://raw.githubusercontent.com/amenorira/Clash-Rule/master/provider/ExHentai.yaml
-#   Google:
-#     behavior: classical
-#     interval: 86400
-#     path: ./rule_provider/Google.yaml
-#     type: http
-#     url: https://raw.githubusercontent.com/amenorira/Clash-Rule/master/provider/Google.yaml
-#   JapanWeb:
-#     behavior: classical
-#     interval: 86400
-#     path: ./rule_provider/JapanWeb.yaml
-#     type: http
-#     url: https://raw.githubusercontent.com/amenorira/Clash-Rule/master/provider/JapanWeb.yaml
-#   Proxy:
-#     behavior: classical
-#     interval: 86400
-#     path: ./rule_provider/Proxy.yaml
-#     type: http
-#     url: https://raw.githubusercontent.com/amenorira/Clash-Rule/master/provider/Proxy.yaml
-#   SpecialDirect:
-#     behavior: classical
-#     interval: 86400
-#     path: ./rule_provider/SpecialDirect.yaml
-#     type: http
-#     url: https://raw.githubusercontent.com/amenorira/Clash-Rule/master/provider/SpecialDirect.yaml
-#   Steam:
-#     behavior: classical
-#     interval: 86400
-#     path: ./rule_provider/Steam.yaml
-#     type: http
-#     url: https://raw.githubusercontent.com/amenorira/Clash-Rule/master/provider/Steam.yaml
-#   Telegram:
-#     behavior: classical
-#     interval: 86400
-#     path: ./rule_provider/Telegram.yaml
-#     type: http
-#     url: https://raw.githubusercontent.com/amenorira/Clash-Rule/master/provider/Telegram.yaml
+#     url: https://raw.githubusercontent.com/wwqgtxx/clash-rules/release/direct.mrs
 #   cn:
-#     behavior: ipcidr
-#     format: mrs
-#     interval: 86400
-#     path: ./rule_provider/cn.mrs
-#     type: http
-#     url: https://raw.githubusercontent.com/amenorira/Clash-Rule/master/autoupdate/cn.mrs
-#   cn_v6:
-#     behavior: ipcidr
-#     format: mrs
-#     interval: 86400
-#     path: ./rule_provider/cn_v6.mrs
-#     type: http
-#     url: https://raw.githubusercontent.com/amenorira/Clash-Rule/master/autoupdate/cn_v6.mrs
-#   fakeip-filter:
 #     behavior: domain
+#     format: mrs
 #     interval: 86400
-#     path: ./rule_provider/fakeip-filter.yaml
+#     path: ./rule_providers/cn.mrs
+#     proxy: 代理
 #     type: http
-#     url: https://raw.githubusercontent.com/amenorira/Clash-Rule/master/provider/fakeip-filter.yaml
+#     url: https://static-file-global.353355.xyz/rules/cn-additional-list.mrs
+#   cn_ip:
+#     behavior: ipcidr
+#     format: mrs
+#     interval: 86400
+#     path: ./rule_providers/cn_ip.mrs
+#     proxy: 代理
+#     type: http
+#     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/cn.mrs
 #   gfw:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
-#     path: ./rule_provider/gfw.mrs
+#     path: ./rule_providers/gfw.mrs
+#     proxy: 代理
 #     type: http
-#     url: https://raw.githubusercontent.com/amenorira/Clash-Rule/master/autoupdate/gfw.mrs
+#     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/gfw.mrs
+#   github:
+#     behavior: domain
+#     format: mrs
+#     interval: 86400
+#     path: ./rule_providers/github.mrs
+#     proxy: 代理
+#     type: http
+#     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/github.mrs
+#   google:
+#     behavior: domain
+#     format: mrs
+#     interval: 86400
+#     path: ./rule_providers/google.mrs
+#     proxy: 代理
+#     type: http
+#     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/google.mrs
+#   private:
+#     behavior: domain
+#     format: mrs
+#     interval: 86400
+#     path: ./rule_providers/private.mrs
+#     proxy: 代理
+#     type: http
+#     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/private.mrs
+#   private_ip:
+#     behavior: ipcidr
+#     format: mrs
+#     interval: 86400
+#     path: ./rule_providers/private_ip.mrs
+#     proxy: 代理
+#     type: http
+#     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/private.mrs
+#   telegram:
+#     behavior: domain
+#     format: mrs
+#     interval: 86400
+#     path: ./rule_providers/telegram.mrs
+#     proxy: 代理
+#     type: http
+#     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/telegram.mrs
+#   telegram_ip:
+#     behavior: ipcidr
+#     format: mrs
+#     interval: 86400
+#     path: ./rule_providers/telegram_ip.mrs
+#     proxy: 代理
+#     type: http
+#     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geoip/telegram.mrs
+#   twitter:
+#     behavior: domain
+#     format: mrs
+#     interval: 86400
+#     path: ./rule_providers/twitter.mrs
+#     proxy: 代理
+#     type: http
+#     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/twitter.mrs
+#   youtube:
+#     behavior: domain
+#     format: mrs
+#     interval: 86400
+#     path: ./rule_providers/youtube.mrs
+#     proxy: 代理
+#     type: http
+#     url: https://raw.githubusercontent.com/MetaCubeX/meta-rules-dat/meta/geo/geosite/youtube.mrs
 
 # ==========================================================
 # rules（从源文件直接提取）
@@ -257,18 +302,23 @@
 # ==========================================================
 #
 # rules:
-# - RULE-SET,AWAvenue-Ads-Rule,秋风净化
-# - RULE-SET,SpecialDirect,DIRECT
-# - RULE-SET,ExHentai,EH图库
-# - RULE-SET,JapanWeb,日区网站
-# - RULE-SET,Steam,游戏平台
-# - RULE-SET,Telegram,电报消息
-# - RULE-SET,Google,Google
-# - RULE-SET,Proxy,节点选择
-# - RULE-SET,gfw,节点选择
+# - AND,((NETWORK,UDP),(DST-PORT,443),(RULE-SET,youtube)),REJECT
+# - DOMAIN,abyss.cyapi.cn,REJECT
+# - DOMAIN,ad.cyapi.cn,REJECT
+# - DOMAIN,gather.colorfulclouds.net,REJECT
+# - RULE-SET,private,DIRECT
+# - RULE-SET,private_ip,DIRECT,no-resolve
+# - RULE-SET,ai,AI
+# - RULE-SET,telegram,TG
+# - RULE-SET,telegram_ip,TG,no-resolve
+# - RULE-SET,github,代理
+# - RULE-SET,twitter,代理
+# - RULE-SET,youtube,代理
+# - RULE-SET,google,代理
+# - RULE-SET,gfw,代理
 # - RULE-SET,cn,DIRECT
-# - RULE-SET,cn_v6,DIRECT
-# - MATCH,♾️
+# - RULE-SET,cn_ip,DIRECT
+# - MATCH,代理
 
 # ==========================================================
 # dns（从源文件直接提取）
@@ -279,16 +329,24 @@
 # ==========================================================
 #
 # dns:
-#   cache-algorithm: arc
 #   default-nameserver:
-#   - 223.5.5.5
-#   - 119.29.29.29
+#   - https://223.6.6.6/dns-query
 #   enable: true
 #   enhanced-mode: fake-ip
 #   fake-ip-filter:
-#   - rule-set:fakeip-filter
+#   - +.market.xiaomi.com
+#   - lancache.steamcontent.com
+#   - rule-set:private
+#   fake-ip-range: 198.18.0.1/16
+#   ipv6: true
 #   nameserver:
-#   - system
+#   - https://dns.alidns.com/dns-query
+#   nameserver-policy:
+#     rule-set:china-list,cn:
+#     - dns.alidns.com
+#     rule-set:gfw:
+#     - https://dns.google/dns-query#代理
+#     rule-set:private:
+#     - system
 #   proxy-server-nameserver:
 #   - https://dns.alidns.com/dns-query
-#   - https://doh.pub/dns-query

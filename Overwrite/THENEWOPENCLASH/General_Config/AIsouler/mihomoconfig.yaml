@@ -1,6 +1,6 @@
 # OpenClash 覆写模块 - mihomoconfig.yaml
-# 生成日期：2026-06-19
-# 源文件：https://raw.githubusercontent.com/HenryChiao/MIHOMO_YAMLS/main/THEYAMLS/General_Config/AIsouler/mihomoconfig.yaml
+# 生成日期：2026-06-28
+# 源文件：https://raw.githubusercontent.com/luochen1975/MIHOMO_YAMLS/main/THEYAMLS/General_Config/AIsouler/mihomoconfig.yaml
 # 格式：新版 OpenClash [YAML] 块覆写
 #
 # 本文件仅包含 [YAML] 块覆写内容，不含任何 [General] 插件设置。
@@ -93,7 +93,7 @@
 #       url: https://g.cn/generate_204
 #     interval: 86400
 #     override:
-#       additional-suffix: '| p1'
+#       additional-prefix: 'p1 | '
 #     path: ./proxy_providers/provider1.yaml
 #     proxy: DIRECT
 #     type: http
@@ -138,7 +138,7 @@
 #   max-failed-times: 3
 #   name: 自动选择
 #   timeout: 3000
-#   tolerance: 100
+#   tolerance: 50
 #   type: url-test
 #   url: https://g.cn/generate_204
 # - empty-fallback: REJECT
@@ -154,7 +154,8 @@
 #   timeout: 3000
 #   type: load-balance
 #   url: https://g.cn/generate_204
-# - empty-fallback: REJECT
+# - default-selected: 日本
+#   empty-fallback: REJECT
 #   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure@master/IconSet/Color/ChatGPT.png
 #   interval: 600
 #   lazy: true
@@ -185,15 +186,18 @@
 #   timeout: 3000
 #   type: select
 #   url: https://g.cn/generate_204
-# - empty-fallback: REJECT
+# - default-selected: 直连
+#   empty-fallback: REJECT
 #   icon: https://fastly.jsdelivr.net/gh/MiToverG422/Qure@master/IconSet/Color/fcm.png
 #   interval: 600
 #   lazy: true
 #   max-failed-times: 3
 #   name: FCM
-#   proxies:
-#   - 直连
+#   proxies: &id002
 #   - 默认代理
+#   - 自动选择
+#   - 负载均衡
+#   - 直连
 #   - 香港
 #   - 日本
 #   - 美国
@@ -201,8 +205,6 @@
 #   - 台湾省
 #   - 低倍率节点
 #   - 高倍率节点
-#   - 自动选择
-#   - 负载均衡
 #   - 其他节点
 #   timeout: 3000
 #   type: select
@@ -233,19 +235,7 @@
 #   lazy: true
 #   max-failed-times: 3
 #   name: Microsoft
-#   proxies: &id002
-#   - 默认代理
-#   - 自动选择
-#   - 负载均衡
-#   - 直连
-#   - 香港
-#   - 日本
-#   - 美国
-#   - 新加坡
-#   - 台湾省
-#   - 低倍率节点
-#   - 高倍率节点
-#   - 其他节点
+#   proxies: *id002
 #   timeout: 3000
 #   type: select
 #   url: https://g.cn/generate_204
@@ -295,7 +285,7 @@
 #   lazy: true
 #   max-failed-times: 3
 #   name: Steam
-#   proxies: *id001
+#   proxies: *id002
 #   timeout: 3000
 #   type: select
 #   url: https://g.cn/generate_204
@@ -422,7 +412,7 @@
 #   max-failed-times: 3
 #   name: 香港-自动选择
 #   timeout: 3000
-#   tolerance: 100
+#   tolerance: 50
 #   type: url-test
 #   url: https://g.cn/generate_204
 # - empty-fallback: REJECT
@@ -464,7 +454,7 @@
 #   max-failed-times: 3
 #   name: 日本-自动选择
 #   timeout: 3000
-#   tolerance: 100
+#   tolerance: 50
 #   type: url-test
 #   url: https://g.cn/generate_204
 # - empty-fallback: REJECT
@@ -506,7 +496,7 @@
 #   max-failed-times: 3
 #   name: 美国-自动选择
 #   timeout: 3000
-#   tolerance: 100
+#   tolerance: 50
 #   type: url-test
 #   url: https://g.cn/generate_204
 # - empty-fallback: REJECT
@@ -548,7 +538,7 @@
 #   max-failed-times: 3
 #   name: 新加坡-自动选择
 #   timeout: 3000
-#   tolerance: 100
+#   tolerance: 50
 #   type: url-test
 #   url: https://g.cn/generate_204
 # - empty-fallback: REJECT
@@ -590,7 +580,7 @@
 #   max-failed-times: 3
 #   name: 台湾省-自动选择
 #   timeout: 3000
-#   tolerance: 100
+#   tolerance: 50
 #   type: url-test
 #   url: https://g.cn/generate_204
 # - empty-fallback: REJECT
@@ -632,7 +622,7 @@
 #   max-failed-times: 3
 #   name: 低倍率节点-自动选择
 #   timeout: 3000
-#   tolerance: 100
+#   tolerance: 50
 #   type: url-test
 #   url: https://g.cn/generate_204
 # - empty-fallback: REJECT
@@ -674,7 +664,7 @@
 #   max-failed-times: 3
 #   name: 高倍率节点-自动选择
 #   timeout: 3000
-#   tolerance: 100
+#   tolerance: 50
 #   type: url-test
 #   url: https://g.cn/generate_204
 # - empty-fallback: REJECT
@@ -717,7 +707,7 @@
 #   max-failed-times: 3
 #   name: 其他节点-自动选择
 #   timeout: 3000
-#   tolerance: 100
+#   tolerance: 50
 #   type: url-test
 #   url: https://g.cn/generate_204
 # - empty-fallback: REJECT
@@ -844,7 +834,7 @@
 #     format: mrs
 #     interval: 86400
 #     path: ./ruleset/fakeip-filter.mrs
-#     path-in-bundle: geo/geosite/fakeip-filter.mrs
+#     path-in-bundle: geo/geosite/private.mrs
 #     type: http
 #     url: https://fastly.jsdelivr.net/gh/wwqgtxx/clash-rules@release/fakeip-filter.mrs
 #   games_cn:
@@ -855,14 +845,14 @@
 #     path-in-bundle: geo/geosite/category-games@cn.mrs
 #     type: http
 #     url: https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/category-games@cn.mrs
-#   geolocation-!cn:
+#   gfw:
 #     behavior: domain
 #     format: mrs
 #     interval: 86400
-#     path: ./ruleset/geolocation-!cn.mrs
-#     path-in-bundle: geo/geosite/geolocation-!cn.mrs
+#     path: ./ruleset/gfw.mrs
+#     path-in-bundle: geo/geosite/gfw.mrs
 #     type: http
-#     url: https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/geolocation-!cn.mrs
+#     url: https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/gfw.mrs
 #   github:
 #     behavior: domain
 #     format: mrs
@@ -911,6 +901,14 @@
 #     path-in-bundle: geo/geosite/microsoft.mrs
 #     type: http
 #     url: https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/microsoft.mrs
+#   microsoft_cn:
+#     behavior: domain
+#     format: mrs
+#     interval: 86400
+#     path: ./ruleset/microsoft@cn.mrs
+#     path-in-bundle: geo/geosite/microsoft@cn.mrs
+#     type: http
+#     url: https://fastly.jsdelivr.net/gh/MetaCubeX/meta-rules-dat@meta/geo/geosite/microsoft@cn.mrs
 #   netflix:
 #     behavior: domain
 #     format: mrs
@@ -1036,6 +1034,7 @@
 # ==========================================================
 #
 # rules:
+# - AND,((NETWORK,UDP),(DST-PORT,443),(NOT,((OR,((RULE-SET,cn_additional),(RULE-SET,cn_ip,no-resolve)))))),REJECT
 # - RULE-SET,private,直连
 # - RULE-SET,private_ip,直连,no-resolve
 # - RULE-SET,games_cn,直连
@@ -1043,12 +1042,12 @@
 # - RULE-SET,nvidia_cn,直连
 # - RULE-SET,cloudflare_cn,直连
 # - RULE-SET,apple_cn,直连
+# - RULE-SET,microsoft_cn,直连
 # - DOMAIN,fsend.cn,直连
 # - DOMAIN,international-gfe.download.nvidia.com,直连
 # - PROCESS-NAME,com.perol.pixez,Pixiv
 # - PROCESS-NAME,com.perol.play.pixez,Pixiv
 # - RULE-SET,adblockmihomolite,广告拦截
-# - AND,((NETWORK,UDP),(DST-PORT,443),(RULE-SET,youtube)),REJECT
 # - RULE-SET,ai,AI
 # - RULE-SET,youtube,YouTube
 # - RULE-SET,googlefcm,FCM
@@ -1063,6 +1062,7 @@
 # - RULE-SET,twitter,Twitter
 # - RULE-SET,instagram,Instagram
 # - RULE-SET,emby,Emby
+# - DOMAIN-SUFFIX,mb3admin.com,Emby
 # - DOMAIN-KEYWORD,emby,Emby
 # - RULE-SET,spotify,Spotify
 # - RULE-SET,tiktok,TikTok
@@ -1072,7 +1072,7 @@
 # - RULE-SET,twitter_ip,Twitter,no-resolve
 # - RULE-SET,cloudflare_ip,Cloudflare,no-resolve
 # - RULE-SET,netflix_ip,Netflix,no-resolve
-# - RULE-SET,geolocation-!cn,默认代理
+# - RULE-SET,gfw,默认代理
 # - RULE-SET,cn_additional,直连
 # - RULE-SET,cn_ip,直连
 # - MATCH,漏网之鱼
@@ -1102,7 +1102,6 @@
 #   fake-ip-range: 198.18.0.1/16
 #   fake-ip-range-v6: fc00::/18
 #   ipv6: true
-#   listen: :1053
 #   nameserver:
 #   - https://dns.cloudflare.com/dns-query#默认代理
 #   - https://dns.google/dns-query#默认代理
