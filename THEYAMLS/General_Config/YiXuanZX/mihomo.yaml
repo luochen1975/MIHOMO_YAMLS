@@ -1,5 +1,5 @@
 pr: &pr {type: select, proxies: [香港, 新加坡, 日本, 美国, 其他]}
-p: &p {type: http, interval: 86400, proxy: DIRECT, header: {User-Agent: ["clash-verge/v2.5.2"]}, health-check: {enable: true, url: "https://www.apple.com/library/test/success.html", interval: 600, timeout: 3000, lazy: false}}
+p: &p {type: http, interval: 86400, proxy: DIRECT, header: {User-Agent: ["clash-verge/v2.5.8"]}, health-check: {enable: true, url: "https://www.apple.com/library/test/success.html", interval: 600, timeout: 3000, lazy: false}}
 check: &check {url: "https://www.apple.com/library/test/success.html", interval: 600, timeout: 3000, lazy: false}
 
 proxy-providers:
@@ -26,7 +26,7 @@ profile:
 
 tun:
   enable: true
-  stack: mips  # 如有问题可使用gvisor
+  stack: mips
   dns-hijack:
     - "udp://any:53"
     - "tcp://any:53"
@@ -49,7 +49,7 @@ dns:
   proxy-server-nameserver:
     - https://dns.alidns.com/dns-query
   nameserver:
-    - 223.5.5.5
+    - https://dns.alidns.com/dns-query
   nameserver-policy:
     "www.gstatic.com": ["system", "119.29.29.29"]
     "*": ["system"]
@@ -62,15 +62,15 @@ hosts:
   "dns.google": ["8.8.8.8", "8.8.4.4"]
 
 proxy-groups:
-  - {name: 香港, type: select, include-all: true, filter: "(?i)香港|hk|hongkong|hong kong", <<: *check, icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Hong_Kong.png"}
-  - {name: 新加坡, type: select, include-all: true, filter: "(?i)新加坡|sg|singapore", <<: *check, icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Singapore.png"}
-  - {name: 日本, type: select, include-all: true, filter: "(?i)日本|jp|japan", <<: *check, icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Japan.png"}
-  - {name: 美国, type: select, include-all: true, filter: "(?i)美国|us|unitedstates|united states", <<: *check, icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/United_States.png"}
-  - {name: 其他, type: select, include-all: true, exclude-filter: "(?i)剩余|到期|香港|hk|hongkong|hong kong|新加坡|sg|singapore|日本|jp|japan|美国|us|unitedstates|united states", <<: *check, icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Server.png"}
+  - {name: 香港, type: select, include-all: true, filter: "(?i)香港|hk|hongkong|hong kong", <<: *check, icon: "https://raw.githubusercontent.com/aaANDkk/Qure_Style_SVG/main/icon/svg/flag/Hong_Kong.svg"}
+  - {name: 新加坡, type: select, include-all: true, filter: "(?i)新加坡|sg|singapore", <<: *check, icon: "https://raw.githubusercontent.com/aaANDkk/Qure_Style_SVG/main/icon/svg/flag/Singapore.svg"}
+  - {name: 日本, type: select, include-all: true, filter: "(?i)日本|jp|japan", <<: *check, icon: "https://raw.githubusercontent.com/aaANDkk/Qure_Style_SVG/main/icon/svg/flag/Japan.svg"}
+  - {name: 美国, type: select, include-all: true, filter: "(?i)美国|us|unitedstates|united states", <<: *check, icon: "https://raw.githubusercontent.com/aaANDkk/Qure_Style_SVG/main/icon/svg/flag/United_States.svg"}
+  - {name: 其他, type: select, include-all: true, exclude-filter: "(?i)剩余|到期|香港|hk|hongkong|hong kong|新加坡|sg|singapore|日本|jp|japan|美国|us|unitedstates|united states", <<: *check, icon: "https://raw.githubusercontent.com/aaANDkk/Qure_Style_SVG/main/icon/svg/common/Server.svg"}
 
-  - {name: 代理, <<: [*pr, *check], default-selected: 香港, icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Proxy.png"}
-  - {name: AI, <<: [*pr, *check], default-selected: 美国, icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/ChatGPT.png"}
-  - {name: TG, <<: [*pr, *check], default-selected: 香港, icon: "https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Telegram_X.png"}
+  - {name: 代理, <<: [*pr, *check], default-selected: 香港, icon: "https://raw.githubusercontent.com/aaANDkk/Qure_Style_SVG/main/icon/svg/common/Proxy.svg"}
+  - {name: AI, <<: [*pr, *check], default-selected: 美国, icon: "https://raw.githubusercontent.com/aaANDkk/Qure_Style_SVG/main/icon/svg/common/DeepSeek.svg"}
+  - {name: TG, <<: [*pr, *check], default-selected: 香港, icon: "https://raw.githubusercontent.com/aaANDkk/Qure_Style_SVG/main/icon/svg/common/Telegram.svg"}
 
 rules:
   - AND,((NETWORK,UDP),(DST-PORT,443),(RULE-SET,youtube)),REJECT  # 屏蔽YouTube QUIC流量
