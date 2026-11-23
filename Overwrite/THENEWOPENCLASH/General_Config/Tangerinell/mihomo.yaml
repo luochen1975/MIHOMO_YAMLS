@@ -1,5 +1,5 @@
 # OpenClash 覆写模块 - mihomo.yaml
-# 生成日期：2026-10-29
+# 生成日期：2026-11-23
 # 源文件：https://raw.githubusercontent.com/luochen1975/MIHOMO_YAMLS/main/THEYAMLS/General_Config/Tangerinell/mihomo.yaml
 # 格式：新版 OpenClash [YAML] 块覆写
 #
@@ -104,28 +104,28 @@
 #     override:
 #       additional-prefix: 1🐔
 #       proxy-name:
+#       - pattern: 新加坡
+#         target: 🇸🇬
 #       - pattern: 美国
 #         target: 🇺🇸
 #       - pattern: 日本
 #         target: 🇯🇵
-#       - pattern: 新加坡
-#         target: 🇸🇬
-#       - pattern: 台湾
-#         target: 🇹🇼
-#       - pattern: 香港
-#         target: 🇭🇰
 #       - pattern: 韩国
 #         target: 🇰🇷
-#       - pattern: 英国
-#         target: 🇬🇧
+#       - pattern: 香港
+#         target: 🇭🇰
+#       - pattern: 台湾
+#         target: 🇹🇼
+#       - pattern: 加拿大
+#         target: 🇨🇦
 #       - pattern: 澳大利亚
 #         target: 🇦🇺
+#       - pattern: 英国
+#         target: 🇬🇧
 #       - pattern: 法国
 #         target: 🇫🇷
 #       - pattern: 德国
 #         target: 🇩🇪
-#       - pattern: 加拿大
-#         target: 🇨🇦
 #     path: ./proxy_provider/providers_1.yaml
 #     proxy: 🎯默认
 #     type: http
@@ -168,47 +168,47 @@
 #   - 🔗链式代理
 #   - ➡️直连
 #   - ⛔阻断
+#   - ⛔静默阻断
 #   - ↩️绕过
-#   - 🟨手动选择
-#   - 🟦手动选择
-#   - 🟢故障转移
-#   - 🟣故障转移
-#   - 🔶自动选择
-#   - 🔷自动选择
+#   - ↩️单条绕过
+#   - 🟧A手动选择
+#   - 🟦B手动选择
+#   - 🟠A故障转移
+#   - 🔵B故障转移
+#   - 🔶A自动选择
+#   - 🔷B自动选择
 #   - 🧩手动其他
 #   - 📋手动全部
 #   - 中转
 #   - 落地
-#   - Pornhub
-#   - PikPak
-#   - TikTok
-#   - Netflix
-#   - YouTube
-#   - Emby
-#   - OpenAI
-#   - Anthropic
-#   - xAI
-#   - Gemini
-#   - Google
-#   - Apple
-#   - Crypto
 #   - FCM
-#   - Epic
 #   - Steam
-#   - Spotify
 #   - Telegram
+#   - Spotify
+#   - Meta
 #   - GitHub
-#   - Instagram
+#   - PikPak
 #   - Discord
+#   - TikTok
+#   - Pornhub
+#   - Crypto
+#   - Gemini
+#   - xAI
+#   - Anthropic
+#   - OpenAI
+#   - YouTube
+#   - Netflix
+#   - Apple
 #   - Microsoft
+#   - Google
 #   - Cloudflare
 #   - China
 #   - 🇸🇬手动选择
 #   - 🇺🇸手动选择
-#   - 🇭🇰手动选择
-#   - 🇹🇼手动选择
 #   - 🇯🇵手动选择
 #   - 🇰🇷手动选择
+#   - 🇭🇰手动选择
+#   - 🇹🇼手动选择
 #   - 🇨🇦手动选择
 #   - 🇦🇺手动选择
 #   - 🇬🇧手动选择
@@ -217,10 +217,10 @@
 #   - 🇨🇳手动选择
 #   - 🇸🇬故障转移
 #   - 🇺🇸故障转移
-#   - 🇭🇰故障转移
-#   - 🇹🇼故障转移
 #   - 🇯🇵故障转移
 #   - 🇰🇷故障转移
+#   - 🇭🇰故障转移
+#   - 🇹🇼故障转移
 #   - 🇨🇦故障转移
 #   - 🇦🇺故障转移
 #   - 🇬🇧故障转移
@@ -231,10 +231,10 @@
 #   - 📋故转全部
 #   - 🇸🇬自动选择
 #   - 🇺🇸自动选择
-#   - 🇭🇰自动选择
-#   - 🇹🇼自动选择
 #   - 🇯🇵自动选择
 #   - 🇰🇷自动选择
+#   - 🇭🇰自动选择
+#   - 🇹🇼自动选择
 #   - 🇨🇦自动选择
 #   - 🇦🇺自动选择
 #   - 🇬🇧自动选择
@@ -245,10 +245,10 @@
 #   - 📋自动全部
 #   - 🇸🇬负载均衡
 #   - 🇺🇸负载均衡
-#   - 🇭🇰负载均衡
-#   - 🇹🇼负载均衡
 #   - 🇯🇵负载均衡
 #   - 🇰🇷负载均衡
+#   - 🇭🇰负载均衡
+#   - 🇹🇼负载均衡
 #   - 🇨🇦负载均衡
 #   - 🇦🇺负载均衡
 #   - 🇬🇧负载均衡
@@ -267,49 +267,49 @@
 #   proxies:
 #   - 🔀规则
 #   - ➡️直连
-#   - 🟨手动选择
-#   - 🟦手动选择
-#   - 🟢故障转移
-#   - 🟣故障转移
-#   - 🔶自动选择
-#   - 🔷自动选择
+#   - 🟧A手动选择
+#   - 🟦B手动选择
+#   - 🟠A故障转移
+#   - 🔵B故障转移
+#   - 🔶A自动选择
+#   - 🔷B自动选择
 #   - 🧩手动其他
 #   - 📋手动全部
 #   - 🎯默认
 #   - 🌐其他
 #   - 🔗链式代理
 #   - ⛔阻断
+#   - ⛔静默阻断
 #   - ↩️绕过
-#   - Pornhub
-#   - PikPak
-#   - TikTok
-#   - Netflix
-#   - YouTube
-#   - Emby
-#   - OpenAI
-#   - Anthropic
-#   - xAI
-#   - Gemini
-#   - Google
-#   - Apple
-#   - Crypto
+#   - ↩️单条绕过
 #   - FCM
-#   - Epic
 #   - Steam
-#   - Spotify
 #   - Telegram
+#   - Spotify
+#   - Meta
 #   - GitHub
-#   - Instagram
+#   - PikPak
 #   - Discord
+#   - TikTok
+#   - Pornhub
+#   - Crypto
+#   - Gemini
+#   - xAI
+#   - Anthropic
+#   - OpenAI
+#   - YouTube
+#   - Netflix
+#   - Apple
 #   - Microsoft
+#   - Google
 #   - Cloudflare
 #   - China
 #   - 🇸🇬手动选择
 #   - 🇺🇸手动选择
-#   - 🇭🇰手动选择
-#   - 🇹🇼手动选择
 #   - 🇯🇵手动选择
 #   - 🇰🇷手动选择
+#   - 🇭🇰手动选择
+#   - 🇹🇼手动选择
 #   - 🇨🇦手动选择
 #   - 🇦🇺手动选择
 #   - 🇬🇧手动选择
@@ -318,10 +318,10 @@
 #   - 🇨🇳手动选择
 #   - 🇸🇬故障转移
 #   - 🇺🇸故障转移
-#   - 🇭🇰故障转移
-#   - 🇹🇼故障转移
 #   - 🇯🇵故障转移
 #   - 🇰🇷故障转移
+#   - 🇭🇰故障转移
+#   - 🇹🇼故障转移
 #   - 🇨🇦故障转移
 #   - 🇦🇺故障转移
 #   - 🇬🇧故障转移
@@ -332,10 +332,10 @@
 #   - 📋故转全部
 #   - 🇸🇬自动选择
 #   - 🇺🇸自动选择
-#   - 🇭🇰自动选择
-#   - 🇹🇼自动选择
 #   - 🇯🇵自动选择
 #   - 🇰🇷自动选择
+#   - 🇭🇰自动选择
+#   - 🇹🇼自动选择
 #   - 🇨🇦自动选择
 #   - 🇦🇺自动选择
 #   - 🇬🇧自动选择
@@ -346,10 +346,10 @@
 #   - 📋自动全部
 #   - 🇸🇬负载均衡
 #   - 🇺🇸负载均衡
-#   - 🇭🇰负载均衡
-#   - 🇹🇼负载均衡
 #   - 🇯🇵负载均衡
 #   - 🇰🇷负载均衡
+#   - 🇭🇰负载均衡
+#   - 🇹🇼负载均衡
 #   - 🇨🇦负载均衡
 #   - 🇦🇺负载均衡
 #   - 🇬🇧负载均衡
@@ -366,24 +366,26 @@
 #   include-all: true
 #   name: 🎯默认
 #   proxies: &id001
-#   - 🟨手动选择
-#   - 🟦手动选择
-#   - 🟢故障转移
-#   - 🟣故障转移
-#   - 🔶自动选择
-#   - 🔷自动选择
+#   - 🟧A手动选择
+#   - 🟦B手动选择
+#   - 🟠A故障转移
+#   - 🔵B故障转移
+#   - 🔶A自动选择
+#   - 🔷B自动选择
 #   - 🧩手动其他
 #   - 📋手动全部
 #   - 🔗链式代理
 #   - ➡️直连
 #   - ⛔阻断
+#   - ⛔静默阻断
 #   - ↩️绕过
+#   - ↩️单条绕过
 #   - 🇸🇬手动选择
 #   - 🇺🇸手动选择
-#   - 🇭🇰手动选择
-#   - 🇹🇼手动选择
 #   - 🇯🇵手动选择
 #   - 🇰🇷手动选择
+#   - 🇭🇰手动选择
+#   - 🇹🇼手动选择
 #   - 🇨🇦手动选择
 #   - 🇦🇺手动选择
 #   - 🇬🇧手动选择
@@ -392,10 +394,10 @@
 #   - 🇨🇳手动选择
 #   - 🇸🇬故障转移
 #   - 🇺🇸故障转移
-#   - 🇭🇰故障转移
-#   - 🇹🇼故障转移
 #   - 🇯🇵故障转移
 #   - 🇰🇷故障转移
+#   - 🇭🇰故障转移
+#   - 🇹🇼故障转移
 #   - 🇨🇦故障转移
 #   - 🇦🇺故障转移
 #   - 🇬🇧故障转移
@@ -406,10 +408,10 @@
 #   - 📋故转全部
 #   - 🇸🇬自动选择
 #   - 🇺🇸自动选择
-#   - 🇭🇰自动选择
-#   - 🇹🇼自动选择
 #   - 🇯🇵自动选择
 #   - 🇰🇷自动选择
+#   - 🇭🇰自动选择
+#   - 🇹🇼自动选择
 #   - 🇨🇦自动选择
 #   - 🇦🇺自动选择
 #   - 🇬🇧自动选择
@@ -420,10 +422,10 @@
 #   - 📋自动全部
 #   - 🇸🇬负载均衡
 #   - 🇺🇸负载均衡
-#   - 🇭🇰负载均衡
-#   - 🇹🇼负载均衡
 #   - 🇯🇵负载均衡
 #   - 🇰🇷负载均衡
+#   - 🇭🇰负载均衡
+#   - 🇹🇼负载均衡
 #   - 🇨🇦负载均衡
 #   - 🇦🇺负载均衡
 #   - 🇬🇧负载均衡
@@ -441,6 +443,149 @@
 #   name: 🌐其他
 #   proxies: *id001
 #   type: select
+# - hidden: true
+#   name: 🔗链式代理
+#   proxies:
+#   - 落地
+#   type: select
+# - hidden: true
+#   name: ➡️直连
+#   proxies:
+#   - DIRECT
+#   type: select
+# - hidden: true
+#   name: ⛔阻断
+#   proxies:
+#   - REJECT
+#   type: select
+# - hidden: true
+#   name: ⛔静默阻断
+#   proxies:
+#   - REJECT-DROP
+#   type: select
+# - hidden: true
+#   name: ↩️绕过
+#   proxies:
+#   - PASS
+#   type: select
+# - hidden: true
+#   name: ↩️单条绕过
+#   proxies:
+#   - PASS-RULE
+#   type: select
+# - icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/ji.png
+#   name: 🟧A手动选择
+#   proxies:
+#   - 🇸🇬手动选择
+#   - 🇺🇸手动选择
+#   - 🇯🇵手动选择
+#   - 🇰🇷手动选择
+#   - 🇭🇰手动选择
+#   - 🇹🇼手动选择
+#   - 🇨🇦手动选择
+#   - 🇦🇺手动选择
+#   - 🇬🇧手动选择
+#   - 🇫🇷手动选择
+#   - 🇩🇪手动选择
+#   - 🇨🇳手动选择
+#   type: select
+# - default-selected: 🇺🇸手动选择
+#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/ni.png
+#   name: 🟦B手动选择
+#   proxies:
+#   - 🇸🇬手动选择
+#   - 🇺🇸手动选择
+#   - 🇯🇵手动选择
+#   - 🇰🇷手动选择
+#   - 🇭🇰手动选择
+#   - 🇹🇼手动选择
+#   - 🇨🇦手动选择
+#   - 🇦🇺手动选择
+#   - 🇬🇧手动选择
+#   - 🇫🇷手动选择
+#   - 🇩🇪手动选择
+#   - 🇨🇳手动选择
+#   type: select
+# - icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/tai.png
+#   name: 🟠A故障转移
+#   proxies:
+#   - 🇸🇬故障转移
+#   - 🇺🇸故障转移
+#   - 🇯🇵故障转移
+#   - 🇰🇷故障转移
+#   - 🇭🇰故障转移
+#   - 🇹🇼故障转移
+#   - 🇨🇦故障转移
+#   - 🇦🇺故障转移
+#   - 🇬🇧故障转移
+#   - 🇫🇷故障转移
+#   - 🇩🇪故障转移
+#   - 🇨🇳故障转移
+#   type: select
+# - default-selected: 🇺🇸故障转移
+#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/mei.png
+#   name: 🔵B故障转移
+#   proxies:
+#   - 🇸🇬故障转移
+#   - 🇺🇸故障转移
+#   - 🇯🇵故障转移
+#   - 🇰🇷故障转移
+#   - 🇭🇰故障转移
+#   - 🇹🇼故障转移
+#   - 🇨🇦故障转移
+#   - 🇦🇺故障转移
+#   - 🇬🇧故障转移
+#   - 🇫🇷故障转移
+#   - 🇩🇪故障转移
+#   - 🇨🇳故障转移
+#   type: select
+# - icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Static.png
+#   name: 🔶A自动选择
+#   proxies:
+#   - 🇸🇬自动选择
+#   - 🇺🇸自动选择
+#   - 🇯🇵自动选择
+#   - 🇰🇷自动选择
+#   - 🇭🇰自动选择
+#   - 🇹🇼自动选择
+#   - 🇨🇦自动选择
+#   - 🇦🇺自动选择
+#   - 🇬🇧自动选择
+#   - 🇫🇷自动选择
+#   - 🇩🇪自动选择
+#   - 🇨🇳自动选择
+#   type: select
+# - default-selected: 🇺🇸自动选择
+#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Static.png
+#   name: 🔷B自动选择
+#   proxies:
+#   - 🇸🇬自动选择
+#   - 🇺🇸自动选择
+#   - 🇯🇵自动选择
+#   - 🇰🇷自动选择
+#   - 🇭🇰自动选择
+#   - 🇹🇼自动选择
+#   - 🇨🇦自动选择
+#   - 🇦🇺自动选择
+#   - 🇬🇧自动选择
+#   - 🇫🇷自动选择
+#   - 🇩🇪自动选择
+#   - 🇨🇳自动选择
+#   type: select
+# - disable-udp: false
+#   filter: ^(?!.*(🔗|🔀规则|新加坡|🇸🇬|美国|🇺🇸|日本|🇯🇵|韩国|🇰🇷|香港|🇭🇰|台湾|🇹🇼|加拿大|🇨🇦|澳大利亚|🇦🇺|英国|🇬🇧|法国|🇫🇷|德国|🇩🇪|中国|🇨🇳))
+#   hidden: false
+#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Filter.png
+#   include-all: true
+#   name: 🧩手动其他
+#   type: select
+# - disable-udp: false
+#   filter: ^(?!.*(🔗|🔀规则))
+#   hidden: false
+#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Available.png
+#   include-all: true
+#   name: 📋手动全部
+#   type: select
 # - default-selected: ⛔阻断
 #   disable-udp: false
 #   filter: ^(?!.*(🔗|🔀规则))
@@ -449,22 +594,23 @@
 #   include-all: true
 #   name: 中转
 #   proxies:
-#   - 🟨手动选择
-#   - 🟦手动选择
-#   - 🟢故障转移
-#   - 🟣故障转移
-#   - 🔶自动选择
-#   - 🔷自动选择
+#   - 🟧A手动选择
+#   - 🟦B手动选择
+#   - 🟠A故障转移
+#   - 🔵B故障转移
+#   - 🔶A自动选择
+#   - 🔷B自动选择
 #   - 🧩手动其他
 #   - 📋手动全部
 #   - ➡️直连
 #   - ⛔阻断
+#   - ⛔静默阻断
 #   - 🇸🇬手动选择
 #   - 🇺🇸手动选择
-#   - 🇭🇰手动选择
-#   - 🇹🇼手动选择
 #   - 🇯🇵手动选择
 #   - 🇰🇷手动选择
+#   - 🇭🇰手动选择
+#   - 🇹🇼手动选择
 #   - 🇨🇦手动选择
 #   - 🇦🇺手动选择
 #   - 🇬🇧手动选择
@@ -473,10 +619,10 @@
 #   - 🇨🇳手动选择
 #   - 🇸🇬故障转移
 #   - 🇺🇸故障转移
-#   - 🇭🇰故障转移
-#   - 🇹🇼故障转移
 #   - 🇯🇵故障转移
 #   - 🇰🇷故障转移
+#   - 🇭🇰故障转移
+#   - 🇹🇼故障转移
 #   - 🇨🇦故障转移
 #   - 🇦🇺故障转移
 #   - 🇬🇧故障转移
@@ -487,10 +633,10 @@
 #   - 📋故转全部
 #   - 🇸🇬自动选择
 #   - 🇺🇸自动选择
-#   - 🇭🇰自动选择
-#   - 🇹🇼自动选择
 #   - 🇯🇵自动选择
 #   - 🇰🇷自动选择
+#   - 🇭🇰自动选择
+#   - 🇹🇼自动选择
 #   - 🇨🇦自动选择
 #   - 🇦🇺自动选择
 #   - 🇬🇧自动选择
@@ -501,10 +647,10 @@
 #   - 📋自动全部
 #   - 🇸🇬负载均衡
 #   - 🇺🇸负载均衡
-#   - 🇭🇰负载均衡
-#   - 🇹🇼负载均衡
 #   - 🇯🇵负载均衡
 #   - 🇰🇷负载均衡
+#   - 🇭🇰负载均衡
+#   - 🇹🇼负载均衡
 #   - 🇨🇦负载均衡
 #   - 🇦🇺负载均衡
 #   - 🇬🇧负载均衡
@@ -522,153 +668,20 @@
 #   include-all: true
 #   name: 落地
 #   type: select
-# - hidden: true
-#   name: ➡️直连
-#   proxies:
-#   - DIRECT
-#   type: select
-# - hidden: true
-#   name: ↩️绕过
-#   proxies:
-#   - PASS
-#   type: select
-# - hidden: true
-#   name: ⛔阻断
-#   proxies:
-#   - REJECT
-#   type: select
-# - hidden: true
-#   name: 🔗链式代理
-#   proxies:
-#   - 落地
-#   type: select
-# - icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/ji.png
-#   name: 🟨手动选择
-#   proxies:
-#   - 🇸🇬手动选择
-#   - 🇺🇸手动选择
-#   - 🇭🇰手动选择
-#   - 🇹🇼手动选择
-#   - 🇯🇵手动选择
-#   - 🇰🇷手动选择
-#   - 🇨🇦手动选择
-#   - 🇦🇺手动选择
-#   - 🇬🇧手动选择
-#   - 🇫🇷手动选择
-#   - 🇩🇪手动选择
-#   - 🇨🇳手动选择
-#   type: select
-# - default-selected: 🇺🇸手动选择
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/ni.png
-#   name: 🟦手动选择
-#   proxies:
-#   - 🇸🇬手动选择
-#   - 🇺🇸手动选择
-#   - 🇭🇰手动选择
-#   - 🇹🇼手动选择
-#   - 🇯🇵手动选择
-#   - 🇰🇷手动选择
-#   - 🇨🇦手动选择
-#   - 🇦🇺手动选择
-#   - 🇬🇧手动选择
-#   - 🇫🇷手动选择
-#   - 🇩🇪手动选择
-#   - 🇨🇳手动选择
-#   type: select
-# - icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/tai.png
-#   name: 🟢故障转移
-#   proxies:
-#   - 🇸🇬故障转移
-#   - 🇺🇸故障转移
-#   - 🇭🇰故障转移
-#   - 🇹🇼故障转移
-#   - 🇯🇵故障转移
-#   - 🇰🇷故障转移
-#   - 🇨🇦故障转移
-#   - 🇦🇺故障转移
-#   - 🇬🇧故障转移
-#   - 🇫🇷故障转移
-#   - 🇩🇪故障转移
-#   - 🇨🇳故障转移
-#   type: select
-# - default-selected: 🇺🇸故障转移
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/mei.png
-#   name: 🟣故障转移
-#   proxies:
-#   - 🇸🇬故障转移
-#   - 🇺🇸故障转移
-#   - 🇭🇰故障转移
-#   - 🇹🇼故障转移
-#   - 🇯🇵故障转移
-#   - 🇰🇷故障转移
-#   - 🇨🇦故障转移
-#   - 🇦🇺故障转移
-#   - 🇬🇧故障转移
-#   - 🇫🇷故障转移
-#   - 🇩🇪故障转移
-#   - 🇨🇳故障转移
-#   type: select
-# - icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Static.png
-#   name: 🔶自动选择
-#   proxies:
-#   - 🇸🇬自动选择
-#   - 🇺🇸自动选择
-#   - 🇭🇰自动选择
-#   - 🇹🇼自动选择
-#   - 🇯🇵自动选择
-#   - 🇰🇷自动选择
-#   - 🇨🇦自动选择
-#   - 🇦🇺自动选择
-#   - 🇬🇧自动选择
-#   - 🇫🇷自动选择
-#   - 🇩🇪自动选择
-#   - 🇨🇳自动选择
-#   type: select
-# - default-selected: 🇺🇸自动选择
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Static.png
-#   name: 🔷自动选择
-#   proxies:
-#   - 🇸🇬自动选择
-#   - 🇺🇸自动选择
-#   - 🇭🇰自动选择
-#   - 🇹🇼自动选择
-#   - 🇯🇵自动选择
-#   - 🇰🇷自动选择
-#   - 🇨🇦自动选择
-#   - 🇦🇺自动选择
-#   - 🇬🇧自动选择
-#   - 🇫🇷自动选择
-#   - 🇩🇪自动选择
-#   - 🇨🇳自动选择
-#   type: select
-# - disable-udp: false
-#   filter: ^(?!.*(🔗|🔀规则|中国|🇨🇳|香港|🇭🇰|台湾|🇹🇼|日本|🇯🇵|新加坡|🇸🇬|美国|🇺🇸|德国|🇩🇪|英国|🇬🇧|韩国|🇰🇷|法国|🇫🇷|澳大利亚|🇦🇺|加拿大|🇨🇦))
-#   hidden: false
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Filter.png
-#   include-all: true
-#   name: 🧩手动其他
-#   type: select
-# - disable-udp: false
-#   filter: ^(?!.*(🔗|🔀规则))
-#   hidden: false
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Available.png
-#   include-all: true
-#   name: 📋手动全部
-#   type: select
-# - default-selected: 🎯默认
+# - default-selected: ➡️直连
 #   disable-udp: false
 #   filter: ^(?!.*(🔗|🔀规则))
 #   hidden: false
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Pornhub_2.png
+#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/FCM.png
 #   include-all: true
-#   name: Pornhub
+#   name: FCM
 #   proxies: &id002
-#   - 🟨手动选择
-#   - 🟦手动选择
-#   - 🟢故障转移
-#   - 🟣故障转移
-#   - 🔶自动选择
-#   - 🔷自动选择
+#   - 🟧A手动选择
+#   - 🟦B手动选择
+#   - 🟠A故障转移
+#   - 🔵B故障转移
+#   - 🔶A自动选择
+#   - 🔷B自动选择
 #   - 🧩手动其他
 #   - 📋手动全部
 #   - 🎯默认
@@ -676,13 +689,15 @@
 #   - 🔗链式代理
 #   - ➡️直连
 #   - ⛔阻断
+#   - ⛔静默阻断
 #   - ↩️绕过
+#   - ↩️单条绕过
 #   - 🇸🇬手动选择
 #   - 🇺🇸手动选择
-#   - 🇭🇰手动选择
-#   - 🇹🇼手动选择
 #   - 🇯🇵手动选择
 #   - 🇰🇷手动选择
+#   - 🇭🇰手动选择
+#   - 🇹🇼手动选择
 #   - 🇨🇦手动选择
 #   - 🇦🇺手动选择
 #   - 🇬🇧手动选择
@@ -691,10 +706,10 @@
 #   - 🇨🇳手动选择
 #   - 🇸🇬故障转移
 #   - 🇺🇸故障转移
-#   - 🇭🇰故障转移
-#   - 🇹🇼故障转移
 #   - 🇯🇵故障转移
 #   - 🇰🇷故障转移
+#   - 🇭🇰故障转移
+#   - 🇹🇼故障转移
 #   - 🇨🇦故障转移
 #   - 🇦🇺故障转移
 #   - 🇬🇧故障转移
@@ -705,10 +720,10 @@
 #   - 📋故转全部
 #   - 🇸🇬自动选择
 #   - 🇺🇸自动选择
-#   - 🇭🇰自动选择
-#   - 🇹🇼自动选择
 #   - 🇯🇵自动选择
 #   - 🇰🇷自动选择
+#   - 🇭🇰自动选择
+#   - 🇹🇼自动选择
 #   - 🇨🇦自动选择
 #   - 🇦🇺自动选择
 #   - 🇬🇧自动选择
@@ -719,10 +734,10 @@
 #   - 📋自动全部
 #   - 🇸🇬负载均衡
 #   - 🇺🇸负载均衡
-#   - 🇭🇰负载均衡
-#   - 🇹🇼负载均衡
 #   - 🇯🇵负载均衡
 #   - 🇰🇷负载均衡
+#   - 🇭🇰负载均衡
+#   - 🇹🇼负载均衡
 #   - 🇨🇦负载均衡
 #   - 🇦🇺负载均衡
 #   - 🇬🇧负载均衡
@@ -731,69 +746,6 @@
 #   - 🇨🇳负载均衡
 #   - 🧩均衡其他
 #   - 📋均衡全部
-#   type: select
-# - default-selected: 🎯默认
-#   disable-udp: false
-#   filter: ^(?!.*(🔗|🔀规则))
-#   hidden: false
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/TikTok_2.png
-#   include-all: true
-#   name: TikTok
-#   proxies: *id002
-#   type: select
-# - default-selected: 🎯默认
-#   disable-udp: false
-#   filter: ^(?!.*(🔗|🔀规则))
-#   hidden: false
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Netflix.png
-#   include-all: true
-#   name: Netflix
-#   proxies: *id002
-#   type: select
-# - default-selected: 🎯默认
-#   disable-udp: false
-#   filter: ^(?!.*(🔗|🔀规则))
-#   hidden: false
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/gemini-color.png
-#   include-all: true
-#   name: Gemini
-#   proxies: *id002
-#   type: select
-# - default-selected: 🎯默认
-#   disable-udp: false
-#   filter: ^(?!.*(🔗|🔀规则))
-#   hidden: false
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/YouTube.png
-#   include-all: true
-#   name: YouTube
-#   proxies: *id002
-#   type: select
-# - default-selected: 🎯默认
-#   disable-udp: false
-#   filter: ^(?!.*(🔗|🔀规则))
-#   hidden: false
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Emby.png
-#   include-all: true
-#   name: Emby
-#   proxies: *id002
-#   type: select
-# - default-selected: 🎯默认
-#   disable-udp: false
-#   filter: ^(?!.*(🔗|🔀规则))
-#   hidden: false
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Cloudflare.png
-#   include-all: true
-#   name: Cloudflare
-#   proxies: *id002
-#   type: select
-# - default-selected: 🎯默认
-#   disable-udp: false
-#   filter: ^(?!.*(🔗|🔀规则))
-#   hidden: false
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Epic_Games.png
-#   include-all: true
-#   name: Epic
-#   proxies: *id002
 #   type: select
 # - default-selected: 🎯默认
 #   disable-udp: false
@@ -817,45 +769,27 @@
 #   disable-udp: false
 #   filter: ^(?!.*(🔗|🔀规则))
 #   hidden: false
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/GitHub.png
-#   include-all: true
-#   name: GitHub
-#   proxies: *id002
-#   type: select
-# - default-selected: 🎯默认
-#   disable-udp: false
-#   filter: ^(?!.*(🔗|🔀规则))
-#   hidden: false
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Google.png
-#   include-all: true
-#   name: Google
-#   proxies: *id002
-#   type: select
-# - default-selected: 🎯默认
-#   disable-udp: false
-#   filter: ^(?!.*(🔗|🔀规则))
-#   hidden: false
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Discord.png
-#   include-all: true
-#   name: Discord
-#   proxies: *id002
-#   type: select
-# - default-selected: 🎯默认
-#   disable-udp: false
-#   filter: ^(?!.*(🔗|🔀规则))
-#   hidden: false
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Instagram.png
-#   include-all: true
-#   name: Instagram
-#   proxies: *id002
-#   type: select
-# - default-selected: 🎯默认
-#   disable-udp: false
-#   filter: ^(?!.*(🔗|🔀规则))
-#   hidden: false
 #   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Spotify.png
 #   include-all: true
 #   name: Spotify
+#   proxies: *id002
+#   type: select
+# - default-selected: 🎯默认
+#   disable-udp: false
+#   filter: ^(?!.*(🔗|🔀规则))
+#   hidden: false
+#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Meta.png
+#   include-all: true
+#   name: Meta
+#   proxies: *id002
+#   type: select
+# - default-selected: 🎯默认
+#   disable-udp: false
+#   filter: ^(?!.*(🔗|🔀规则))
+#   hidden: false
+#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/GitHub.png
+#   include-all: true
+#   name: GitHub
 #   proxies: *id002
 #   type: select
 # - default-selected: 🎯默认
@@ -871,9 +805,90 @@
 #   disable-udp: false
 #   filter: ^(?!.*(🔗|🔀规则))
 #   hidden: false
+#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Discord.png
+#   include-all: true
+#   name: Discord
+#   proxies: *id002
+#   type: select
+# - default-selected: 🎯默认
+#   disable-udp: false
+#   filter: ^(?!.*(🔗|🔀规则))
+#   hidden: false
+#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/TikTok_2.png
+#   include-all: true
+#   name: TikTok
+#   proxies: *id002
+#   type: select
+# - default-selected: 🎯默认
+#   disable-udp: false
+#   filter: ^(?!.*(🔗|🔀规则))
+#   hidden: false
+#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Pornhub_2.png
+#   include-all: true
+#   name: Pornhub
+#   proxies: *id002
+#   type: select
+# - default-selected: 🎯默认
+#   disable-udp: false
+#   filter: ^(?!.*(🔗|🔀规则))
+#   hidden: false
+#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Bitcoin.png
+#   include-all: true
+#   name: Crypto
+#   proxies: *id002
+#   type: select
+# - default-selected: 🎯默认
+#   disable-udp: false
+#   filter: ^(?!.*(🔗|🔀规则))
+#   hidden: false
+#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/gemini-color.png
+#   include-all: true
+#   name: Gemini
+#   proxies: *id002
+#   type: select
+# - default-selected: 🎯默认
+#   disable-udp: false
+#   filter: ^(?!.*(🔗|🔀规则))
+#   hidden: false
+#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/xai.png
+#   include-all: true
+#   name: xAI
+#   proxies: *id002
+#   type: select
+# - default-selected: 🎯默认
+#   disable-udp: false
+#   filter: ^(?!.*(🔗|🔀规则))
+#   hidden: false
+#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/claude.png
+#   include-all: true
+#   name: Anthropic
+#   proxies: *id002
+#   type: select
+# - default-selected: 🎯默认
+#   disable-udp: false
+#   filter: ^(?!.*(🔗|🔀规则))
+#   hidden: false
 #   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/ChatGPT.png
 #   include-all: true
 #   name: OpenAI
+#   proxies: *id002
+#   type: select
+# - default-selected: 🎯默认
+#   disable-udp: false
+#   filter: ^(?!.*(🔗|🔀规则))
+#   hidden: false
+#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/YouTube.png
+#   include-all: true
+#   name: YouTube
+#   proxies: *id002
+#   type: select
+# - default-selected: 🎯默认
+#   disable-udp: false
+#   filter: ^(?!.*(🔗|🔀规则))
+#   hidden: false
+#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Netflix.png
+#   include-all: true
+#   name: Netflix
 #   proxies: *id002
 #   type: select
 # - default-selected: 🎯默认
@@ -898,36 +913,18 @@
 #   disable-udp: false
 #   filter: ^(?!.*(🔗|🔀规则))
 #   hidden: false
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Bitcoin.png
+#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Google.png
 #   include-all: true
-#   name: Crypto
+#   name: Google
 #   proxies: *id002
 #   type: select
 # - default-selected: 🎯默认
 #   disable-udp: false
 #   filter: ^(?!.*(🔗|🔀规则))
 #   hidden: false
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/xai.png
+#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Cloudflare.png
 #   include-all: true
-#   name: xAI
-#   proxies: *id002
-#   type: select
-# - default-selected: 🎯默认
-#   disable-udp: false
-#   filter: ^(?!.*(🔗|🔀规则))
-#   hidden: false
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/claude.png
-#   include-all: true
-#   name: Anthropic
-#   proxies: *id002
-#   type: select
-# - default-selected: ➡️直连
-#   disable-udp: false
-#   filter: ^(?!.*(🔗|🔀规则))
-#   hidden: false
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/FCM.png
-#   include-all: true
-#   name: FCM
+#   name: Cloudflare
 #   proxies: *id002
 #   type: select
 # - disable-udp: false
@@ -941,12 +938,12 @@
 #   - 🇨🇳故障转移
 #   - 🇨🇳自动选择
 #   - 🇨🇳负载均衡
-#   - 🟨手动选择
-#   - 🟦手动选择
-#   - 🟢故障转移
-#   - 🟣故障转移
-#   - 🔶自动选择
-#   - 🔷自动选择
+#   - 🟧A手动选择
+#   - 🟦B手动选择
+#   - 🟠A故障转移
+#   - 🔵B故障转移
+#   - 🔶A自动选择
+#   - 🔷B自动选择
 #   - 🧩手动其他
 #   - 📋手动全部
 #   - 🎯默认
@@ -954,13 +951,15 @@
 #   - 🔗链式代理
 #   - ➡️直连
 #   - ⛔阻断
+#   - ⛔静默阻断
 #   - ↩️绕过
+#   - ↩️单条绕过
 #   - 🇸🇬手动选择
 #   - 🇺🇸手动选择
-#   - 🇭🇰手动选择
-#   - 🇹🇼手动选择
 #   - 🇯🇵手动选择
 #   - 🇰🇷手动选择
+#   - 🇭🇰手动选择
+#   - 🇹🇼手动选择
 #   - 🇨🇦手动选择
 #   - 🇦🇺手动选择
 #   - 🇬🇧手动选择
@@ -968,10 +967,10 @@
 #   - 🇩🇪手动选择
 #   - 🇸🇬故障转移
 #   - 🇺🇸故障转移
-#   - 🇭🇰故障转移
-#   - 🇹🇼故障转移
 #   - 🇯🇵故障转移
 #   - 🇰🇷故障转移
+#   - 🇭🇰故障转移
+#   - 🇹🇼故障转移
 #   - 🇨🇦故障转移
 #   - 🇦🇺故障转移
 #   - 🇬🇧故障转移
@@ -981,10 +980,10 @@
 #   - 📋故转全部
 #   - 🇸🇬自动选择
 #   - 🇺🇸自动选择
-#   - 🇭🇰自动选择
-#   - 🇹🇼自动选择
 #   - 🇯🇵自动选择
 #   - 🇰🇷自动选择
+#   - 🇭🇰自动选择
+#   - 🇹🇼自动选择
 #   - 🇨🇦自动选择
 #   - 🇦🇺自动选择
 #   - 🇬🇧自动选择
@@ -994,10 +993,10 @@
 #   - 📋自动全部
 #   - 🇸🇬负载均衡
 #   - 🇺🇸负载均衡
-#   - 🇭🇰负载均衡
-#   - 🇹🇼负载均衡
 #   - 🇯🇵负载均衡
 #   - 🇰🇷负载均衡
+#   - 🇭🇰负载均衡
+#   - 🇹🇼负载均衡
 #   - 🇨🇦负载均衡
 #   - 🇦🇺负载均衡
 #   - 🇬🇧负载均衡
@@ -1005,13 +1004,6 @@
 #   - 🇩🇪负载均衡
 #   - 🧩均衡其他
 #   - 📋均衡全部
-#   type: select
-# - disable-udp: false
-#   filter: ^(?!.*(🔗|🔀规则)).*(香港|🇭🇰)
-#   hidden: false
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Hong_Kong.png
-#   include-all: true
-#   name: 🇭🇰手动选择
 #   type: select
 # - disable-udp: false
 #   filter: ^(?!.*(🔗|🔀规则)).*(新加坡|🇸🇬)
@@ -1028,13 +1020,6 @@
 #   name: 🇺🇸手动选择
 #   type: select
 # - disable-udp: false
-#   filter: ^(?!.*(🔗|🔀规则)).*(台湾|🇹🇼)
-#   hidden: false
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Taiwan.png
-#   include-all: true
-#   name: 🇹🇼手动选择
-#   type: select
-# - disable-udp: false
 #   filter: ^(?!.*(🔗|🔀规则)).*(日本|🇯🇵)
 #   hidden: false
 #   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Japan.png
@@ -1047,6 +1032,27 @@
 #   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Korea.png
 #   include-all: true
 #   name: 🇰🇷手动选择
+#   type: select
+# - disable-udp: false
+#   filter: ^(?!.*(🔗|🔀规则)).*(香港|🇭🇰)
+#   hidden: false
+#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Hong_Kong.png
+#   include-all: true
+#   name: 🇭🇰手动选择
+#   type: select
+# - disable-udp: false
+#   filter: ^(?!.*(🔗|🔀规则)).*(台湾|🇹🇼)
+#   hidden: false
+#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Taiwan.png
+#   include-all: true
+#   name: 🇹🇼手动选择
+#   type: select
+# - disable-udp: false
+#   filter: ^(?!.*(🔗|🔀规则)).*(加拿大|🇨🇦)
+#   hidden: false
+#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Canada.png
+#   include-all: true
+#   name: 🇨🇦手动选择
 #   type: select
 # - disable-udp: false
 #   filter: ^(?!.*(🔗|🔀规则)).*(澳大利亚|🇦🇺)
@@ -1084,24 +1090,6 @@
 #   name: 🇨🇳手动选择
 #   type: select
 # - disable-udp: false
-#   filter: ^(?!.*(🔗|🔀规则)).*(加拿大|🇨🇦)
-#   hidden: false
-#   icon: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/icon/Canada.png
-#   include-all: true
-#   name: 🇨🇦手动选择
-#   type: select
-# - disable-udp: false
-#   expected-status: 204
-#   filter: ^(?!.*(🔗|🔀规则)).*(香港|🇭🇰)
-#   hidden: false
-#   include-all: true
-#   interval: 300
-#   lazy: true
-#   name: 🇭🇰故障转移
-#   timeout: 5000
-#   type: fallback
-#   url: https://www.gstatic.com/generate_204
-# - disable-udp: false
 #   expected-status: 204
 #   filter: ^(?!.*(🔗|🔀规则)).*(新加坡|🇸🇬)
 #   hidden: false
@@ -1125,17 +1113,6 @@
 #   url: https://www.gstatic.com/generate_204
 # - disable-udp: false
 #   expected-status: 204
-#   filter: ^(?!.*(🔗|🔀规则)).*(台湾|🇹🇼)
-#   hidden: false
-#   include-all: true
-#   interval: 300
-#   lazy: true
-#   name: 🇹🇼故障转移
-#   timeout: 5000
-#   type: fallback
-#   url: https://www.gstatic.com/generate_204
-# - disable-udp: false
-#   expected-status: 204
 #   filter: ^(?!.*(🔗|🔀规则)).*(日本|🇯🇵)
 #   hidden: false
 #   include-all: true
@@ -1153,6 +1130,39 @@
 #   interval: 300
 #   lazy: true
 #   name: 🇰🇷故障转移
+#   timeout: 5000
+#   type: fallback
+#   url: https://www.gstatic.com/generate_204
+# - disable-udp: false
+#   expected-status: 204
+#   filter: ^(?!.*(🔗|🔀规则)).*(香港|🇭🇰)
+#   hidden: false
+#   include-all: true
+#   interval: 300
+#   lazy: true
+#   name: 🇭🇰故障转移
+#   timeout: 5000
+#   type: fallback
+#   url: https://www.gstatic.com/generate_204
+# - disable-udp: false
+#   expected-status: 204
+#   filter: ^(?!.*(🔗|🔀规则)).*(台湾|🇹🇼)
+#   hidden: false
+#   include-all: true
+#   interval: 300
+#   lazy: true
+#   name: 🇹🇼故障转移
+#   timeout: 5000
+#   type: fallback
+#   url: https://www.gstatic.com/generate_204
+# - disable-udp: false
+#   expected-status: 204
+#   filter: ^(?!.*(🔗|🔀规则)).*(加拿大|🇨🇦)
+#   hidden: false
+#   include-all: true
+#   interval: 300
+#   lazy: true
+#   name: 🇨🇦故障转移
 #   timeout: 5000
 #   type: fallback
 #   url: https://www.gstatic.com/generate_204
@@ -1213,18 +1223,7 @@
 #   url: https://www.gstatic.com/generate_204
 # - disable-udp: false
 #   expected-status: 204
-#   filter: ^(?!.*(🔗|🔀规则)).*(加拿大|🇨🇦)
-#   hidden: false
-#   include-all: true
-#   interval: 300
-#   lazy: true
-#   name: 🇨🇦故障转移
-#   timeout: 5000
-#   type: fallback
-#   url: https://www.gstatic.com/generate_204
-# - disable-udp: false
-#   expected-status: 204
-#   filter: ^(?!.*(🔗|🔀规则|中国|🇨🇳|香港|🇭🇰|台湾|🇹🇼|日本|🇯🇵|新加坡|🇸🇬|美国|🇺🇸|德国|🇩🇪|英国|🇬🇧|韩国|🇰🇷|法国|🇫🇷|澳大利亚|🇦🇺|加拿大|🇨🇦))
+#   filter: ^(?!.*(🔗|🔀规则|新加坡|🇸🇬|美国|🇺🇸|日本|🇯🇵|韩国|🇰🇷|香港|🇭🇰|台湾|🇹🇼|加拿大|🇨🇦|澳大利亚|🇦🇺|英国|🇬🇧|法国|🇫🇷|德国|🇩🇪|中国|🇨🇳))
 #   hidden: false
 #   include-all: true
 #   interval: 300
@@ -1243,18 +1242,6 @@
 #   name: 📋故转全部
 #   timeout: 5000
 #   type: fallback
-#   url: https://www.gstatic.com/generate_204
-# - disable-udp: false
-#   expected-status: 204
-#   filter: ^(?!.*(🔗|🔀规则)).*(香港|🇭🇰)
-#   hidden: false
-#   include-all: true
-#   interval: 300
-#   lazy: true
-#   name: 🇭🇰自动选择
-#   timeout: 5000
-#   tolerance: 50
-#   type: url-test
 #   url: https://www.gstatic.com/generate_204
 # - disable-udp: false
 #   expected-status: 204
@@ -1282,18 +1269,6 @@
 #   url: https://www.gstatic.com/generate_204
 # - disable-udp: false
 #   expected-status: 204
-#   filter: ^(?!.*(🔗|🔀规则)).*(台湾|🇹🇼)
-#   hidden: false
-#   include-all: true
-#   interval: 300
-#   lazy: true
-#   name: 🇹🇼自动选择
-#   timeout: 5000
-#   tolerance: 50
-#   type: url-test
-#   url: https://www.gstatic.com/generate_204
-# - disable-udp: false
-#   expected-status: 204
 #   filter: ^(?!.*(🔗|🔀规则)).*(日本|🇯🇵)
 #   hidden: false
 #   include-all: true
@@ -1312,6 +1287,42 @@
 #   interval: 300
 #   lazy: true
 #   name: 🇰🇷自动选择
+#   timeout: 5000
+#   tolerance: 50
+#   type: url-test
+#   url: https://www.gstatic.com/generate_204
+# - disable-udp: false
+#   expected-status: 204
+#   filter: ^(?!.*(🔗|🔀规则)).*(香港|🇭🇰)
+#   hidden: false
+#   include-all: true
+#   interval: 300
+#   lazy: true
+#   name: 🇭🇰自动选择
+#   timeout: 5000
+#   tolerance: 50
+#   type: url-test
+#   url: https://www.gstatic.com/generate_204
+# - disable-udp: false
+#   expected-status: 204
+#   filter: ^(?!.*(🔗|🔀规则)).*(台湾|🇹🇼)
+#   hidden: false
+#   include-all: true
+#   interval: 300
+#   lazy: true
+#   name: 🇹🇼自动选择
+#   timeout: 5000
+#   tolerance: 50
+#   type: url-test
+#   url: https://www.gstatic.com/generate_204
+# - disable-udp: false
+#   expected-status: 204
+#   filter: ^(?!.*(🔗|🔀规则)).*(加拿大|🇨🇦)
+#   hidden: false
+#   include-all: true
+#   interval: 300
+#   lazy: true
+#   name: 🇨🇦自动选择
 #   timeout: 5000
 #   tolerance: 50
 #   type: url-test
@@ -1378,19 +1389,7 @@
 #   url: https://www.gstatic.com/generate_204
 # - disable-udp: false
 #   expected-status: 204
-#   filter: ^(?!.*(🔗|🔀规则)).*(加拿大|🇨🇦)
-#   hidden: false
-#   include-all: true
-#   interval: 300
-#   lazy: true
-#   name: 🇨🇦自动选择
-#   timeout: 5000
-#   tolerance: 50
-#   type: url-test
-#   url: https://www.gstatic.com/generate_204
-# - disable-udp: false
-#   expected-status: 204
-#   filter: ^(?!.*(🔗|🔀规则|中国|🇨🇳|香港|🇭🇰|台湾|🇹🇼|日本|🇯🇵|新加坡|🇸🇬|美国|🇺🇸|德国|🇩🇪|英国|🇬🇧|韩国|🇰🇷|法国|🇫🇷|澳大利亚|🇦🇺|加拿大|🇨🇦))
+#   filter: ^(?!.*(🔗|🔀规则|新加坡|🇸🇬|美国|🇺🇸|日本|🇯🇵|韩国|🇰🇷|香港|🇭🇰|台湾|🇹🇼|加拿大|🇨🇦|澳大利亚|🇦🇺|英国|🇬🇧|法国|🇫🇷|德国|🇩🇪|中国|🇨🇳))
 #   hidden: false
 #   include-all: true
 #   interval: 300
@@ -1411,18 +1410,6 @@
 #   timeout: 5000
 #   tolerance: 50
 #   type: url-test
-#   url: https://www.gstatic.com/generate_204
-# - disable-udp: false
-#   expected-status: 204
-#   filter: ^(?!.*(🔗|🔀规则)).*(香港|🇭🇰)
-#   hidden: false
-#   include-all: true
-#   interval: 300
-#   lazy: true
-#   name: 🇭🇰负载均衡
-#   strategy: consistent-hashing
-#   timeout: 5000
-#   type: load-balance
 #   url: https://www.gstatic.com/generate_204
 # - disable-udp: false
 #   expected-status: 204
@@ -1450,18 +1437,6 @@
 #   url: https://www.gstatic.com/generate_204
 # - disable-udp: false
 #   expected-status: 204
-#   filter: ^(?!.*(🔗|🔀规则)).*(台湾|🇹🇼)
-#   hidden: false
-#   include-all: true
-#   interval: 300
-#   lazy: true
-#   name: 🇹🇼负载均衡
-#   strategy: consistent-hashing
-#   timeout: 5000
-#   type: load-balance
-#   url: https://www.gstatic.com/generate_204
-# - disable-udp: false
-#   expected-status: 204
 #   filter: ^(?!.*(🔗|🔀规则)).*(日本|🇯🇵)
 #   hidden: false
 #   include-all: true
@@ -1480,6 +1455,42 @@
 #   interval: 300
 #   lazy: true
 #   name: 🇰🇷负载均衡
+#   strategy: consistent-hashing
+#   timeout: 5000
+#   type: load-balance
+#   url: https://www.gstatic.com/generate_204
+# - disable-udp: false
+#   expected-status: 204
+#   filter: ^(?!.*(🔗|🔀规则)).*(香港|🇭🇰)
+#   hidden: false
+#   include-all: true
+#   interval: 300
+#   lazy: true
+#   name: 🇭🇰负载均衡
+#   strategy: consistent-hashing
+#   timeout: 5000
+#   type: load-balance
+#   url: https://www.gstatic.com/generate_204
+# - disable-udp: false
+#   expected-status: 204
+#   filter: ^(?!.*(🔗|🔀规则)).*(台湾|🇹🇼)
+#   hidden: false
+#   include-all: true
+#   interval: 300
+#   lazy: true
+#   name: 🇹🇼负载均衡
+#   strategy: consistent-hashing
+#   timeout: 5000
+#   type: load-balance
+#   url: https://www.gstatic.com/generate_204
+# - disable-udp: false
+#   expected-status: 204
+#   filter: ^(?!.*(🔗|🔀规则)).*(加拿大|🇨🇦)
+#   hidden: false
+#   include-all: true
+#   interval: 300
+#   lazy: true
+#   name: 🇨🇦负载均衡
 #   strategy: consistent-hashing
 #   timeout: 5000
 #   type: load-balance
@@ -1546,19 +1557,7 @@
 #   url: https://www.gstatic.com/generate_204
 # - disable-udp: false
 #   expected-status: 204
-#   filter: ^(?!.*(🔗|🔀规则)).*(加拿大|🇨🇦)
-#   hidden: false
-#   include-all: true
-#   interval: 300
-#   lazy: true
-#   name: 🇨🇦负载均衡
-#   strategy: consistent-hashing
-#   timeout: 5000
-#   type: load-balance
-#   url: https://www.gstatic.com/generate_204
-# - disable-udp: false
-#   expected-status: 204
-#   filter: ^(?!.*(🔗|🔀规则|中国|🇨🇳|香港|🇭🇰|台湾|🇹🇼|日本|🇯🇵|新加坡|🇸🇬|美国|🇺🇸|德国|🇩🇪|英国|🇬🇧|韩国|🇰🇷|法国|🇫🇷|澳大利亚|🇦🇺|加拿大|🇨🇦))
+#   filter: ^(?!.*(🔗|🔀规则|新加坡|🇸🇬|美国|🇺🇸|日本|🇯🇵|韩国|🇰🇷|香港|🇭🇰|台湾|🇹🇼|加拿大|🇨🇦|澳大利亚|🇦🇺|英国|🇬🇧|法国|🇫🇷|德国|🇩🇪|中国|🇨🇳))
 #   hidden: false
 #   include-all: true
 #   interval: 300
@@ -1661,14 +1660,6 @@
 #     proxy: 🎯默认
 #     type: http
 #     url: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/rules/Discord_geosite.mrs
-#   Epic_classical:
-#     behavior: classical
-#     interval: 43200
-#     path: ./rule_set/Epic_classical.yaml
-#     path-in-bundle: Epic_classical.yaml
-#     proxy: 🎯默认
-#     type: http
-#     url: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/rules/Epic_classical.yaml
 #   Gemini_geosite:
 #     behavior: domain
 #     format: mrs
@@ -1714,15 +1705,15 @@
 #     proxy: 🎯默认
 #     type: http
 #     url: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/rules/Google_geosite.mrs
-#   Instagram_geosite:
+#   Meta_geosite:
 #     behavior: domain
 #     format: mrs
 #     interval: 43200
-#     path: ./rule_set/Instagram_geosite.mrs
-#     path-in-bundle: Instagram_geosite.mrs
+#     path: ./rule_set/Meta_geosite.mrs
+#     path-in-bundle: Meta_geosite.mrs
 #     proxy: 🎯默认
 #     type: http
-#     url: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/rules/Instagram_geosite.mrs
+#     url: https://raw.githubusercontent.com/Tangerinell/mihomo_rules_profile/master/rules/Meta_geosite.mrs
 #   Microsoft_geosite:
 #     behavior: domain
 #     format: mrs

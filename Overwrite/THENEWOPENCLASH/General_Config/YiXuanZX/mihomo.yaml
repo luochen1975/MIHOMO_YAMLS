@@ -1,5 +1,5 @@
 # OpenClash 覆写模块 - mihomo.yaml
-# 生成日期：2026-10-29
+# 生成日期：2026-11-23
 # 源文件：https://raw.githubusercontent.com/luochen1975/MIHOMO_YAMLS/main/THEYAMLS/General_Config/YiXuanZX/mihomo.yaml
 # 格式：新版 OpenClash [YAML] 块覆写
 #
@@ -86,7 +86,7 @@
 #   provider1:
 #     header:
 #       User-Agent:
-#       - clash-verge/v2.5.2
+#       - clash-verge/v2.5.8
 #     health-check:
 #       enable: true
 #       interval: 600
@@ -109,7 +109,7 @@
 #
 # proxy-groups:
 # - filter: (?i)香港|hk|hongkong|hong kong
-#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Hong_Kong.png
+#   icon: https://raw.githubusercontent.com/aaANDkk/Qure_Style_SVG/main/icon/svg/flag/Hong_Kong.svg
 #   include-all: true
 #   interval: 600
 #   lazy: false
@@ -118,7 +118,7 @@
 #   type: select
 #   url: https://www.apple.com/library/test/success.html
 # - filter: (?i)新加坡|sg|singapore
-#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Singapore.png
+#   icon: https://raw.githubusercontent.com/aaANDkk/Qure_Style_SVG/main/icon/svg/flag/Singapore.svg
 #   include-all: true
 #   interval: 600
 #   lazy: false
@@ -127,7 +127,7 @@
 #   type: select
 #   url: https://www.apple.com/library/test/success.html
 # - filter: (?i)日本|jp|japan
-#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Japan.png
+#   icon: https://raw.githubusercontent.com/aaANDkk/Qure_Style_SVG/main/icon/svg/flag/Japan.svg
 #   include-all: true
 #   interval: 600
 #   lazy: false
@@ -136,7 +136,7 @@
 #   type: select
 #   url: https://www.apple.com/library/test/success.html
 # - filter: (?i)美国|us|unitedstates|united states
-#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/United_States.png
+#   icon: https://raw.githubusercontent.com/aaANDkk/Qure_Style_SVG/main/icon/svg/flag/United_States.svg
 #   include-all: true
 #   interval: 600
 #   lazy: false
@@ -146,7 +146,7 @@
 #   url: https://www.apple.com/library/test/success.html
 # - exclude-filter: (?i)剩余|到期|香港|hk|hongkong|hong kong|新加坡|sg|singapore|日本|jp|japan|美国|us|unitedstates|united
 #     states
-#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Server.png
+#   icon: https://raw.githubusercontent.com/aaANDkk/Qure_Style_SVG/main/icon/svg/common/Server.svg
 #   include-all: true
 #   interval: 600
 #   lazy: false
@@ -155,7 +155,7 @@
 #   type: select
 #   url: https://www.apple.com/library/test/success.html
 # - default-selected: 香港
-#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Proxy.png
+#   icon: https://raw.githubusercontent.com/aaANDkk/Qure_Style_SVG/main/icon/svg/common/Proxy.svg
 #   interval: 600
 #   lazy: false
 #   name: 代理
@@ -169,7 +169,7 @@
 #   type: select
 #   url: https://www.apple.com/library/test/success.html
 # - default-selected: 美国
-#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/ChatGPT.png
+#   icon: https://raw.githubusercontent.com/aaANDkk/Qure_Style_SVG/main/icon/svg/common/DeepSeek.svg
 #   interval: 600
 #   lazy: false
 #   name: AI
@@ -178,7 +178,7 @@
 #   type: select
 #   url: https://www.apple.com/library/test/success.html
 # - default-selected: 香港
-#   icon: https://fastly.jsdelivr.net/gh/Koolson/Qure/IconSet/Color/Telegram_X.png
+#   icon: https://raw.githubusercontent.com/aaANDkk/Qure_Style_SVG/main/icon/svg/common/Telegram.svg
 #   interval: 600
 #   lazy: false
 #   name: TG
@@ -351,7 +351,7 @@
 #   fake-ip-range: 28.0.0.0/8
 #   ipv6: true
 #   nameserver:
-#   - 223.5.5.5
+#   - https://dns.alidns.com/dns-query
 #   nameserver-policy:
 #     '*':
 #     - system

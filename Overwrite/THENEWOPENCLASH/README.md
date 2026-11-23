@@ -47,8 +47,8 @@
 | 📁 **[General_Config/lvbibir](./General_Config/lvbibir/README.md)** | 1 个 |
 | 📁 **[General_Config/qichiyuhub](./General_Config/qichiyuhub/README.md)** | 2 个 |
 | 📁 **[General_Config/sfssup](./General_Config/sfssup/README.md)** | 1 个 |
-| 📁 **[General_Config/wanswu](./General_Config/wanswu/README.md)** | 1 个 |
 | 📁 **[General_Config/yyhhyyyyyy](./General_Config/yyhhyyyyyy/README.md)** | 2 个 |
+| 📁 **[General_Config/zuluion](./General_Config/zuluion/README.md)** | 1 个 |
 | 📁 **[Mobile_Modules/AkashaProxy](./Mobile_Modules/AkashaProxy/README.md)** | 1 个 |
 | 📁 **[Mobile_Modules/BoxProxy](./Mobile_Modules/BoxProxy/README.md)** | 1 个 |
 | 📁 **[Mobile_Modules/ClashMix](./Mobile_Modules/ClashMix/README.md)** | 1 个 |

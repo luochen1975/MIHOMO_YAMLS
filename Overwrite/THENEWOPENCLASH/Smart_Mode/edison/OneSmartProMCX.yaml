@@ -1,5 +1,5 @@
 # OpenClash 覆写模块 - OneSmartProMCX.yaml
-# 生成日期：2026-10-29
+# 生成日期：2026-11-23
 # 源文件：https://raw.githubusercontent.com/luochen1975/MIHOMO_YAMLS/main/THEYAMLS/Smart_Mode/edison/OneSmartProMCX.yaml
 # 格式：新版 OpenClash [YAML] 块覆写
 #
@@ -155,15 +155,14 @@
 #   - 全部节点-手选
 #   - 国内直连
 #   type: select
-# - empty-fallback: REJECT
-#   icon: https://img.icons8.com/fluency/256/workflow.png
+# - icon: https://img.icons8.com/fluency/256/workflow.png
 #   name: 链式代理
 #   proxies:
 #   - 香港-故转
 #   - 日本-故转
 #   - 狮城-故转
-#   - 台湾-故转
 #   - 美国-故转
+#   - 台湾-故转
 #   - 冷门节点-手选
 #   - 全部节点-手选
 #   type: select
@@ -343,14 +342,16 @@
 #   type: fallback
 #   url: https://www.gstatic.com/generate_204
 # - empty-fallback: REJECT
-#   filter: (?i)家宽
+#   filter: (?i)(家宽|住宅|原生\s*IP|家庭宽带|\bISP\b|\bRES\b|residential)
 #   hidden: true
 #   icon: https://img.icons8.com/fluency/256/home.png
 #   include-all: true
 #   interval: 60
 #   lazy: true
+#   max-failed-times: 2
 #   name: 家宽-智能
 #   policy-priority: 优:3;中:2;次:1;备:0.5
+#   timeout: 3000
 #   type: smart
 #   url: https://www.gstatic.com/generate_204
 #   uselightgbm: true
@@ -361,20 +362,24 @@
 #   include-all: true
 #   interval: 60
 #   lazy: true
+#   max-failed-times: 2
 #   name: 香港-智能
 #   policy-priority: 优:3;中:2;次:1;备:0.5
+#   timeout: 3000
 #   type: smart
 #   url: https://www.gstatic.com/generate_204
 #   uselightgbm: true
 # - empty-fallback: REJECT
-#   filter: ^(?i)(?!.*免费).*(台|🇼🇸|🇹🇼|taiwan|taipei|(?<![a-zA-Z])(tw|twn|tpe|tsa|khh)(?![a-zA-Z])).*$
+#   filter: ^(?i)(?!.*免费).*(台|🇹🇼|taiwan|taipei|(?<![a-zA-Z])(tw|twn|tpe|tsa|khh)(?![a-zA-Z])).*$
 #   hidden: true
 #   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png
 #   include-all: true
 #   interval: 60
 #   lazy: true
+#   max-failed-times: 2
 #   name: 台湾-智能
 #   policy-priority: 优:3;中:2;次:1;备:0.5
+#   timeout: 3000
 #   type: smart
 #   url: https://www.gstatic.com/generate_204
 #   uselightgbm: true
@@ -385,8 +390,10 @@
 #   include-all: true
 #   interval: 60
 #   lazy: true
+#   max-failed-times: 2
 #   name: 日本-智能
 #   policy-priority: 优:3;中:2;次:1;备:0.5
+#   timeout: 3000
 #   type: smart
 #   url: https://www.gstatic.com/generate_204
 #   uselightgbm: true
@@ -397,8 +404,10 @@
 #   include-all: true
 #   interval: 60
 #   lazy: true
+#   max-failed-times: 2
 #   name: 狮城-智能
 #   policy-priority: 优:3;中:2;次:1;备:0.5
+#   timeout: 3000
 #   type: smart
 #   url: https://www.gstatic.com/generate_204
 #   uselightgbm: true
@@ -409,20 +418,24 @@
 #   include-all: true
 #   interval: 60
 #   lazy: true
+#   max-failed-times: 2
 #   name: 美国-智能
 #   policy-priority: 优:3;中:2;次:1;备:0.5
+#   timeout: 3000
 #   type: smart
 #   url: https://www.gstatic.com/generate_204
 #   uselightgbm: true
 # - empty-fallback: REJECT
-#   filter: ^(?i).*(0\.01|0\.[1-8]|下载|实验).*$
+#   filter: ^(?i).*((?<![\d.])(0\.01|0\.[1-8])|下载|实验).*$
 #   hidden: true
 #   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png
 #   include-all: true
 #   interval: 60
 #   lazy: true
+#   max-failed-times: 2
 #   name: 低倍率-智能
-#   policy-priority: 0.01:9;0.1:8;0.2:7;实验:7;0.3:6;0.4:5;0.5:4;0.6:3;0.7:2;0.8:1
+#   policy-priority: 0\.01:9;0\.1:8;0\.2:7;实验:7;0\.3:6;0\.4:5;0\.5:4;0\.6:3;0\.7:2;0\.8:1
+#   timeout: 3000
 #   type: smart
 #   url: https://www.gstatic.com/generate_204
 #   uselightgbm: true
@@ -434,13 +447,15 @@
 #   include-all: true
 #   interval: 60
 #   lazy: true
+#   max-failed-times: 2
 #   name: 冷门节点-智能
 #   policy-priority: 优:3;中:2;次:1;备:0.5
+#   timeout: 3000
 #   type: smart
 #   url: https://www.gstatic.com/generate_204
 #   uselightgbm: true
 # - empty-fallback: REJECT
-#   filter: (?i)家宽
+#   filter: (?i)(家宽|住宅|原生\s*IP|家庭宽带|\bISP\b|\bRES\b|residential)
 #   icon: https://img.icons8.com/fluency/256/home.png
 #   include-all: true
 #   interval: 60
@@ -458,7 +473,7 @@
 #   type: select
 #   url: https://www.gstatic.com/generate_204
 # - empty-fallback: REJECT
-#   filter: ^(?i)(?!.*免费).*(台|🇼🇸|🇹🇼|taiwan|taipei|(?<![a-zA-Z])(tw|twn|tpe|tsa|khh)(?![a-zA-Z])).*$
+#   filter: ^(?i)(?!.*免费).*(台|🇹🇼|taiwan|taipei|(?<![a-zA-Z])(tw|twn|tpe|tsa|khh)(?![a-zA-Z])).*$
 #   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Taiwan.png
 #   include-all: true
 #   interval: 60
@@ -494,7 +509,7 @@
 #   type: select
 #   url: https://www.gstatic.com/generate_204
 # - empty-fallback: REJECT
-#   filter: ^(?i).*(0\.01|0\.[1-8]|下载|实验).*$
+#   filter: ^(?i).*((?<![\d.])(0\.01|0\.[1-8])|下载|实验).*$
 #   icon: https://github.com/Koolson/Qure/raw/master/IconSet/Color/Round_Robin_1.png
 #   include-all: true
 #   interval: 60
@@ -1034,6 +1049,7 @@
 # - RULE-SET,DNS-IP,REJECT,no-resolve
 # - RULE-SET,Category-DoH,REJECT
 # - RULE-SET,HTTPDNS-CN,REJECT
+# - DOMAIN-SUFFIX,msmp.abchina.com.cn,REJECT
 # - DOMAIN,access.pikpakdrive.com,REJECT
 # - DOMAIN,access.mypikpak.com,REJECT
 # - DOMAIN,access.mypikpak.net,REJECT

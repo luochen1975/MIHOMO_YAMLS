@@ -1,5 +1,5 @@
 # OpenClash 覆写模块 - base-clash-ruleset.yaml
-# 生成日期：2026-10-29
+# 生成日期：2026-11-23
 # 源文件：https://raw.githubusercontent.com/luochen1975/MIHOMO_YAMLS/main/THEYAMLS/General_Config/Pililink/base-clash-ruleset.yaml
 # 格式：新版 OpenClash [YAML] 块覆写
 #
@@ -444,13 +444,6 @@
 #     path: ./rule_provider/acl4ssr-ban-ad.yaml
 #     type: http
 #     url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/BanAD.yaml
-#   ai:
-#     behavior: classical
-#     format: yaml
-#     interval: 7200
-#     path: ./rule_provider/acl4ssr-ai.yaml
-#     type: http
-#     url: https://raw.githubusercontent.com/ACL4SSR/ACL4SSR/master/Clash/Providers/Ruleset/AI.yaml
 #   apple:
 #     behavior: classical
 #     format: yaml
@@ -743,12 +736,15 @@
 # - IP-CIDR,100.64.0.0/10,🏠 家庭网络,no-resolve
 # - RULE-SET,myignore,DIRECT
 # - RULE-SET,myclaude,🧠 Claude
-# - RULE-SET,myai,🤖 人工智能
 # - RULE-SET,myproxy,🪜 代理域名
+# - RULE-SET,myai,🤖 人工智能
 # - RULE-SET,private,🔒 私有网络
 # - RULE-SET,private-tracker,🎯 全球直连
+# - DOMAIN,cloudcode-pa.sandbox.googleapis.com,🤖 人工智能
 # - DOMAIN,daily-cloudcode-pa.sandbox.googleapis.com,🤖 人工智能
-# - DOMAIN-SUFFIX,sandbox.googleapis.com,🤖 人工智能
+# - DOMAIN-WILDCARD,*-cloudcode-pa.sandbox.googleapis.com,🤖 人工智能
+# - DOMAIN,daily-cloudcode-pa.googleapis.com,🤖 人工智能
+# - DOMAIN-WILDCARD,*-cloudcode-pa.googleapis.com,🤖 人工智能
 # - DOMAIN-SUFFIX,cloudcode-pa.googleapis.com,🤖 人工智能
 # - DOMAIN-SUFFIX,gstatic.com,🇬 谷歌服务
 # - DOMAIN-SUFFIX,recaptcha.net,🇬 谷歌服务
@@ -760,7 +756,6 @@
 # - RULE-SET,steam-cn,🎯 全球直连
 # - RULE-SET,mypsn,🕹️ PSN 服务
 # - RULE-SET,cn,🇨🇳 直连域名
-# - RULE-SET,ai,🤖 人工智能
 # - RULE-SET,game-xbox,🎮 游戏服务
 # - RULE-SET,microsoft,🪟 微软服务
 # - RULE-SET,apple,🍎 苹果服务
